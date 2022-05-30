@@ -24,7 +24,7 @@
     "test": "react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "test-coverage": "jest --watchAll=false --coverage",
+    "test-coverage": "jest --watchAll=false --coverage --env=jsdom",
     "test-coverage-dev": "jest --watchAll --coverage"
   },
   "eslintConfig": {
@@ -51,7 +51,6 @@
     "ts-jest": "^28.0.3"
   },
   "jest": {
-    "testEnvironment": "jsdom",
     "collectCoverageFrom": [
       "src/**/*.tsx",
       "src/**/*.ts",
