@@ -28,7 +28,7 @@ describe("Given a loginThunk", () => {
       const thunk = loginThunk({ username: carlosInfo.username, password: "" });
       const action = loginActionCreator(carlosInfo);
 
-      Object.defineProperty(window, "localStorage", {
+      Object.defineProperty(Window, "localStorage", {
         value: fakeLocalStorage,
       });
 
