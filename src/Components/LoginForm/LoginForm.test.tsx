@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import LoginForm from "./LoginForm";
 import userEvent from "@testing-library/user-event";
+import { BrowserRouter } from "react-router-dom";
 
 describe("Given a LoginForm component", () => {
   describe("When the word 'hello' is written to the name input field", () => {
@@ -9,7 +10,11 @@ describe("Given a LoginForm component", () => {
       const labelToFind = "Username";
       const inputText = "hello";
 
-      render(<LoginForm />);
+      render(
+        <BrowserRouter>
+          <LoginForm />
+        </BrowserRouter>
+      );
       const label: HTMLLabelElement = screen.getByLabelText(labelToFind);
       userEvent.type(label, inputText);
 
