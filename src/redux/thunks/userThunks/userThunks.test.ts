@@ -10,9 +10,11 @@ jest.mock("jwt-decode", () => () => ({
 }));
 
 const fakeLocalStorage = (function () {
-  let store = {};
+  let store = { token: "" };
   return {
-    setItem: jest.fn(),
+    setItem: function (key: string, value: string) {
+      store.token = value.toString();
+    },
   };
 })();
 
