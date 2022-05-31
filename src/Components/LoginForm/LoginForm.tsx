@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent } from "react";
 import { useState } from "react";
 import { useAppDispatch } from "../../hooks/hooks";
-import { loginThunk } from "../../redux/thunks/userThunks";
+import { loginThunk } from "../../redux/thunks/userThunks/userThunks";
 import LoginFormContainer from "./LoginFormStyles";
 
 interface ILoginForm {
