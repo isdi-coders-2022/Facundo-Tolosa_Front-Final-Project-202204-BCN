@@ -33,7 +33,7 @@ const LoginForm = (): JSX.Element => {
 
       <form onSubmit={handleSubmit} noValidate>
         <div className="form-field">
-          <label htmlFor="username"></label>
+          <label htmlFor="username">Username</label>
           <input
             type="text"
             id="username"
@@ -44,7 +44,7 @@ const LoginForm = (): JSX.Element => {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="password"></label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"

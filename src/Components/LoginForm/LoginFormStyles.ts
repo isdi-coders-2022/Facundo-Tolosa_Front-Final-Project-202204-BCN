@@ -64,6 +64,10 @@ const LoginFormContainer = styled.div`
     width: 100px;
   }
 
+  label {
+    display: none;
+  }
+
   @media (min-width: 600px) {
     p:hover {
       color: white;

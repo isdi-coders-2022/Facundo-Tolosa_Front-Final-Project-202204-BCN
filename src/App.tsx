@@ -1,8 +1,13 @@
 import React from "react";
-import RegisterForm from "./Components/RegisterForm/RegisterForm";
+import LoginForm from "./Components/LoginForm/LoginForm";
 
 const App = () => {
-  return <RegisterForm />;
+  return (
+    <>
+      <h1>Website under development</h1>
+      <LoginForm />
+    </>
+  );
 };
 
 export default App;
