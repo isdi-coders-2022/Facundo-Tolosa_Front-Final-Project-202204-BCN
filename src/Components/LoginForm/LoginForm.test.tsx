@@ -3,6 +3,8 @@ import { render, screen } from "@testing-library/react";
 import LoginForm from "./LoginForm";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "../../redux/store/store";
 
 describe("Given a LoginForm component", () => {
   describe("When the word 'hello' is written to the name input field", () => {
@@ -12,7 +14,9 @@ describe("Given a LoginForm component", () => {
 
       render(
         <BrowserRouter>
-          <LoginForm />
+          <Provider store={store}>
+            <LoginForm />
+          </Provider>
         </BrowserRouter>
       );
       const label: HTMLLabelElement = screen.getByLabelText(labelToFind);
@@ -28,7 +32,13 @@ describe("Given a LoginForm component", () => {
       const passwordLabel = "Password";
       const inputText = "hello";
 
-      render(<LoginForm />);
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <LoginForm />
+          </Provider>
+        </BrowserRouter>
+      );
 
       const username: HTMLLabelElement = screen.getByLabelText(usernameLabel);
       const password: HTMLLabelElement = screen.getByLabelText(passwordLabel);
