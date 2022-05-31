@@ -1,5 +1,7 @@
 import React, { ChangeEvent, FormEvent } from "react";
 import { useState } from "react";
+import { useAppDispatch } from "../../hooks/hooks";
+import { loginThunk } from "../../redux/thunks/userThunks";
 import LoginFormContainer from "./LoginFormStyles";
 
 interface ILoginForm {
@@ -8,6 +10,8 @@ interface ILoginForm {
 }
 
 const LoginForm = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+
   const initialFormValue: ILoginForm = {
     username: "",
     password: "",
@@ -24,6 +28,7 @@ const LoginForm = (): JSX.Element => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+    dispatch(loginThunk(formValues));
     setFormValues(initialFormValue);
   };
 
