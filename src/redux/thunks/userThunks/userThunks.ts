@@ -26,7 +26,7 @@ export const loginThunk =
       userData
     );
 
-    localStorage.setItem("token", data.token);
+    window.localStorage.setItem("token", data.token);
 
     const { id, name, username, image }: IuserInfo = jwtDecode<IuserInfo>(
       data.token
