@@ -12,25 +12,11 @@ jest.mock("jwt-decode", () => () => ({
 describe("Given a loginThunk", () => {
   describe("When invoked with a valid user", () => {
     test("Then it should call the dispatch with a login action creator and the info of the valid user", async () => {
-      const fakeLocalStorage = (function () {
-        let store: any = {};
-        return {
-          setItem: function (key: string, value: string) {
-            store[key] = value.toString();
-          },
-          getItem: function (key: string) {
-            return store[key] || null;
-          },
-        };
-      })();
+      jest.spyOn(window.localStorage, "setItem");
 
       const dispatch = jest.fn();
       const thunk = loginThunk({ username: carlosInfo.username, password: "" });
       const action = loginActionCreator(carlosInfo);
-
-      Object.defineProperty(window, "localStorage", {
-        value: fakeLocalStorage,
-      });
 
       await thunk(dispatch);
 
