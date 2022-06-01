@@ -1,7 +1,8 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import RegisterFormContainer from "./RegisterFormStyles";
-
+import { useAppDispatch } from "../../hooks/hooks";
+import { registerThunk } from "../../redux/thunks/userThunks/userThunks";
 interface IRegisterForm {
   username: string;
   password: string;
@@ -16,8 +17,9 @@ const RegisterForm = (): JSX.Element => {
     name: "",
     image: "",
   };
-
+  const dispatch = useAppDispatch();
   const [formValues, setFormValues] = useState<IRegisterForm>(initialFormValue);
+  const navigate = useNavigate();
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setFormValues({
@@ -28,6 +30,7 @@ const RegisterForm = (): JSX.Element => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+    dispatch(registerThunk(formValues));
     setFormValues(initialFormValue);
   };
 
