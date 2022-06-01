@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import RegisterFormContainer from "./RegisterFormStyles";
 import { useAppDispatch } from "../../hooks/hooks";
 import { registerThunk } from "../../redux/thunks/userThunks/userThunks";
@@ -19,7 +19,6 @@ const RegisterForm = (): JSX.Element => {
   };
   const dispatch = useAppDispatch();
   const [formValues, setFormValues] = useState<IRegisterForm>(initialFormValue);
-  const navigate = useNavigate();
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setFormValues({
