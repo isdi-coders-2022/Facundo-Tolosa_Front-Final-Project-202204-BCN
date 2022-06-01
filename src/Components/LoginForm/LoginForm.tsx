@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent } from "react";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import LoginFormContainer from "./LoginFormStyles";
 
 interface ILoginForm {
@@ -56,7 +57,7 @@ const LoginForm = (): JSX.Element => {
         </div>
         <input type="submit" value="Login" className="submit-input" />
       </form>
-      <p>Create an account </p>
+      <NavLink to={"/register"}>Create an account</NavLink>
     </LoginFormContainer>
   );
 };

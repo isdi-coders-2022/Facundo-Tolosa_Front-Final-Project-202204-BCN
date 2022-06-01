@@ -56,7 +56,7 @@ const RegisterFormContainer = styled.div`
     transition: all 0.5s;
   }
 
-  p {
+  a {
     text-align: center;
     text-decoration: none;
     color: #6643b5;
@@ -75,7 +75,7 @@ const RegisterFormContainer = styled.div`
   }
 
   @media (min-width: 600px) {
-    p:hover {
+    a:hover {
       color: white;
     }
 

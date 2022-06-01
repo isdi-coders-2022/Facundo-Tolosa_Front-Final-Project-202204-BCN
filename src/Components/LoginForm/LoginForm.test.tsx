@@ -28,7 +28,11 @@ describe("Given a LoginForm component", () => {
       const passwordLabel = "Password";
       const inputText = "hello";
 
-      render(<LoginForm />);
+      render(
+        <BrowserRouter>
+          <LoginForm />
+        </BrowserRouter>
+      );
 
       const username: HTMLLabelElement = screen.getByLabelText(usernameLabel);
       const password: HTMLLabelElement = screen.getByLabelText(passwordLabel);

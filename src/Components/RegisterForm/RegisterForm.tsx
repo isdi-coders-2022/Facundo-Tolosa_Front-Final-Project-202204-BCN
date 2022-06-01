@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent } from "react";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import RegisterFormContainer from "./RegisterFormStyles";
 
 interface IRegisterForm {
@@ -82,7 +83,7 @@ const RegisterForm = (): JSX.Element => {
         </div>
         <input type="submit" value="Register" className="submit-input" />
       </form>
-      <p>I already have an account</p>
+      <NavLink to={"/login"}> I already have an account</NavLink>
     </RegisterFormContainer>
   );
 };

@@ -28,7 +28,11 @@ describe("Given a RegisterForm component", () => {
       const passwordLabel = "Password";
       const inputText = "hello";
 
-      render(<RegisterForm />);
+      render(
+        <BrowserRouter>
+          <RegisterForm />
+        </BrowserRouter>
+      );
 
       const username: HTMLLabelElement = screen.getByLabelText(usernameLabel);
       const password: HTMLLabelElement = screen.getByLabelText(passwordLabel);
