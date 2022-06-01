@@ -2,6 +2,8 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import RegisterPage from "./RegisterPage";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "../../redux/store/store";
 
 describe("Given a RegisterPage component", () => {
   describe("When it's rendered", () => {
@@ -10,7 +12,9 @@ describe("Given a RegisterPage component", () => {
 
       render(
         <BrowserRouter>
-          <RegisterPage />
+          <Provider store={store}>
+            <RegisterPage />
+          </Provider>
         </BrowserRouter>
       );
 
