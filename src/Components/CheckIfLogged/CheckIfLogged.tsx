@@ -16,9 +16,8 @@ const CheckIfLogged = ({ children }: Props) => {
 
   if (name) {
     return children;
-  } else {
-    return null;
   }
+  return null;
 };
 
 export default CheckIfLogged;

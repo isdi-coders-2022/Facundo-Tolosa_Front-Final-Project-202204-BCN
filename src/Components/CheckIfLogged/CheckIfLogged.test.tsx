@@ -15,8 +15,8 @@ jest.mock("../../hooks/hooks", () => ({
 }));
 
 describe("Given a LoggedChecked function", () => {
-  describe("When it's invoked", () => {
-    test("Then it should navigarte to login enpoint when user is not logged", () => {
+  describe("When it's invoked there is no user logged", () => {
+    test("Then it should call navigate to login", () => {
       render(
         <CheckIfLogged>
           <h1>Hello</h1>
@@ -29,17 +29,18 @@ describe("Given a LoggedChecked function", () => {
     test("Then it should render its children when the user is logged", () => {
       mockName = "Carlos";
 
-      const expectedHeaders = 1;
-
       render(
         <CheckIfLogged>
           <h1>Hello</h1>
         </CheckIfLogged>
       );
 
-      const searchedText = screen.getAllByRole("heading");
+      const receivedText = screen.getByRole("heading", {
+        level: 1,
+        name: /hello/i,
+      });
 
-      expect(searchedText).toHaveLength(expectedHeaders);
+      expect(receivedText).toBeInTheDocument();
     });
   });
 });
