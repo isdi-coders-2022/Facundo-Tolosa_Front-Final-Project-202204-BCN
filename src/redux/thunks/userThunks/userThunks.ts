@@ -4,8 +4,8 @@ import { loginActionCreator } from "../../features/userSlice/userSlice";
 import { AppDispatch } from "../../store/store";
 
 interface IuserCredentials {
-  username: String;
-  password: String;
+  username: string;
+  password: string;
 }
 
 interface LoginResponse {
@@ -13,17 +13,17 @@ interface LoginResponse {
 }
 
 interface IuserInfo {
-  id: String;
-  name: String;
-  username: String;
-  image: String;
+  id: string;
+  name: string;
+  username: string;
+  image: string;
 }
 
 interface IRegisterData {
-  password: String;
-  name: String;
-  username: String;
-  image: String;
+  password: string;
+  name: string;
+  username: string;
+  image: string;
 }
 
 export const loginThunk =
@@ -47,5 +47,8 @@ export const registerThunk =
     await axios.post<LoginResponse>(
       `${process.env.REACT_APP_API_URL}user/register`,
       userData
+    );
+    dispatch(
+      loginThunk({ username: userData.username, password: userData.password })
     );
   };

@@ -9,10 +9,10 @@ import jwtDecode from "jwt-decode";
 import { loginActionCreator } from "./redux/features/userSlice/userSlice";
 
 interface IuserInfo {
-  id: String;
-  name: String;
-  username: String;
-  image: String;
+  id: string;
+  name: string;
+  username: string;
+  image: string;
 }
 
 const App = () => {
