@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IinitialState {
-  name: String;
-  username: String;
-  id: String;
-  image: String;
+  name: string;
+  username: string;
+  id: string;
+  image: string;
 }
 
 const initialState: IinitialState = {
