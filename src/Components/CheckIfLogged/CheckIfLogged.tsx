@@ -1,17 +1,24 @@
-import React from "react";
-import { Navigate, NavigationType } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../hooks/hooks";
 
-type Props = {
-  children?: JSX.Element | JSX.Element[];
-};
+interface Props {
+  children: JSX.Element;
+}
 
-type TCheckIfLogged = ({ children }: Props) => JSX.Element | NavigationType;
-
-const CheckIfLogged: TCheckIfLogged = ({ children }) => {
+const CheckIfLogged = ({ children }: Props) => {
   const { name } = useAppSelector((state) => state.user);
+  const navigate = useNavigate();
 
-  return name ? (children as JSX.Element) : <Navigate to="/login" />;
+  useEffect(() => {
+    if (!name) navigate("/login");
+  }, [name, navigate]);
+
+  if (name) {
+    return children;
+  } else {
+    return null;
+  }
 };
 
 export default CheckIfLogged;

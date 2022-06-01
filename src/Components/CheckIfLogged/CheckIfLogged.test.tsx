@@ -1,31 +1,45 @@
-import React from "react";
-import { render } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import store from "../../redux/store/store";
+import { render, screen } from "@testing-library/react";
 import CheckIfLogged from "./CheckIfLogged";
 
-const mockUseNavigate: jest.Mock = jest.fn();
-let mockLogged: boolean;
+const mockUseNavigate = jest.fn();
 
 jest.mock("react-router-dom", () => ({
   useNavigate: () => mockUseNavigate,
 }));
 
+let mockName = "";
+
 jest.mock("../../hooks/hooks", () => ({
-  useAppSelector: () => ({ logged: mockLogged }),
+  ...jest.requireActual("../../hooks/hooks"),
+  useAppSelector: () => ({ name: mockName }),
 }));
 
-describe("Given a 'ManuelitaLaCantadora' component", () => {
-  describe("When 'logged' it's false", () => {
-    test("Then it should call navigate and it should return null", () => {
+describe("Given a LoggedChecked function", () => {
+  describe("When it's invoked", () => {
+    test("Then it should navigarte to login enpoint when user is not logged", () => {
       render(
         <CheckIfLogged>
-          <h1>Hola</h1>
+          <h1>Hello</h1>
         </CheckIfLogged>
       );
 
       expect(mockUseNavigate).toHaveBeenCalledWith("/login");
+    });
+
+    test("Then it should render its children when the user is logged", () => {
+      mockName = "Carlos";
+
+      const expectedHeaders = 1;
+
+      render(
+        <CheckIfLogged>
+          <h1>Hello</h1>
+        </CheckIfLogged>
+      );
+
+      const searchedText = screen.getAllByRole("heading");
+
+      expect(searchedText).toHaveLength(expectedHeaders);
     });
   });
 });
