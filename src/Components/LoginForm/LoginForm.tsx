@@ -1,5 +1,4 @@
-import React, { ChangeEvent, FormEvent } from "react";
-import { useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { NavLink } from "react-router-dom";
 import LoginFormContainer from "./LoginFormStyles";
 
