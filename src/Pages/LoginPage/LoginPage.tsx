@@ -3,11 +3,9 @@ import LoginPageContainer from "./LoginPageStyles";
 
 const LoginPage = () => {
   return (
-    <>
-      <LoginPageContainer>
-        <LoginForm />
-      </LoginPageContainer>
-    </>
+    <LoginPageContainer>
+      <LoginForm />
+    </LoginPageContainer>
   );
 };
 
