@@ -19,6 +19,13 @@ interface IuserInfo {
   image: String;
 }
 
+interface IRegisterData {
+  password: String;
+  name: String;
+  username: String;
+  image: String;
+}
+
 export const loginThunk =
   (userData: IuserCredentials) => async (dispatch: AppDispatch) => {
     const { data } = await axios.post<LoginResponse>(
@@ -33,4 +40,12 @@ export const loginThunk =
     );
 
     dispatch(loginActionCreator({ id, name, username, image }));
+  };
+
+export const registerThunk =
+  (userData: IRegisterData) => async (dispatch: AppDispatch) => {
+    await axios.post<LoginResponse>(
+      `${process.env.REACT_APP_API_URL}user/register`,
+      userData
+    );
   };
