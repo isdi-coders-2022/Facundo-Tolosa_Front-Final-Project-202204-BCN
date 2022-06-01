@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const LoginFormContainer = styled.div`
+const RegisterFormContainer = styled.div`
   width: 330px;
-  height: 425px;
+  height: 600px;
   border: 10px solid #6643b5;
   background-color: #d5def5;
   border-radius: 10px;
@@ -38,6 +38,12 @@ const LoginFormContainer = styled.div`
     &::placeholder {
       color: #6643b5;
       opacity: 0.9;
+    }
+  }
+
+  .form-field-image-input {
+    input {
+      width: 120px;
     }
   }
 
@@ -81,4 +87,4 @@ const LoginFormContainer = styled.div`
   }
 `;
 
-export default LoginFormContainer;
+export default RegisterFormContainer;

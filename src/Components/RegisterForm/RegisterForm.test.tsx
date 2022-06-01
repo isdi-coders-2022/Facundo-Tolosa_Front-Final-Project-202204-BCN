@@ -1,10 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
 
-describe("Given a LoginForm component", () => {
+describe("Given a RegisterForm component", () => {
   describe("When the word 'hello' is written to the name input field", () => {
     test("Then the value of the username input field should be 'hello'", () => {
       const labelToFind = "Username";
@@ -12,7 +12,7 @@ describe("Given a LoginForm component", () => {
 
       render(
         <BrowserRouter>
-          <LoginForm />
+          <RegisterForm />
         </BrowserRouter>
       );
       const label: HTMLLabelElement = screen.getByLabelText(labelToFind);
@@ -30,7 +30,7 @@ describe("Given a LoginForm component", () => {
 
       render(
         <BrowserRouter>
-          <LoginForm />
+          <RegisterForm />
         </BrowserRouter>
       );
 

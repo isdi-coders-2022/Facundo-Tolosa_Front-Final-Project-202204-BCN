@@ -1,20 +1,24 @@
 import React, { ChangeEvent, FormEvent } from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import LoginFormContainer from "./LoginFormStyles";
+import RegisterFormContainer from "./RegisterFormStyles";
 
-interface ILoginForm {
+interface IRegisterForm {
   username: string;
   password: string;
+  name: string;
+  image: string;
 }
 
-const LoginForm = (): JSX.Element => {
-  const initialFormValue: ILoginForm = {
+const RegisterForm = (): JSX.Element => {
+  const initialFormValue: IRegisterForm = {
     username: "",
     password: "",
+    name: "",
+    image: "",
   };
 
-  const [formValues, setFormValues] = useState<ILoginForm>(initialFormValue);
+  const [formValues, setFormValues] = useState<IRegisterForm>(initialFormValue);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setFormValues({
@@ -29,10 +33,21 @@ const LoginForm = (): JSX.Element => {
   };
 
   return (
-    <LoginFormContainer>
+    <RegisterFormContainer>
       <img src="images/icons8-usuario-100.png" alt="user caricature" />
 
       <form onSubmit={handleSubmit} noValidate>
+        <div className="form-field">
+          <label htmlFor="name">Your name</label>
+          <input
+            type="text"
+            id="name"
+            value={formValues.name}
+            onChange={handleInputChange}
+            autoComplete="off"
+            placeholder="Your name"
+          />
+        </div>
         <div className="form-field">
           <label htmlFor="username">Username</label>
           <input
@@ -55,11 +70,22 @@ const LoginForm = (): JSX.Element => {
             placeholder="Password"
           />
         </div>
-        <input type="submit" value="Login" className="submit-input" />
+        <div className="form-field-image-input">
+          <label htmlFor="username">Avatar</label>
+          <input
+            type="text"
+            id="image"
+            value={formValues.image}
+            onChange={handleInputChange}
+            autoComplete="off"
+            placeholder="Avatar"
+          />
+        </div>
+        <input type="submit" value="Register" className="submit-input" />
       </form>
-      <NavLink to={"/register"}>Create an account</NavLink>
-    </LoginFormContainer>
+      <NavLink to={"/login"}> I already have an account</NavLink>
+    </RegisterFormContainer>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
