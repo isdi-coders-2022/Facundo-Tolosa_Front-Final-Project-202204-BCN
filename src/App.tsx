@@ -33,7 +33,6 @@ const App = () => {
   return (
     <>
       <h1>AMAZING NOTES</h1>
-
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginPage />} />
