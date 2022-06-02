@@ -34,7 +34,6 @@ const App = () => {
   return (
     <>
       <h1>AMAZING NOTES</h1>
-      <NotePreview />
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginPage />} />

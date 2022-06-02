@@ -13,13 +13,13 @@ interface Props {
 }
 
 const NotePreview = ({
-  note: { title, content, category, author, id, creationDate },
+  note: { title, category, author, id, creationDate },
 }: Props): JSX.Element => {
   return (
     <NotePreviewContainer>
       <div className="cat-title">
-        <p className="category">Programming</p>
-        <p className="title">JavaScript theory</p>
+        <p className="category">{category}</p>
+        <p className="title">{title}</p>
       </div>
       <div className="user-date">
         <div className="user">
@@ -27,9 +27,9 @@ const NotePreview = ({
             src="images/icons8-nombre-de-usuario-50.png"
             alt="user caricature"
           />
-          <p>mariogl84</p>
+          <p>{author}</p>
         </div>
-        <p className="date">2 hours ago</p>
+        <p className="date">{`${creationDate}`}</p>
       </div>
     </NotePreviewContainer>
   );
