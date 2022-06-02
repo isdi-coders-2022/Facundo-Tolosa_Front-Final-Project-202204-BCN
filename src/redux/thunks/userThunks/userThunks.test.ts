@@ -1,5 +1,33 @@
 import axios from "axios";
-import { registerThunk } from "./userThunks";
+import { carlosInfo } from "../../../mocks/userMocks";
+import { loginActionCreator } from "../../features/userSlice/userSlice";
+import { loginThunk, registerThunk } from "./userThunks";
+
+jest.mock("jwt-decode", () => () => ({
+  id: "1",
+  name: "carlos",
+  username: "carlos",
+  image: "carlos.jpg",
+}));
+
+describe("Given a loginThunk", () => {
+  describe("When invoked with a valid user", () => {
+    test("Then it should call the dispatch with a login action creator and the info of the valid user", async () => {
+      const dispatch = jest.fn();
+      const action = loginActionCreator(carlosInfo);
+
+      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
+      axios.post = jest
+        .fn()
+        .mockResolvedValue({ data: { token: "tokencito" } });
+
+      const thunk = loginThunk({ username: carlosInfo.username, password: "" });
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+});
 
 describe("Given the registerThunk function", () => {
   describe("When it's called and receives de new user data", () => {
