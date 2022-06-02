@@ -11,6 +11,7 @@ interface getAllNotesResponse {
 export const loadNotesThunk = () => async (dispatch: AppDispatch) => {
   try {
     const token = localStorage.getItem("token");
+
     if (token) {
       const {
         data: { notes },
