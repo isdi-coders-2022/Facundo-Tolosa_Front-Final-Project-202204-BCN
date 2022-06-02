@@ -1,24 +1,36 @@
 import React from "react";
 import NotePreviewContainer from "./NotePreviewStyles";
 
-// interface Props {
-//   note: {
-//     title: string;
-//     content: string;
-//     category: string;
-//     author: string;
-//     id: string;
-//     creationDate: Date;
-//   };
-// }
+interface Props {
+  note: {
+    title: string;
+    content: string;
+    category: string;
+    author: string;
+    id: string;
+    creationDate: Date;
+  };
+}
 
-const NotePreview = (): JSX.Element => {
+const NotePreview = ({
+  note: { title, content, category, author, id, creationDate },
+}: Props): JSX.Element => {
   return (
     <NotePreviewContainer>
-      <p>Programming</p>
-      <p>JavaScript theory</p>
-      <p>mariogl84</p>
-      <p>2 hours ago</p>
+      <div className="cat-title">
+        <p className="category">Programming</p>
+        <p className="title">JavaScript theory</p>
+      </div>
+      <div className="user-date">
+        <div className="user">
+          <img
+            src="images/icons8-nombre-de-usuario-50.png"
+            alt="user caricature"
+          />
+          <p>mariogl84</p>
+        </div>
+        <p className="date">2 hours ago</p>
+      </div>
     </NotePreviewContainer>
   );
 };
