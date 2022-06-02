@@ -22,6 +22,7 @@ const App = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    debugger;
     if (token || name) {
       const userInfo: IuserInfo = jwtDecode(token as string);
 

@@ -14,7 +14,6 @@ export const loadNotesThunk = () => async (dispatch: AppDispatch) => {
   if (token) {
     const {
       data: { notes },
-      status,
     } = await axios.get<getAllNotesResponse>(
       `${process.env.REACT_APP_API_URL}notes`,
       {
@@ -24,8 +23,6 @@ export const loadNotesThunk = () => async (dispatch: AppDispatch) => {
       }
     );
 
-    if (status === 200) {
-      dispatch(loadNotesActionCreator(notes));
-    }
+    dispatch(loadNotesActionCreator(notes));
   }
 };
