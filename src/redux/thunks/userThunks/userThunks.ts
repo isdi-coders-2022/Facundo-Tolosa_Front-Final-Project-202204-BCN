@@ -26,11 +26,10 @@ export const loginThunk =
       userData
     );
 
-    localStorage.setItem("token", data.token);
-
     const { id, name, username, image }: IuserInfo = jwtDecode<IuserInfo>(
       data.token
     );
 
     dispatch(loginActionCreator({ id, name, username, image }));
+    localStorage.setItem("token", data.token);
   };
