@@ -7,10 +7,10 @@ import store from "../../redux/store/store";
 import { noteMock } from "../../mocks/notesMocks";
 
 describe("Given a RegisterForm component", () => {
-  describe("When it's rendered with a title 'fuchibol' and a author 'vitor90braz'", () => {
-    test("Then it should render the text 'fuchibol' and 'vitor90braz'", () => {
+  describe("When it's rendered with a title 'fuchibol' and a category 'sport'", () => {
+    test("Then it should render the text 'fuchibol' and 'sport'", () => {
       const title = "fuchibol";
-      const author = "vitor90braz";
+      const category = "sports";
 
       render(
         <BrowserRouter>
@@ -21,10 +21,10 @@ describe("Given a RegisterForm component", () => {
       );
 
       const renderedTitle = screen.getByText(title);
-      const renderedAuthor = screen.getByText(author);
+      const renderedCategory = screen.getByText(category);
 
       expect(renderedTitle).toBeInTheDocument();
-      expect(renderedAuthor).toBeInTheDocument();
+      expect(renderedCategory).toBeInTheDocument();
     });
   });
 });
