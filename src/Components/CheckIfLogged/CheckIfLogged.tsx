@@ -8,6 +8,7 @@ interface Props {
 
 const CheckIfLogged = ({ children }: Props) => {
   const { name } = useAppSelector((state) => state.user);
+
   const navigate = useNavigate();
 
   useEffect(() => {
