@@ -7,7 +7,6 @@ import CheckIfLogged from "./Components/CheckIfLogged/CheckIfLogged";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import jwtDecode from "jwt-decode";
 import { loginActionCreator } from "./redux/features/userSlice/userSlice";
-import NotePreview from "./Components/NotePreview/NotePreview";
 
 interface IuserInfo {
   id: string;
