@@ -44,10 +44,7 @@ export const loginThunk =
 
 export const registerThunk =
   (userData: IRegisterData) => async (dispatch: AppDispatch) => {
-    await axios.post<LoginResponse>(
-      `${process.env.REACT_APP_API_URL}user/register`,
-      userData
-    );
+    await axios.post(`${process.env.REACT_APP_API_URL}user/register`, userData);
     dispatch(
       loginThunk({ username: userData.username, password: userData.password })
     );
