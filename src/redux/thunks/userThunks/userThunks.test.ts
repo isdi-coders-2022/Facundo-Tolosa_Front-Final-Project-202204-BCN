@@ -12,7 +12,7 @@ jest.mock("jwt-decode", () => () => ({
 describe("Given a loginThunk", () => {
   describe("When invoked with a valid user", () => {
     test("Then it should call the dispatch with a login action creator and the info of the valid user", async () => {
-      jest.spyOn(window.localStorage, "setItem");
+      jest.spyOn(Storage.prototype, "setItem").mockReturnThis();
 
       const dispatch = jest.fn();
       const thunk = loginThunk({ username: carlosInfo.username, password: "" });
