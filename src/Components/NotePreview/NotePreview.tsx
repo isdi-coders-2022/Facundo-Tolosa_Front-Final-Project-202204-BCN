@@ -1,15 +1,9 @@
 import React from "react";
+import { INote } from "../../types/noteInterfaces";
 import NotePreviewContainer from "./NotePreviewStyles";
 
 interface Props {
-  note: {
-    title: string;
-    content: string;
-    category: string;
-    author: string;
-    id: string;
-    creationDate: Date;
-  };
+  note: INote;
 }
 
 const NotePreview = ({
