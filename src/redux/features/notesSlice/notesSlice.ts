@@ -4,7 +4,7 @@ import { INote } from "../../../types/noteInterfaces";
 interface IinitialState {
   allNotes: INote[];
   notesToShow: INote[];
-  activeFilter: "";
+  activeFilter: string;
 }
 
 const initialState: IinitialState = {
