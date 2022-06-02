@@ -8,7 +8,7 @@ const NotePreviewContainer = styled.div`
   transition: all 0.5s;
   font-family: "Work Sans", sans-serif;
   box-shadow: 5px 5px 9px -4px rgba(0, 0, 0, 0.58);
-
+  margin: 10px;
   display: inline-flex;
   flex-direction: column;
   justify-content: space-around;

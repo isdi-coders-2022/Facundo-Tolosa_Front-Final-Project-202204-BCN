@@ -21,7 +21,7 @@ const NotePreview = ({
             src="images/icons8-nombre-de-usuario-50.png"
             alt="user caricature"
           />
-          <p>{author}</p>
+          <p>vitorbraz</p>
         </div>
         <p className="date">{`${creationDate}`}</p>
       </div>
