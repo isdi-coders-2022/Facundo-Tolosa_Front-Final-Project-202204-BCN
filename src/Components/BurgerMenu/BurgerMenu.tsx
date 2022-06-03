@@ -86,22 +86,22 @@ const BurgerMenu = (): JSX.Element => {
 
         <ul className="menu__box">
           <li>
-            <a className="menu__item" href="#">
+            <a className="menu__item" href="/home">
               Home
             </a>
           </li>
           <li>
-            <a className="menu__item" href="#">
+            <a className="menu__item" href="/home">
               Create Note
             </a>
           </li>
           <li>
-            <a className="menu__item" href="#">
+            <a className="menu__item" href="/home">
               Categories
             </a>
           </li>
           <li>
-            <a className="menu__item" href="#">
+            <a className="menu__item" href="/home">
               Logout
             </a>
           </li>
