@@ -6,9 +6,7 @@ interface Props {
   user: IUser;
 }
 
-const UserCard = ({
-  user: { username, name, image, notes },
-}: Props): JSX.Element => {
+const UserCard = ({ user: { username, name, notes } }: Props): JSX.Element => {
   return (
     <UserCardContainer>
       <div className="username-name-img">
