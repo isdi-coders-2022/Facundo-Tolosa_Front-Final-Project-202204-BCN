@@ -21,9 +21,16 @@ const notesSlice = createSlice({
       ...user,
       allNotes: [...action.payload],
     }),
+    deleteNote: (user, action: PayloadAction<string>): IinitialState => ({
+      ...user,
+      allNotes: user.allNotes.filter((note) => note.id !== action.payload),
+    }),
   },
 });
 
-export const { loadNotes: loadNotesActionCreator } = notesSlice.actions;
+export const {
+  loadNotes: loadNotesActionCreator,
+  deleteNote: deleteNoteActionCreator,
+} = notesSlice.actions;
 
 export default notesSlice.reducer;
