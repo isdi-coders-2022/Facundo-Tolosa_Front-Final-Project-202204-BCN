@@ -28,6 +28,9 @@ const notesSlice = createSlice({
   },
 });
 
-export const { loadNotes: loadNotesActionCreator } = notesSlice.actions;
+export const {
+  loadNotes: loadNotesActionCreator,
+  deleteNote: deleteNoteActionCreator,
+} = notesSlice.actions;
 
 export default notesSlice.reducer;
