@@ -27,6 +27,20 @@ describe("Given a loginThunk", () => {
       expect(dispatch).toHaveBeenCalledWith(action);
     });
   });
+
+  describe("When invoked with a valid user and axios throws an error", () => {
+    test("Then it should not call the dispatch", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
+      axios.post = jest.fn().mockRejectedValue({});
+
+      const thunk = loginThunk({ username: carlosInfo.username, password: "" });
+      await thunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
 });
 
 describe("Given the registerThunk function", () => {
@@ -47,6 +61,24 @@ describe("Given the registerThunk function", () => {
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("When it's called and and axios throws an error", () => {
+    test("Then it should not call dispatch", async () => {
+      const newUserData = {
+        name: "testUser",
+        username: "testUser",
+        password: "testUser",
+        image: "",
+      };
+      const dispatch = jest.fn();
+      axios.post = jest.fn().mockRejectedValue({});
+
+      const thunk = registerThunk(newUserData);
+      await thunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
     });
   });
 });
