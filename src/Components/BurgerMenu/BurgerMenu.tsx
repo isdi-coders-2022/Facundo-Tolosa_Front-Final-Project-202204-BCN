@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useAppDispatch } from "../../hooks/hooks";
+import { logoutActionCreator } from "../../redux/features/userSlice/userSlice";
 
 const BurgerMenuContainer = styled.div`
   #menu__toggle {
@@ -60,9 +63,8 @@ const BurgerMenuContainer = styled.div`
     transition-duration: 0.25s;
   }
   .menu__item {
-    margin: 30px 0;
     display: block;
-    padding: 0 24px;
+    padding: 30px 24px;
     color: white;
     font-family: "Roboto", sans-serif;
     font-size: 20px;
@@ -76,6 +78,15 @@ const BurgerMenuContainer = styled.div`
 `;
 
 const BurgerMenu = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    localStorage.removeItem("token");
+    dispatch(logoutActionCreator());
+    navigate("/login");
+  };
+
   return (
     <BurgerMenuContainer>
       <div className="hamburger-menu">
@@ -86,24 +97,18 @@ const BurgerMenu = (): JSX.Element => {
 
         <ul className="menu__box">
           <li>
-            <a className="menu__item" href="/home">
-              Home
-            </a>
+            <p className="menu__item">Home</p>
           </li>
           <li>
-            <a className="menu__item" href="/home">
-              Create Note
-            </a>
+            <p className="menu__item">Create Note</p>
           </li>
           <li>
-            <a className="menu__item" href="/home">
-              Categories
-            </a>
+            <p className="menu__item">Categories</p>
           </li>
           <li>
-            <a className="menu__item" href="/home">
+            <p className="menu__item" onClick={logOut}>
               Logout
-            </a>
+            </p>
           </li>
         </ul>
       </div>

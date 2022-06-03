@@ -7,7 +7,7 @@ import CheckIfLogged from "./Components/CheckIfLogged/CheckIfLogged";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import jwtDecode from "jwt-decode";
 import { loginActionCreator } from "./redux/features/userSlice/userSlice";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface IuserInfo {
