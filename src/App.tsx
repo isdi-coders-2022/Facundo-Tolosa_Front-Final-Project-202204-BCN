@@ -7,6 +7,8 @@ import CheckIfLogged from "./Components/CheckIfLogged/CheckIfLogged";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import jwtDecode from "jwt-decode";
 import { loginActionCreator } from "./redux/features/userSlice/userSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface IuserInfo {
   id: string;
@@ -33,6 +35,7 @@ const App = () => {
 
   return (
     <>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginPage />} />

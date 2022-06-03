@@ -4,7 +4,7 @@ import NotePreview from "../NotePreview/NotePreview";
 
 const NotePreviewListContainer = styled.div`
   position: absolute;
-  top: 130px;
+  top: 100px;
   ul {
     width: 100%;
     margin: 0px;
