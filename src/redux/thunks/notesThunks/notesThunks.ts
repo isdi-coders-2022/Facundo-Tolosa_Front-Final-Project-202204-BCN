@@ -1,7 +1,11 @@
 import axios from "axios";
-import { loadNotesActionCreator } from "../../features/notesSlice/notesSlice";
+import {
+  deleteNoteActionCreator,
+  loadNotesActionCreator,
+} from "../../features/notesSlice/notesSlice";
 import { AppDispatch } from "../../store/store";
 import { INote } from "../../../types/noteInterfaces";
+import { setLoadingOff, setLoadingOn } from "../../../utils/modal";
 
 interface getAllNotesResponse {
   notes: INote[];
@@ -26,3 +30,19 @@ export const loadNotesThunk = () => async (dispatch: AppDispatch) => {
     dispatch(loadNotesActionCreator(notes));
   }
 };
+
+export const deleteNoteThunk =
+  (idToDelete: string) => async (dispatch: AppDispatch) => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      setLoadingOn();
+      await axios.delete(`${process.env.REACT_APP_API_URL}notes/idToDelete`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      dispatch(deleteNoteActionCreator(idToDelete));
+      setLoadingOff();
+    }
+  };
