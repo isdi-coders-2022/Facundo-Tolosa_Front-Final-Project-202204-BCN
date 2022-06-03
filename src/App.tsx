@@ -9,7 +9,6 @@ import jwtDecode from "jwt-decode";
 import { loginActionCreator } from "./redux/features/userSlice/userSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import UserPage from "./Pages/UserPage/UserPage";
 
 interface IuserInfo {
   id: string;
