@@ -2,11 +2,6 @@ import axios from "axios";
 import { loadNotesActionCreator } from "../../features/notesSlice/notesSlice";
 import { AppDispatch } from "../../store/store";
 import { INote } from "../../../types/noteInterfaces";
-import {
-  setLoadingOff,
-  setLoadingOffWithMessage,
-  setLoadingOn,
-} from "../../../utils/modal";
 
 interface getAllNotesResponse {
   notes: INote[];
