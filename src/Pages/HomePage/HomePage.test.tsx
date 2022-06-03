@@ -5,10 +5,10 @@ import HomePage from "./HomePage";
 import { Provider } from "react-redux";
 import store from "../../redux/store/store";
 
-describe("Given a RegisterPage component", () => {
+describe("Given a HomePage component", () => {
   describe("When it's rendered", () => {
-    test("Then it should show a text 'Create an account'", () => {
-      const textToFind = "Logged in";
+    test("Then it should show a text 'AN'", () => {
+      const textToFind = "AN";
 
       render(
         <BrowserRouter>

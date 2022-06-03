@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const LoginPageContainer = styled.div`
+const HomePageContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
 `;
 
-export default LoginPageContainer;
+export default HomePageContainer;

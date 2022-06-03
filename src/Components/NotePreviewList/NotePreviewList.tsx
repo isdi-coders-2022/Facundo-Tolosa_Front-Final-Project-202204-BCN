@@ -3,7 +3,10 @@ import { useAppSelector } from "../../hooks/hooks";
 import NotePreview from "../NotePreview/NotePreview";
 
 const NotePreviewListContainer = styled.div`
+  position: absolute;
+  top: 130px;
   ul {
+    width: 100%;
     margin: 0px;
     padding: 0px;
     display: flex;

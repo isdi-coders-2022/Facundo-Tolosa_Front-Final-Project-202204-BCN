@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 const RegisterFormContainer = styled.div`
+  margin-top: 20px;
   width: 330px;
-  height: 600px;
+  height: 500px;
   border: 10px solid #6643b5;
   background-color: #d5def5;
   border-radius: 10px;
