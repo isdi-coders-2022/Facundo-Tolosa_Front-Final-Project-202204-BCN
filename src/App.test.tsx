@@ -45,8 +45,8 @@ describe("Given an App component", () => {
   });
 
   describe("When it's rendered and there is no user logged", () => {
-    test("Then it should render the text 'AMAZING NOTES'", () => {
-      const expectedText = "AMAZING NOTES";
+    test("Then it should render the text 'Create an account'", () => {
+      const expectedText = "Create an account";
 
       render(
         <BrowserRouter>

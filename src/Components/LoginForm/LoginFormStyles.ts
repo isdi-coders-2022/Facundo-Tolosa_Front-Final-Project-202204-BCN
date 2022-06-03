@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const LoginFormContainer = styled.div`
+  margin-top: 20px;
   width: 330px;
   height: 425px;
   border: 10px solid #6643b5;

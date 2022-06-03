@@ -22,7 +22,7 @@ const App = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    debugger;
+
     if (token || name) {
       const userInfo: IuserInfo = jwtDecode(token as string);
 
@@ -33,7 +33,6 @@ const App = () => {
 
   return (
     <>
-      <h1>AMAZING NOTES</h1>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginPage />} />

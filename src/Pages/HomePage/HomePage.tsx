@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Header from "../../Components/Header/Header";
 import NotePreviewList from "../../Components/NotePreviewList/NotePreviewList";
 import { useAppDispatch } from "../../hooks/hooks";
 import { loadNotesThunk } from "../../redux/thunks/notesThunks/notesThunks";
@@ -13,7 +14,7 @@ const HomePage = () => {
 
   return (
     <HomePageContainer>
-      <h1>Logged in</h1>
+      <Header />
       <NotePreviewList />
     </HomePageContainer>
   );
