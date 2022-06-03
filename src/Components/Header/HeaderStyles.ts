@@ -32,11 +32,16 @@ const HeaderContainer = styled.div`
 
   img {
     width: 65px;
-    cursor: pointer;
     margin: 0 7px 0 0;
   }
 
   @media (min-width: 600px) {
+    p {
+      cursor: pointer;
+    }
+    img {
+      cursor: pointer;
+    }
   }
 `;
 
