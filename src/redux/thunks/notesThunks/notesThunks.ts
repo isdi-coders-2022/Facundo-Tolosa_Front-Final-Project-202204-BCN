@@ -1,5 +1,8 @@
 import axios from "axios";
-import { loadNotesActionCreator } from "../../features/notesSlice/notesSlice";
+import {
+  deleteNoteActionCreator,
+  loadNotesActionCreator,
+} from "../../features/notesSlice/notesSlice";
 import { AppDispatch } from "../../store/store";
 import { INote } from "../../../types/noteInterfaces";
 import { setLoadingOff, setLoadingOn } from "../../../utils/modal";
@@ -39,6 +42,7 @@ export const deleteNoteThunk =
           Authorization: `Bearer ${token}`,
         },
       });
+      dispatch(deleteNoteActionCreator(idToDelete));
       setLoadingOff();
     }
   };
