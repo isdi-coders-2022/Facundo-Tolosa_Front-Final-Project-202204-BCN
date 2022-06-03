@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import BurgerMenu from "../../Components/BurgerMenu/BurgerMenu";
 import Header from "../../Components/Header/Header";
 import NotePreviewList from "../../Components/NotePreviewList/NotePreviewList";
 import { useAppDispatch } from "../../hooks/hooks";
