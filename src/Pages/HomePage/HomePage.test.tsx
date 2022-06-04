@@ -3,24 +3,45 @@ import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import HomePage from "./HomePage";
 import { Provider } from "react-redux";
-import store from "../../redux/store/store";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { notesMock } from "../../mocks/notesMocks";
+
+const mockDispatch = jest.fn();
+
+jest.mock("../../hooks/hooks", () => ({
+  ...jest.requireActual("../../hooks/hooks"),
+  useAppDispatch: () => mockDispatch,
+}));
 
 describe("Given a HomePage component", () => {
-  describe("When it's rendered", () => {
-    test("Then it should show a text 'AN'", () => {
-      const textToFind = "AN";
+  describe("When it's rendered with a list of notes to show as a initial state", () => {
+    test("Then it should show the titles of the notes and call dispatch", () => {
+      const firstExpectedTitle = notesMock[0].title;
+      const secondExpectedTitle = notesMock[1].title;
+
+      const notesMockSlice = createSlice({
+        name: "notes",
+        initialState: { allNotes: notesMock },
+        reducers: {},
+      });
+      const mockStore = configureStore({
+        reducer: { notes: notesMockSlice.reducer },
+      });
 
       render(
         <BrowserRouter>
-          <Provider store={store}>
+          <Provider store={mockStore}>
             <HomePage />
           </Provider>
         </BrowserRouter>
       );
 
-      const receivedText = screen.getByText(textToFind);
+      const firstReceivedTitle = screen.getByText(firstExpectedTitle);
+      const secondReceivedTitle = screen.getByText(secondExpectedTitle);
 
-      expect(receivedText).toBeInTheDocument();
+      expect(firstReceivedTitle).toBeInTheDocument();
+      expect(secondReceivedTitle).toBeInTheDocument();
+      expect(mockDispatch).toHaveBeenCalled();
     });
   });
 });

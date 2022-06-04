@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { INote } from "../../types/noteInterfaces";
 import NotePreviewContainer from "./NotePreviewStyles";
 
@@ -21,7 +22,9 @@ const NotePreview = ({
             src="images/icons8-nombre-de-usuario-50.png"
             alt="user caricature"
           />
-          <p>vitorbraz</p>
+          <NavLink to={`/user/${author}`}>
+            <p>{author}</p>
+          </NavLink>
         </div>
         <p className="date">{`${creationDate}`}</p>
       </div>

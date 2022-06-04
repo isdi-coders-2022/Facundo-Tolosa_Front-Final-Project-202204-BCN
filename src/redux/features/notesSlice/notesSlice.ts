@@ -25,12 +25,17 @@ const notesSlice = createSlice({
       ...user,
       allNotes: user.allNotes.filter((note) => note.id !== action.payload),
     }),
+    setNotesToShow: (user, action: PayloadAction<INote[]>): IinitialState => ({
+      ...user,
+      notesToShow: [...action.payload],
+    }),
   },
 });
 
 export const {
   loadNotes: loadNotesActionCreator,
   deleteNote: deleteNoteActionCreator,
+  setNotesToShow: setNotesToShowActionCreator,
 } = notesSlice.actions;
 
 export default notesSlice.reducer;

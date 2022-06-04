@@ -10,6 +10,8 @@ import { loginActionCreator } from "./redux/features/userSlice/userSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CheckIfNotLogged from "./Components/CheckIfNotLogged/CheckIfNotLogged";
+import UserPage from "./Pages/UserPage/UserPage";
+import Header from "./Components/Header/Header";
 
 interface IuserInfo {
   id: string;
@@ -36,6 +38,7 @@ const App = () => {
   return (
     <>
       <ToastContainer />
+      {name ? <Header /> : null}
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route
@@ -59,6 +62,14 @@ const App = () => {
           element={
             <CheckIfLogged>
               <HomePage />
+            </CheckIfLogged>
+          }
+        />
+        <Route
+          path="/user/:username"
+          element={
+            <CheckIfLogged>
+              <UserPage />
             </CheckIfLogged>
           }
         />
