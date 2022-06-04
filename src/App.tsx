@@ -9,6 +9,7 @@ import jwtDecode from "jwt-decode";
 import { loginActionCreator } from "./redux/features/userSlice/userSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CheckIfNotLogged from "./Components/CheckIfNotLogged/CheckIfNotLogged";
 
 interface IuserInfo {
   id: string;
@@ -29,7 +30,6 @@ const App = () => {
       const userInfo: IuserInfo = jwtDecode(token as string);
 
       dispatch(loginActionCreator(userInfo));
-      navigate("/home");
     }
   }, [dispatch, navigate, name]);
 
@@ -38,8 +38,22 @@ const App = () => {
       <ToastContainer />
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/login"
+          element={
+            <CheckIfNotLogged>
+              <LoginPage />
+            </CheckIfNotLogged>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <CheckIfNotLogged>
+              <RegisterPage />
+            </CheckIfNotLogged>
+          }
+        />
         <Route
           path="/home"
           element={
