@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import { useAppSelector } from "../../hooks/hooks";
+import { INote } from "../../types/noteInterfaces";
 import NotePreview from "../NotePreview/NotePreview";
 
 const NotePreviewListContainer = styled.div`
-  position: absolute;
-  top: 100px;
   ul {
     width: 100%;
     margin: 0px;
@@ -20,13 +18,15 @@ const NotePreviewListContainer = styled.div`
   }
 `;
 
-const NotePreviewList = () => {
-  const { allNotes } = useAppSelector((state) => state.notes);
+interface Props {
+  notesToShow: INote[];
+}
 
+const NotePreviewList = ({ notesToShow }: Props) => {
   return (
     <NotePreviewListContainer>
       <ul>
-        {allNotes.map((note, index) => {
+        {notesToShow.map((note, index) => {
           return (
             <li key={index}>
               <NotePreview note={note} />

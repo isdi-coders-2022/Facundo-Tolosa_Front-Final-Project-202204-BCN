@@ -9,7 +9,7 @@ const UserCardContainer = styled.div`
   font-family: "Work Sans", sans-serif;
   box-shadow: 5px 5px 9px -4px rgba(0, 0, 0, 0.58);
   margin: 10px;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;

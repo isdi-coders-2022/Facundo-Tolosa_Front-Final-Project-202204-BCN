@@ -1,21 +1,9 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { notesMock } from "../../mocks/notesMocks";
+import store from "../../redux/store/store";
 import NotePreviewList from "./NotePreviewList";
-
-const initialState = {
-  allNotes: notesMock,
-};
-
-const notesSlice = createSlice({
-  name: "notes",
-  initialState: initialState,
-  reducers: {},
-});
-
-const mockStore = configureStore({ reducer: { notes: notesSlice.reducer } });
 
 describe("Given a NotePreviewList component", () => {
   describe("When it's rendered with a list of two notes received from the state", () => {
@@ -25,8 +13,8 @@ describe("Given a NotePreviewList component", () => {
 
       render(
         <BrowserRouter>
-          <Provider store={mockStore}>
-            <NotePreviewList />
+          <Provider store={store}>
+            <NotePreviewList notesToShow={notesMock} />
           </Provider>
         </BrowserRouter>
       );

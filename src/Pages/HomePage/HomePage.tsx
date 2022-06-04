@@ -1,7 +1,6 @@
 import { useEffect } from "react";
-import Header from "../../Components/Header/Header";
 import NotePreviewList from "../../Components/NotePreviewList/NotePreviewList";
-import { useAppDispatch } from "../../hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { loadNotesThunk } from "../../redux/thunks/notesThunks/notesThunks";
 import HomePageContainer from "./HomePageStyles";
 
@@ -12,10 +11,11 @@ const HomePage = () => {
     dispatch(loadNotesThunk());
   }, [dispatch]);
 
+  const { allNotes } = useAppSelector((state) => state.notes);
+
   return (
     <HomePageContainer>
-      <Header />
-      <NotePreviewList />
+      <NotePreviewList notesToShow={allNotes} />
     </HomePageContainer>
   );
 };

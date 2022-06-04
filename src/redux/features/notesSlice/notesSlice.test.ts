@@ -2,6 +2,7 @@ import { notesMock } from "../../../mocks/notesMocks";
 import notesReducer, {
   deleteNoteActionCreator,
   loadNotesActionCreator,
+  setNotesToShowActionCreator,
 } from "./notesSlice";
 
 describe("Given a notesReducer reducer", () => {
@@ -54,6 +55,22 @@ describe("Given a notesReducer reducer", () => {
       const { allNotes } = notesReducer(initialState, action);
 
       expect(allNotes).toHaveLength(expectedLength);
+    });
+  });
+
+  describe("When its invoked with a setNotesToShow action with a list of notes", () => {
+    test("Then it should return the same array of notes at the notesToShow propety of the object", () => {
+      const action = setNotesToShowActionCreator(notesMock);
+
+      const initialState = {
+        activeFilter: "",
+        allNotes: notesMock,
+        notesToShow: [],
+      };
+
+      const { notesToShow } = notesReducer(initialState, action);
+
+      expect(notesToShow).toEqual(notesMock);
     });
   });
 });
