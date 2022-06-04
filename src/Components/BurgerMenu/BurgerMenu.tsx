@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useAppDispatch } from "../../hooks/hooks";
 import { logoutActionCreator } from "../../redux/features/userSlice/userSlice";
@@ -75,6 +75,10 @@ const BurgerMenuContainer = styled.div`
   .menu__item:hover {
     background-color: #cfd8dc;
   }
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const BurgerMenu = (): JSX.Element => {
@@ -97,7 +101,9 @@ const BurgerMenu = (): JSX.Element => {
 
         <ul className="menu__box">
           <li>
-            <p className="menu__item">Home</p>
+            <NavLink to={"/home"}>
+              <p className="menu__item">Home</p>
+            </NavLink>
           </li>
           <li>
             <p className="menu__item">Create Note</p>

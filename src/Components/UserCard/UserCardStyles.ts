@@ -35,6 +35,10 @@ const UserCardContainer = styled.div`
     width: 150px;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   @media (min-width: 600px) {
     :hover {
       box-shadow: 5px 5px 9px -2px rgba(0, 0, 0, 0.58);
