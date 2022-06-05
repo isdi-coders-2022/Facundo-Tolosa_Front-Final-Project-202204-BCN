@@ -106,7 +106,9 @@ const BurgerMenu = (): JSX.Element => {
             </NavLink>
           </li>
           <li>
-            <p className="menu__item">Create Note</p>
+            <NavLink to={"/create"}>
+              <p className="menu__item">Create Note</p>
+            </NavLink>
           </li>
           <li>
             <p className="menu__item">Categories</p>

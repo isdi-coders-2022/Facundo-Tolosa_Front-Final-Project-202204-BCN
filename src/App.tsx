@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import CheckIfNotLogged from "./Components/CheckIfNotLogged/CheckIfNotLogged";
 import UserPage from "./Pages/UserPage/UserPage";
 import Header from "./Components/Header/Header";
+import CreatePage from "./Pages/CreatePage/CreatePage";
 
 interface IuserInfo {
   id: string;
@@ -70,6 +71,14 @@ const App = () => {
           element={
             <CheckIfLogged>
               <UserPage />
+            </CheckIfLogged>
+          }
+        />
+        <Route
+          path="/create"
+          element={
+            <CheckIfLogged>
+              <CreatePage />
             </CheckIfLogged>
           }
         />
