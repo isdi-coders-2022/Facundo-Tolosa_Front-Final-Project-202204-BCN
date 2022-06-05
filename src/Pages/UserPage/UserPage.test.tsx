@@ -25,8 +25,13 @@ describe("Given a UserPage component", () => {
         initialState: { notesToShow: notesMock, userToShow: userObjectMock },
         reducers: {},
       });
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { username: "carlos" },
+        reducers: {},
+      });
       const mockStore = configureStore({
-        reducer: { notes: notesMockSlice.reducer },
+        reducer: { notes: notesMockSlice.reducer, user: userMockSlice.reducer },
       });
 
       render(

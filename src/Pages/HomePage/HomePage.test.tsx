@@ -24,8 +24,13 @@ describe("Given a HomePage component", () => {
         initialState: { allNotes: notesMock },
         reducers: {},
       });
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { username: "carlos" },
+        reducers: {},
+      });
       const mockStore = configureStore({
-        reducer: { notes: notesMockSlice.reducer },
+        reducer: { notes: notesMockSlice.reducer, user: userMockSlice.reducer },
       });
 
       render(

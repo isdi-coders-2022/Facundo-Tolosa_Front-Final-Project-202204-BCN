@@ -34,6 +34,9 @@ const notesSlice = createSlice({
     deleteNote: (notes, action: PayloadAction<string>): IinitialState => ({
       ...notes,
       allNotes: notes.allNotes.filter((note) => note.id !== action.payload),
+      notesToShow: notes.notesToShow.filter(
+        (note) => note.id !== action.payload
+      ),
     }),
     setNotesToShow: (notes, action: PayloadAction<INote[]>): IinitialState => ({
       ...notes,

@@ -38,11 +38,14 @@ export const deleteNoteThunk =
 
     if (token) {
       setLoadingOn();
-      await axios.delete(`${process.env.REACT_APP_API_URL}notes/idToDelete`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}notes/${idToDelete}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       dispatch(deleteNoteActionCreator(idToDelete));
       setLoadingOff();
     }
