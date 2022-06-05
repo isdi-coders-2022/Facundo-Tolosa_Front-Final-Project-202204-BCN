@@ -5,6 +5,7 @@ import UserPage from "./UserPage";
 import { Provider } from "react-redux";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { notesMock } from "../../mocks/notesMocks";
+import { userObjectMock } from "../../mocks/userMocks";
 
 const mockDispatch = jest.fn();
 
@@ -21,7 +22,7 @@ describe("Given a UserPage component", () => {
 
       const notesMockSlice = createSlice({
         name: "notes",
-        initialState: { notesToShow: notesMock },
+        initialState: { notesToShow: notesMock, userToShow: userObjectMock },
         reducers: {},
       });
       const mockStore = configureStore({
