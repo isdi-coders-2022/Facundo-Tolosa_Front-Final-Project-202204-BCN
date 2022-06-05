@@ -6,6 +6,7 @@ const HomePageContainer = styled.div`
   flex-direction: column;
   position: absolute;
   top: 85px;
+  width: 100%;
 `;
 
 export default HomePageContainer;

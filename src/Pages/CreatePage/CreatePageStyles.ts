@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const UserPageContainer = styled.div`
+const CreatePageContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -9,4 +9,4 @@ const UserPageContainer = styled.div`
   width: 100%;
 `;
 
-export default UserPageContainer;
+export default CreatePageContainer;
