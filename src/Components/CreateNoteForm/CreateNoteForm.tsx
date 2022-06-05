@@ -1,4 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import { useAppDispatch } from "../../hooks/hooks";
+import { createNoteThunk } from "../../redux/thunks/notesThunks/notesThunks";
 import CreateNoteFormContainer from "./CreateNoteFormStyles";
 
 interface ICreateNoteForm {
@@ -8,6 +10,8 @@ interface ICreateNoteForm {
 }
 
 const CreateNoteForm = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+
   const initialFormValue: ICreateNoteForm = {
     title: "",
     content: "",
@@ -44,6 +48,7 @@ const CreateNoteForm = (): JSX.Element => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+    dispatch(createNoteThunk(formValues));
     setFormValues(initialFormValue);
   };
 
