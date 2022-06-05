@@ -1,8 +1,10 @@
 import { notesMock } from "../../../mocks/notesMocks";
+import { userObjectMock } from "../../../mocks/userMocks";
 import notesReducer, {
   deleteNoteActionCreator,
   loadNotesActionCreator,
   setNotesToShowActionCreator,
+  setUserToShowActionCreator,
 } from "./notesSlice";
 
 describe("Given a notesReducer reducer", () => {
@@ -16,6 +18,7 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "",
         allNotes: notesMock,
         notesToShow: [],
+        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
       };
 
       const receivedValue = notesReducer(initialState, action);
@@ -32,6 +35,7 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "",
         allNotes: [],
         notesToShow: [],
+        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
       };
 
       const { allNotes } = notesReducer(initialState, action);
@@ -50,6 +54,7 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "",
         allNotes: notesMock,
         notesToShow: [],
+        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
       };
 
       const { allNotes } = notesReducer(initialState, action);
@@ -66,11 +71,29 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "",
         allNotes: notesMock,
         notesToShow: [],
+        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
       };
 
       const { notesToShow } = notesReducer(initialState, action);
 
       expect(notesToShow).toEqual(notesMock);
+    });
+  });
+
+  describe("When its invoked with a setUserToShow action with a user", () => {
+    test("Then it should return the same user at the userToShow propety of the object", () => {
+      const action = setUserToShowActionCreator(userObjectMock);
+
+      const initialState = {
+        activeFilter: "",
+        allNotes: notesMock,
+        notesToShow: [],
+        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+      };
+
+      const { userToShow } = notesReducer(initialState, action);
+
+      expect(userToShow).toEqual(userObjectMock);
     });
   });
 });
