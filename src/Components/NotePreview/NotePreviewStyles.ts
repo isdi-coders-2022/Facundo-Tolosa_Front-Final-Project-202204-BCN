@@ -29,12 +29,18 @@ const NotePreviewContainer = styled.div`
     margin: 0 10px;
   }
 
-  .user {
+  .user-buttons {
     font-size: 25px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    margin: 0px 10px;
+    margin: 0px 5px;
+  }
+
+  .user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   .date {
@@ -50,6 +56,20 @@ const NotePreviewContainer = styled.div`
 
   a {
     text-decoration: none;
+  }
+
+  button {
+    background-color: #430f58;
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.5s;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 17px;
+    margin: 3px 0;
   }
 
   @media (min-width: 600px) {

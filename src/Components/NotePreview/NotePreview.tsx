@@ -37,16 +37,18 @@ const NotePreview = ({
         <p className="title">{title}</p>
       </div>
       <div className="user-date">
-        <div className="user">
-          <img
-            src="images/icons8-nombre-de-usuario-50.png"
-            alt="user caricature"
-          />
-          <NavLink to={`/user/${author}`}>
-            <p>{author}</p>
-          </NavLink>
+        <div className="user-buttons">
+          {canDelete ? <button onClick={deleteNote}>Delete</button> : null}
+          <div className="user">
+            <img
+              src="/images/icons8-nombre-de-usuario-50.png"
+              alt="user caricature"
+            />
+            <NavLink to={`/user/${author}`}>
+              <p>{author}</p>
+            </NavLink>
+          </div>
         </div>
-        {canDelete ? <button onClick={deleteNote}>delete</button> : null}
         <p className="date">{`${creationDate}`}</p>
       </div>
     </NotePreviewContainer>
