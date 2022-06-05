@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import CreateNoteForm from "./CreateNoteForm";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
