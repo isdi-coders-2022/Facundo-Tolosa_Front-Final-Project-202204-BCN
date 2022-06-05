@@ -44,13 +44,14 @@ const CreateNoteForm = (): JSX.Element => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+    setFormValues(initialFormValue);
   };
 
   return (
     <CreateNoteFormContainer>
       <form onSubmit={handleSubmit} noValidate>
         <div className="form-field__title">
-          <label htmlFor="title">Title:</label>
+          <label htmlFor="title">Title</label>
           <input
             type="text"
             id="title"
@@ -62,11 +63,10 @@ const CreateNoteForm = (): JSX.Element => {
         </div>
 
         <div className="form-field__category">
-          <label htmlFor="cars">Category</label>
+          <label htmlFor="category">Category</label>
           <select
             name="category"
             id="category"
-            placeholder="Select a category"
             onChange={handleCategoryInputChange}
             defaultValue={""}
           >
