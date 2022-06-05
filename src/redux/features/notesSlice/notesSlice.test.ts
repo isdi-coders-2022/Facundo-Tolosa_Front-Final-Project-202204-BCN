@@ -1,6 +1,7 @@
-import { notesMock } from "../../../mocks/notesMocks";
+import { noteMock, notesMock } from "../../../mocks/notesMocks";
 import { userObjectMock } from "../../../mocks/userMocks";
 import notesReducer, {
+  addNoteActionCreator,
   deleteNoteActionCreator,
   loadNotesActionCreator,
   setNotesToShowActionCreator,
@@ -95,6 +96,24 @@ describe("Given a notesReducer reducer", () => {
       const { userToShow } = notesReducer(initialState, action);
 
       expect(userToShow).toEqual(userObjectMock);
+    });
+  });
+
+  describe("When its invoked with a addNote action with a note and two notes as an initial state", () => {
+    test("Then it should have three notes in allNotes property", () => {
+      const expectedLength = 3;
+      const action = addNoteActionCreator(noteMock);
+
+      const initialState = {
+        activeFilter: "",
+        allNotes: notesMock,
+        notesToShow: [],
+        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+      };
+
+      const { allNotes } = notesReducer(initialState, action);
+
+      expect(allNotes).toHaveLength(expectedLength);
     });
   });
 });

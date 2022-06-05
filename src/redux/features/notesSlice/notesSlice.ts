@@ -31,6 +31,7 @@ const notesSlice = createSlice({
       ...notes,
       allNotes: [...action.payload],
     }),
+
     deleteNote: (notes, action: PayloadAction<string>): IinitialState => ({
       ...notes,
       allNotes: notes.allNotes.filter((note) => note.id !== action.payload),
@@ -38,10 +39,17 @@ const notesSlice = createSlice({
         (note) => note.id !== action.payload
       ),
     }),
+
+    addNote: (notes, action: PayloadAction<INote>): IinitialState => ({
+      ...notes,
+      allNotes: [...notes.allNotes, action.payload],
+    }),
+
     setNotesToShow: (notes, action: PayloadAction<INote[]>): IinitialState => ({
       ...notes,
       notesToShow: [...action.payload],
     }),
+
     setUserToShow: (
       notes,
       action: PayloadAction<IUserPopulated>
@@ -57,6 +65,7 @@ export const {
   deleteNote: deleteNoteActionCreator,
   setNotesToShow: setNotesToShowActionCreator,
   setUserToShow: setUserToShowActionCreator,
+  addNote: addNoteActionCreator,
 } = notesSlice.actions;
 
 export default notesSlice.reducer;
