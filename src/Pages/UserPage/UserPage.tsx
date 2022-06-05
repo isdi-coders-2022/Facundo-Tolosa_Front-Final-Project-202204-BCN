@@ -3,14 +3,13 @@ import { useParams } from "react-router-dom";
 import NotePreviewList from "../../Components/NotePreviewList/NotePreviewList";
 import UserCard from "../../Components/UserCard/UserCard";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { userObjectMock } from "../../mocks/userMocks";
 import { getUserThunk } from "../../redux/thunks/userThunks/userThunks";
 import UserPageContainer from "./UserPageStyles";
 
 const UserPage = () => {
   const { username } = useParams();
   const dispatch = useAppDispatch();
-  const { notesToShow } = useAppSelector((state) => state.notes);
+  const { notesToShow, userToShow } = useAppSelector((state) => state.notes);
 
   useEffect(() => {
     dispatch(getUserThunk(username as string));
@@ -18,7 +17,7 @@ const UserPage = () => {
 
   return (
     <UserPageContainer>
-      <UserCard user={userObjectMock} />
+      <UserCard user={userToShow} />
       <NotePreviewList notesToShow={notesToShow} />
     </UserPageContainer>
   );

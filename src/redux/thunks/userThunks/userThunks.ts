@@ -7,7 +7,10 @@ import {
   setLoadingOffWithMessage,
   setLoadingOn,
 } from "../../../utils/modal";
-import { setNotesToShowActionCreator } from "../../features/notesSlice/notesSlice";
+import {
+  setNotesToShowActionCreator,
+  setUserToShowActionCreator,
+} from "../../features/notesSlice/notesSlice";
 
 interface IuserCredentials {
   username: string;
@@ -86,6 +89,7 @@ export const getUserThunk =
         },
       });
 
+      dispatch(setUserToShowActionCreator(user));
       dispatch(setNotesToShowActionCreator(user.notes));
       setLoadingOff();
     }

@@ -87,7 +87,7 @@ describe("Given the registerThunk function", () => {
 
 describe("Given the getUserThunk function", () => {
   describe("When it's called with an user", () => {
-    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async () => {
+    test("Then it should call dispatch with the set notes to show action with the notes from the user received from the axios request", async () => {
       const dispatch = jest.fn();
       const action = setNotesToShowActionCreator(notesMock);
 
