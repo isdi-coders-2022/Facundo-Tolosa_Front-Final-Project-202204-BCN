@@ -6,3 +6,9 @@ export interface INote {
   id: string;
   creationDate: Date;
 }
+
+export interface INoteForm {
+  title: string;
+  content: string;
+  category: string;
+}

@@ -1,11 +1,12 @@
 import axios from "axios";
 import {
+  addNoteActionCreator,
   deleteNoteActionCreator,
   loadNotesActionCreator,
   setNotesToShowActionCreator,
 } from "../../features/notesSlice/notesSlice";
 import { AppDispatch } from "../../store/store";
-import { INote } from "../../../types/noteInterfaces";
+import { INote, INoteForm } from "../../../types/noteInterfaces";
 import { setLoadingOff, setLoadingOn } from "../../../utils/modal";
 
 interface getAllNotesResponse {
@@ -65,6 +66,26 @@ export const getUserNotesThunk =
         },
       });
       dispatch(setNotesToShowActionCreator(notes));
+      setLoadingOff();
+    }
+  };
+
+export const createNoteThunk =
+  (formNote: INoteForm) => async (dispatch: AppDispatch) => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      setLoadingOn();
+      const { data: responseNote } = await axios.post(
+        `${process.env.REACT_APP_API_URL}notes`,
+        formNote,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      dispatch(addNoteActionCreator(responseNote));
       setLoadingOff();
     }
   };
