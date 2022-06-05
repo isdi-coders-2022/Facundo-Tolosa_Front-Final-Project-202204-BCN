@@ -1,5 +1,7 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { deleteNoteThunk } from "../../redux/thunks/notesThunks/notesThunks";
 import { INote } from "../../types/noteInterfaces";
 import NotePreviewContainer from "./NotePreviewStyles";
 
@@ -10,6 +12,24 @@ interface Props {
 const NotePreview = ({
   note: { title, category, author, id, creationDate },
 }: Props): JSX.Element => {
+  const { username } = useParams();
+  const userLogged = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
+
+  const [canDelete, setCanDelete] = useState(false);
+
+  useEffect(() => {
+    if (username === userLogged.username) {
+      setCanDelete(true);
+    } else {
+      setCanDelete(false);
+    }
+  }, [userLogged.username, username]);
+
+  const deleteNote = () => {
+    dispatch(deleteNoteThunk(id));
+  };
+
   return (
     <NotePreviewContainer>
       <div className="cat-title">
@@ -26,6 +46,7 @@ const NotePreview = ({
             <p>{author}</p>
           </NavLink>
         </div>
+        {canDelete ? <button onClick={deleteNote}>delete</button> : null}
         <p className="date">{`${creationDate}`}</p>
       </div>
     </NotePreviewContainer>

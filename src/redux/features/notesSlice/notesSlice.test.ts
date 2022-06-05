@@ -45,7 +45,7 @@ describe("Given a notesReducer reducer", () => {
   });
 
   describe("When its invoked with an deleteNote action with an id and a initial state with two notes", () => {
-    test("Then it should return one note", () => {
+    test("Then it should return one note at allNotes and at notesToShow", () => {
       const expectedLength = 1;
 
       const action = deleteNoteActionCreator(notesMock[0].id);
@@ -53,13 +53,14 @@ describe("Given a notesReducer reducer", () => {
       const initialState = {
         activeFilter: "",
         allNotes: notesMock,
-        notesToShow: [],
+        notesToShow: notesMock,
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
       };
 
-      const { allNotes } = notesReducer(initialState, action);
+      const { allNotes, notesToShow } = notesReducer(initialState, action);
 
       expect(allNotes).toHaveLength(expectedLength);
+      expect(notesToShow).toHaveLength(expectedLength);
     });
   });
 
