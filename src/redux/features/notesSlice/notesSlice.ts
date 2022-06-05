@@ -17,16 +17,16 @@ const notesSlice = createSlice({
   name: "notes",
   initialState,
   reducers: {
-    loadNotes: (user, action: PayloadAction<INote[]>): IinitialState => ({
-      ...user,
+    loadNotes: (notes, action: PayloadAction<INote[]>): IinitialState => ({
+      ...notes,
       allNotes: [...action.payload],
     }),
-    deleteNote: (user, action: PayloadAction<string>): IinitialState => ({
-      ...user,
-      allNotes: user.allNotes.filter((note) => note.id !== action.payload),
+    deleteNote: (notes, action: PayloadAction<string>): IinitialState => ({
+      ...notes,
+      allNotes: notes.allNotes.filter((note) => note.id !== action.payload),
     }),
-    setNotesToShow: (user, action: PayloadAction<INote[]>): IinitialState => ({
-      ...user,
+    setNotesToShow: (notes, action: PayloadAction<INote[]>): IinitialState => ({
+      ...notes,
       notesToShow: [...action.payload],
     }),
   },

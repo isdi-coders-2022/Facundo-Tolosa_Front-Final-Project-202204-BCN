@@ -7,6 +7,7 @@ import {
   setLoadingOffWithMessage,
   setLoadingOn,
 } from "../../../utils/modal";
+import { setNotesToShowActionCreator } from "../../features/notesSlice/notesSlice";
 
 interface IuserCredentials {
   username: string;
@@ -68,5 +69,24 @@ export const registerThunk =
       );
     } catch {
       setLoadingOffWithMessage("Error on register. Try again later.", true);
+    }
+  };
+
+export const getUserThunk =
+  (username: string) => async (dispatch: AppDispatch) => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      setLoadingOn();
+      const {
+        data: { user },
+      } = await axios.get(`${process.env.REACT_APP_API_URL}user/${username}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      dispatch(setNotesToShowActionCreator(user.notes));
+      setLoadingOff();
     }
   };

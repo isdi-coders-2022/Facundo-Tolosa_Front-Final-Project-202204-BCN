@@ -1,7 +1,9 @@
 import axios from "axios";
+import { notesMock } from "../../../mocks/notesMocks";
 import { carlosInfo } from "../../../mocks/userMocks";
+import { setNotesToShowActionCreator } from "../../features/notesSlice/notesSlice";
 import { loginActionCreator } from "../../features/userSlice/userSlice";
-import { loginThunk, registerThunk } from "./userThunks";
+import { getUserThunk, loginThunk, registerThunk } from "./userThunks";
 
 jest.mock("jwt-decode", () => () => ({
   id: "1",
@@ -76,6 +78,38 @@ describe("Given the registerThunk function", () => {
       axios.post = jest.fn().mockRejectedValue({});
 
       const thunk = registerThunk(newUserData);
+      await thunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given the getUserThunk function", () => {
+  describe("When it's called with an user", () => {
+    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async () => {
+      const dispatch = jest.fn();
+      const action = setNotesToShowActionCreator(notesMock);
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.get = jest
+        .fn()
+        .mockResolvedValue({ data: { user: { notes: notesMock } } });
+
+      const thunk = getUserThunk("user");
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+
+  describe("When it's called and there is no token", () => {
+    test("Then it should not call dispatch", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("");
+
+      const thunk = getUserThunk("user");
       await thunk(dispatch);
 
       expect(dispatch).not.toHaveBeenCalled();
