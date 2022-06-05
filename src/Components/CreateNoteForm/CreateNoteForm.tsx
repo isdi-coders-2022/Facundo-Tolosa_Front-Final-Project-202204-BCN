@@ -21,15 +21,8 @@ const CreateNoteForm = (): JSX.Element => {
   const [formValues, setFormValues] =
     useState<ICreateNoteForm>(initialFormValue);
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    setFormValues({
-      ...formValues,
-      [event.target.id]: event.target.value,
-    });
-  };
-
-  const handleContentInputChange = (
-    event: ChangeEvent<HTMLTextAreaElement>
+  const handleInputChange = (
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
   ): void => {
     setFormValues({
       ...formValues,
@@ -90,7 +83,7 @@ const CreateNoteForm = (): JSX.Element => {
           <textarea
             id="content"
             value={formValues.content}
-            onChange={handleContentInputChange}
+            onChange={handleInputChange}
             autoComplete="off"
             placeholder="Content of the note..."
           />
