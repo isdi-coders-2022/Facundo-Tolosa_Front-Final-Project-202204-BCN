@@ -7,7 +7,11 @@ import {
 } from "../../features/notesSlice/notesSlice";
 import { AppDispatch } from "../../store/store";
 import { INote, INoteForm } from "../../../types/noteInterfaces";
-import { setLoadingOff, setLoadingOn } from "../../../utils/modal";
+import {
+  setLoadingOff,
+  setLoadingOffWithMessage,
+  setLoadingOn,
+} from "../../../utils/modal";
 
 interface getAllNotesResponse {
   notes: INote[];
@@ -86,6 +90,7 @@ export const createNoteThunk =
         }
       );
       dispatch(addNoteActionCreator(responseNote));
-      setLoadingOff();
+
+      setLoadingOffWithMessage("Note created", false);
     }
   };
