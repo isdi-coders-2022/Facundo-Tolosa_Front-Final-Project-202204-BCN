@@ -5,12 +5,22 @@ interface IinitialState {
   allNotes: INote[];
   notesToShow: INote[];
   activeFilter: string;
+  userToShow: IUserPopulated;
+}
+
+interface IUserPopulated {
+  username: string;
+  name: string;
+  image: string;
+  notes: INote[];
+  id: string;
 }
 
 const initialState: IinitialState = {
   allNotes: [],
   notesToShow: [],
   activeFilter: "",
+  userToShow: { username: "", name: "", image: "", notes: [], id: "" },
 };
 
 const notesSlice = createSlice({
@@ -29,6 +39,13 @@ const notesSlice = createSlice({
       ...notes,
       notesToShow: [...action.payload],
     }),
+    setUserToShow: (
+      notes,
+      action: PayloadAction<IUserPopulated>
+    ): IinitialState => ({
+      ...notes,
+      userToShow: action.payload,
+    }),
   },
 });
 
@@ -36,6 +53,7 @@ export const {
   loadNotes: loadNotesActionCreator,
   deleteNote: deleteNoteActionCreator,
   setNotesToShow: setNotesToShowActionCreator,
+  setUserToShow: setUserToShowActionCreator,
 } = notesSlice.actions;
 
 export default notesSlice.reducer;
