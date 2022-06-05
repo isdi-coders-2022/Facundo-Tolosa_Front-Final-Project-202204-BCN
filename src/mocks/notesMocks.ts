@@ -1,3 +1,9 @@
+export const formNoteMock = {
+  title: "fuchibol",
+  content: "note content",
+  category: "sports",
+};
+
 export const noteMock = {
   title: "fuchibol",
   content: "note content",
