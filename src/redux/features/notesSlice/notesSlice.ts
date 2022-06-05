@@ -5,12 +5,22 @@ interface IinitialState {
   allNotes: INote[];
   notesToShow: INote[];
   activeFilter: string;
+  userToShow: IUserPopulated;
+}
+
+interface IUserPopulated {
+  username: string;
+  name: string;
+  image: string;
+  notes: INote[];
+  id: string;
 }
 
 const initialState: IinitialState = {
   allNotes: [],
   notesToShow: [],
   activeFilter: "",
+  userToShow: { username: "", name: "", image: "", notes: [], id: "" },
 };
 
 const notesSlice = createSlice({
@@ -28,6 +38,13 @@ const notesSlice = createSlice({
     setNotesToShow: (notes, action: PayloadAction<INote[]>): IinitialState => ({
       ...notes,
       notesToShow: [...action.payload],
+    }),
+    setUserToShow: (
+      notes,
+      action: PayloadAction<IUserPopulated>
+    ): IinitialState => ({
+      ...notes,
+      userToShow: action.payload,
     }),
   },
 });
