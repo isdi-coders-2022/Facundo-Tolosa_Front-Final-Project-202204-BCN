@@ -21,6 +21,7 @@ describe("Given a notesReducer reducer", () => {
         allNotes: notesMock,
         notesToShow: [],
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        actualPage: 0,
       };
 
       const receivedValue = notesReducer(initialState, action);
@@ -38,6 +39,7 @@ describe("Given a notesReducer reducer", () => {
         allNotes: [],
         notesToShow: [],
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        actualPage: 0,
       };
 
       const { allNotes } = notesReducer(initialState, action);
@@ -57,6 +59,7 @@ describe("Given a notesReducer reducer", () => {
         allNotes: notesMock,
         notesToShow: notesMock,
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        actualPage: 0,
       };
 
       const { allNotes, notesToShow } = notesReducer(initialState, action);
@@ -75,6 +78,7 @@ describe("Given a notesReducer reducer", () => {
         allNotes: notesMock,
         notesToShow: [],
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        actualPage: 0,
       };
 
       const { notesToShow } = notesReducer(initialState, action);
@@ -92,6 +96,7 @@ describe("Given a notesReducer reducer", () => {
         allNotes: notesMock,
         notesToShow: [],
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        actualPage: 0,
       };
 
       const { userToShow } = notesReducer(initialState, action);
@@ -110,6 +115,7 @@ describe("Given a notesReducer reducer", () => {
         allNotes: notesMock,
         notesToShow: [],
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        actualPage: 0,
       };
 
       const { allNotes } = notesReducer(initialState, action);
@@ -137,6 +143,7 @@ describe("When its invoked with a addNote action with a note and two notes as an
       allNotes: notesMock,
       notesToShow: [],
       userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+      actualPage: 0,
     };
 
     const { allNotes } = notesReducer(initialState, action);
