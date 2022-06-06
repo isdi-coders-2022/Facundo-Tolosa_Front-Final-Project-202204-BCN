@@ -9,16 +9,18 @@ import HomePageContainer from "./HomePageStyles";
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
-  const { allNotes, notesToShow } = useAppSelector((state) => state.notes);
+  const { allNotes, notesToShow, actualPage } = useAppSelector(
+    (state) => state.notes
+  );
 
   useEffect(() => {
     dispatch(loadNotesThunk());
   }, [dispatch]);
 
   useEffect(() => {
-    const notesToShowByPagination = paginate(allNotes, 1);
+    const notesToShowByPagination = paginate(allNotes, actualPage);
     dispatch(setNotesToShowActionCreator(notesToShowByPagination));
-  }, [allNotes, dispatch]);
+  }, [allNotes, dispatch, actualPage]);
 
   return (
     <HomePageContainer>
