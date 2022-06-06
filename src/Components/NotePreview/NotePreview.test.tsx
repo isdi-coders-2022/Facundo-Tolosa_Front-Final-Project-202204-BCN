@@ -71,6 +71,32 @@ describe("Given a NotePreview component", () => {
     });
   });
 
+  describe("When it's rendered with a user param that matches the user logged and the title of the note is clicked", () => {
+    test("Then it should call navigate with '/notes/id'", () => {
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { username: "carlos90" },
+        reducers: {},
+      });
+      const mockStore = configureStore({
+        reducer: { user: userMockSlice.reducer },
+      });
+
+      render(
+        <BrowserRouter>
+          <Provider store={mockStore}>
+            <NotePreview note={noteMock} />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const title = screen.getByText(noteMock.title);
+      userEvent.click(title);
+
+      expect(mockUseNavigate).toHaveBeenCalledWith(`/notes/${noteMock.id}`);
+    });
+  });
+
   describe("When it's rendered with a user param that doesn't matches the user logged", () => {
     test("Then it shouldn't render a button", () => {
       const userMockSlice = createSlice({

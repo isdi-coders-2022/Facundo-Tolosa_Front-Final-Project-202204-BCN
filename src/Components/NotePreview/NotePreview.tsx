@@ -35,11 +35,17 @@ const NotePreview = ({
     navigate(`/notes/edit/${id}`);
   };
 
+  const viewNote = () => {
+    navigate(`/notes/${id}`);
+  };
+
   return (
     <NotePreviewContainer>
       <div className="cat-title">
         <p className="category">{category}</p>
-        <p className="title">{title}</p>
+        <p className="title" onClick={viewNote}>
+          {title}
+        </p>
       </div>
       <div className="user-date">
         <div className="user-buttons">
