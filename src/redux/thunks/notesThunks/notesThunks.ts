@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   addNoteActionCreator,
   deleteNoteActionCreator,
+  editNoteActionCreator,
   loadNotesActionCreator,
   setNotesToShowActionCreator,
 } from "../../features/notesSlice/notesSlice";
@@ -101,7 +102,7 @@ export const editNoteThunk =
 
     if (token) {
       setLoadingOn();
-      await axios.put(
+      const { data: responseNote } = await axios.put(
         `${process.env.REACT_APP_API_URL}notes/${idToEdit}`,
         formNote,
         {
@@ -110,6 +111,7 @@ export const editNoteThunk =
           },
         }
       );
+      dispatch(editNoteActionCreator(responseNote));
       setLoadingOffWithMessage("Note edited", false);
     }
   };
