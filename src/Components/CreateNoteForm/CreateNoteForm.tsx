@@ -1,11 +1,5 @@
-import React, {
-  ChangeEvent,
-  FormEvent,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import React, { ChangeEvent, FormEvent, useState } from "react";
+import { useAppDispatch } from "../../hooks/hooks";
 import { createNoteThunk } from "../../redux/thunks/notesThunks/notesThunks";
 import { INote } from "../../types/noteInterfaces";
 import CreateNoteFormContainer from "./CreateNoteFormStyles";
