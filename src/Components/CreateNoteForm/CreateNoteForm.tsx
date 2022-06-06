@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useAppDispatch } from "../../hooks/hooks";
 import { createNoteThunk } from "../../redux/thunks/notesThunks/notesThunks";
+import { INote } from "../../types/noteInterfaces";
 import CreateNoteFormContainer from "./CreateNoteFormStyles";
 
 interface ICreateNoteForm {
@@ -9,13 +10,17 @@ interface ICreateNoteForm {
   category: string;
 }
 
-const CreateNoteForm = (): JSX.Element => {
+interface Props {
+  noteToEdit: INote | null;
+}
+
+const CreateNoteForm = ({ noteToEdit }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const initialFormValue: ICreateNoteForm = {
-    title: "",
-    content: "",
-    category: "",
+    title: noteToEdit ? noteToEdit.title : "",
+    content: noteToEdit ? noteToEdit.content : "",
+    category: noteToEdit ? noteToEdit.category : "",
   };
 
   const [formValues, setFormValues] =
@@ -66,7 +71,7 @@ const CreateNoteForm = (): JSX.Element => {
             name="category"
             id="category"
             onChange={handleCategoryInputChange}
-            defaultValue={""}
+            defaultValue={noteToEdit ? noteToEdit.category : ""}
           >
             <option value="" disabled>
               Choose a category
@@ -89,7 +94,11 @@ const CreateNoteForm = (): JSX.Element => {
           />
         </div>
 
-        <input type="submit" value="Create" className="submit-input" />
+        <input
+          type="submit"
+          value={noteToEdit ? "Modify" : "Create"}
+          className="submit-input"
+        />
       </form>
     </CreateNoteFormContainer>
   );

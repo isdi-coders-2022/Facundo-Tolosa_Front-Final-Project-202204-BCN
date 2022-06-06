@@ -15,7 +15,7 @@ describe("Given a CreateNoteForm component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <CreateNoteForm />
+            <CreateNoteForm noteToEdit={null} />
           </Provider>
         </BrowserRouter>
       );
@@ -34,7 +34,7 @@ describe("Given a CreateNoteForm component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <CreateNoteForm />
+            <CreateNoteForm noteToEdit={null} />
           </Provider>
         </BrowserRouter>
       );
@@ -54,7 +54,7 @@ describe("Given a CreateNoteForm component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <CreateNoteForm />
+            <CreateNoteForm noteToEdit={null} />
           </Provider>
         </BrowserRouter>
       );

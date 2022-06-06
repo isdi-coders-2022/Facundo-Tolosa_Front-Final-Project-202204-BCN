@@ -4,7 +4,7 @@ import CreatePageContainer from "./CreatePageStyles";
 const CreatePage = () => {
   return (
     <CreatePageContainer>
-      <CreateNoteForm />
+      <CreateNoteForm noteToEdit={null} />
     </CreatePageContainer>
   );
 };
