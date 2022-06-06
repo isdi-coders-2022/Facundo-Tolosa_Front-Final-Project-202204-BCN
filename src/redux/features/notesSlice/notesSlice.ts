@@ -45,6 +45,13 @@ const notesSlice = createSlice({
       allNotes: [...notes.allNotes, action.payload],
     }),
 
+    editNote: (notes, action: PayloadAction<INote>): IinitialState => ({
+      ...notes,
+      allNotes: notes.allNotes.map((note) =>
+        note.id === action.payload.id ? { ...action.payload } : { ...note }
+      ),
+    }),
+
     setNotesToShow: (notes, action: PayloadAction<INote[]>): IinitialState => ({
       ...notes,
       notesToShow: [...action.payload],
