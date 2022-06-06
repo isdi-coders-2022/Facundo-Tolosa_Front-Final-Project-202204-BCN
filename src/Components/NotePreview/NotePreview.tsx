@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { deleteNoteThunk } from "../../redux/thunks/notesThunks/notesThunks";
 import { INote } from "../../types/noteInterfaces";
@@ -15,6 +15,7 @@ const NotePreview = ({
   const { username } = useParams();
   const userLogged = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [canDelete, setCanDelete] = useState(false);
 
@@ -30,6 +31,10 @@ const NotePreview = ({
     dispatch(deleteNoteThunk(id));
   };
 
+  const editNote = () => {
+    navigate(`/notes/edit/${id}`);
+  };
+
   return (
     <NotePreviewContainer>
       <div className="cat-title">
@@ -38,7 +43,13 @@ const NotePreview = ({
       </div>
       <div className="user-date">
         <div className="user-buttons">
-          {canDelete ? <button onClick={deleteNote}>Delete</button> : null}
+          {canDelete ? (
+            <>
+              <button onClick={deleteNote}>Delete</button>
+              <button onClick={editNote}>Edit</button>
+            </>
+          ) : null}
+
           <div className="user">
             <img
               src="/images/icons8-nombre-de-usuario-50.png"

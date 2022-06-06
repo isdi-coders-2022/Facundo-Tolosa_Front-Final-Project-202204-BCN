@@ -8,9 +8,12 @@ import { noteMock } from "../../mocks/notesMocks";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import userEvent from "@testing-library/user-event";
 
+const mockUseNavigate = jest.fn();
+
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useParams: () => ({ username: "carlos90" }),
+  useNavigate: () => mockUseNavigate,
 }));
 
 const mockDispatch = jest.fn();
@@ -42,7 +45,7 @@ describe("Given a NotePreview component", () => {
     });
   });
 
-  describe("When it's rendered with a user param that matches the user logged and the rendered button is clicked", () => {
+  describe("When it's rendered with a user param that matches the user logged and the rendered delete button is clicked", () => {
     test("Then it should call dispatch", () => {
       const userMockSlice = createSlice({
         name: "user",
@@ -61,8 +64,8 @@ describe("Given a NotePreview component", () => {
         </BrowserRouter>
       );
 
-      const button = screen.getByRole("button");
-      userEvent.click(button);
+      const button = screen.getAllByRole("button");
+      userEvent.click(button[0]);
 
       expect(mockDispatch).toHaveBeenCalled();
     });
@@ -90,6 +93,34 @@ describe("Given a NotePreview component", () => {
       const button = screen.queryByRole("button");
 
       expect(button).toBeNull();
+    });
+  });
+
+  describe("When it's rendered with a user param that matches the user logged and the rendered edit button is clicked", () => {
+    test("Then it should call navigate with the path '/notes/edit/id'", () => {
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { username: "carlos90" },
+        reducers: {},
+      });
+      const mockStore = configureStore({
+        reducer: { user: userMockSlice.reducer },
+      });
+
+      render(
+        <BrowserRouter>
+          <Provider store={mockStore}>
+            <NotePreview note={noteMock} />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const button = screen.getAllByRole("button");
+      userEvent.click(button[1]);
+
+      expect(mockUseNavigate).toHaveBeenCalledWith(
+        `/notes/edit/${noteMock.id}`
+      );
     });
   });
 });

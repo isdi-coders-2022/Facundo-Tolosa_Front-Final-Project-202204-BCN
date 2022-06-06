@@ -13,6 +13,7 @@ import CheckIfNotLogged from "./Components/CheckIfNotLogged/CheckIfNotLogged";
 import UserPage from "./Pages/UserPage/UserPage";
 import Header from "./Components/Header/Header";
 import CreatePage from "./Pages/CreatePage/CreatePage";
+import EditPage from "./Pages/EditPage/EditPage";
 
 interface IuserInfo {
   id: string;
@@ -79,6 +80,14 @@ const App = () => {
           element={
             <CheckIfLogged>
               <CreatePage />
+            </CheckIfLogged>
+          }
+        />
+        <Route
+          path="/notes/edit/:noteId"
+          element={
+            <CheckIfLogged>
+              <EditPage />
             </CheckIfLogged>
           }
         />
