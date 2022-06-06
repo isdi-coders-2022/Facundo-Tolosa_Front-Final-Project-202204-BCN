@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Footer from "../../Components/Footer/Footer";
 import NotePreviewList from "../../Components/NotePreviewList/NotePreviewList";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { loadNotesThunk } from "../../redux/thunks/notesThunks/notesThunks";
@@ -16,6 +17,7 @@ const HomePage = () => {
   return (
     <HomePageContainer>
       <NotePreviewList notesToShow={allNotes} />
+      <Footer />
     </HomePageContainer>
   );
 };
