@@ -6,6 +6,7 @@ interface IinitialState {
   notesToShow: INote[];
   activeFilter: string;
   userToShow: IUserPopulated;
+  actualPage: number;
 }
 
 interface IUserPopulated {
@@ -21,6 +22,7 @@ const initialState: IinitialState = {
   notesToShow: [],
   activeFilter: "",
   userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+  actualPage: 0,
 };
 
 const notesSlice = createSlice({
@@ -64,6 +66,17 @@ const notesSlice = createSlice({
       ...notes,
       userToShow: action.payload,
     }),
+
+    incrementPage: (notes): IinitialState => ({
+      ...notes,
+      actualPage: notes.actualPage + 1,
+    }),
+
+    decrementPage: (notes): IinitialState => ({
+      ...notes,
+      actualPage:
+        notes.actualPage === 0 ? notes.actualPage : notes.actualPage - 1,
+    }),
   },
 });
 
@@ -74,6 +87,8 @@ export const {
   setUserToShow: setUserToShowActionCreator,
   addNote: addNoteActionCreator,
   editNote: editNoteActionCreator,
+  incrementPage: incrementPageActionCreator,
+  decrementPage: decrementPageActionCreator,
 } = notesSlice.actions;
 
 export default notesSlice.reducer;
