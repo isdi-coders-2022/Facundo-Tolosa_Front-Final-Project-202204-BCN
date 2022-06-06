@@ -69,12 +69,13 @@ const notesSlice = createSlice({
 
     incrementPage: (notes): IinitialState => ({
       ...notes,
-      actualPage: notes.actualPage++,
+      actualPage: notes.actualPage + 1,
     }),
 
     decrementPage: (notes): IinitialState => ({
       ...notes,
-      actualPage: notes.actualPage--,
+      actualPage:
+        notes.actualPage === 0 ? notes.actualPage : notes.actualPage - 1,
     }),
   },
 });

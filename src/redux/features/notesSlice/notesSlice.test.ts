@@ -2,8 +2,10 @@ import { noteMock, notesMock } from "../../../mocks/notesMocks";
 import { userObjectMock } from "../../../mocks/userMocks";
 import notesReducer, {
   addNoteActionCreator,
+  decrementPageActionCreator,
   deleteNoteActionCreator,
   editNoteActionCreator,
+  incrementPageActionCreator,
   loadNotesActionCreator,
   setNotesToShowActionCreator,
   setUserToShowActionCreator,
@@ -123,33 +125,90 @@ describe("Given a notesReducer reducer", () => {
       expect(allNotes).toHaveLength(expectedLength);
     });
   });
-});
 
-describe("When its invoked with a addNote action with a note and two notes as an initial state", () => {
-  test("Then it should have three notes in allNotes property", () => {
-    const editedNote = {
-      title: "this note was edited",
-      content: "note edited",
-      category: "sportsn't",
-      author: "vitor90braz",
-      id: "string1",
-      creationDate: new Date(),
-    };
+  describe("When its invoked with a edit action with a two notes as a initial state and a edited note", () => {
+    test("Then it should edit the note and change its title, content and category", () => {
+      const editedNote = {
+        title: "this note was edited",
+        content: "note edited",
+        category: "sportsn't",
+        author: "vitor90braz",
+        id: "string1",
+        creationDate: new Date(),
+      };
 
-    const action = editNoteActionCreator(editedNote);
+      const action = editNoteActionCreator(editedNote);
 
-    const initialState = {
-      activeFilter: "",
-      allNotes: notesMock,
-      notesToShow: [],
-      userToShow: { username: "", name: "", image: "", notes: [], id: "" },
-      actualPage: 0,
-    };
+      const initialState = {
+        activeFilter: "",
+        allNotes: notesMock,
+        notesToShow: [],
+        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        actualPage: 0,
+      };
 
-    const { allNotes } = notesReducer(initialState, action);
+      const { allNotes } = notesReducer(initialState, action);
 
-    expect(allNotes[0]).toHaveProperty("title", editedNote.title);
-    expect(allNotes[0]).toHaveProperty("content", editedNote.content);
-    expect(allNotes[0]).toHaveProperty("category", editedNote.category);
+      expect(allNotes[0]).toHaveProperty("title", editedNote.title);
+      expect(allNotes[0]).toHaveProperty("content", editedNote.content);
+      expect(allNotes[0]).toHaveProperty("category", editedNote.category);
+    });
+  });
+
+  describe("When its invoked with a incrementPage action", () => {
+    test("Then the number of actualPage should be incremented by one", () => {
+      const action = incrementPageActionCreator();
+      const expectedNumber = 3;
+
+      const initialState = {
+        activeFilter: "",
+        allNotes: notesMock,
+        notesToShow: [],
+        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        actualPage: 2,
+      };
+
+      const { actualPage } = notesReducer(initialState, action);
+
+      expect(actualPage).toBe(expectedNumber);
+    });
+  });
+
+  describe("When its invoked with a decrementPage action", () => {
+    test("Then the number of actualPage should be decremented by one", () => {
+      const action = decrementPageActionCreator();
+      const expectedNumber = 1;
+
+      const initialState = {
+        activeFilter: "",
+        allNotes: notesMock,
+        notesToShow: [],
+        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        actualPage: 2,
+      };
+
+      const { actualPage } = notesReducer(initialState, action);
+
+      expect(actualPage).toBe(expectedNumber);
+    });
+  });
+
+  describe("When its invoked with a decrementPage action and a initial state of 0", () => {
+    test("Then the number of actualPage shouldn't be decremented", () => {
+      const action = decrementPageActionCreator();
+      const expectedNumber = 0;
+
+      const initialState = {
+        activeFilter: "",
+        allNotes: notesMock,
+        notesToShow: [],
+        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        actualPage: 0,
+      };
+
+      const { actualPage } = notesReducer(initialState, action);
+
+      expect(actualPage).toBe(expectedNumber);
+    });
   });
 });

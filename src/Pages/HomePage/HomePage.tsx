@@ -10,6 +10,7 @@ import HomePageContainer from "./HomePageStyles";
 const HomePage = () => {
   const dispatch = useAppDispatch();
   const { allNotes, notesToShow } = useAppSelector((state) => state.notes);
+
   useEffect(() => {
     dispatch(loadNotesThunk());
   }, [dispatch]);
