@@ -73,6 +73,7 @@ export const {
   setNotesToShow: setNotesToShowActionCreator,
   setUserToShow: setUserToShowActionCreator,
   addNote: addNoteActionCreator,
+  editNote: editNoteActionCreator,
 } = notesSlice.actions;
 
 export default notesSlice.reducer;
