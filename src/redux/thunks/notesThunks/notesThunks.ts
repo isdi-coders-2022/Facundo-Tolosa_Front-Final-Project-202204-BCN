@@ -94,3 +94,22 @@ export const createNoteThunk =
       setLoadingOffWithMessage("Note created", false);
     }
   };
+
+export const editNoteThunk =
+  (idToEdit: string, formNote: INoteForm) => async (dispatch: AppDispatch) => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      setLoadingOn();
+      await axios.put(
+        `${process.env.REACT_APP_API_URL}notes/${idToEdit}`,
+        formNote,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setLoadingOffWithMessage("Note edited", false);
+    }
+  };
