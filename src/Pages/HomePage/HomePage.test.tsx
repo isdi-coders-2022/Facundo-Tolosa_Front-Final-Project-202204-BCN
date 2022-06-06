@@ -21,7 +21,7 @@ describe("Given a HomePage component", () => {
 
       const notesMockSlice = createSlice({
         name: "notes",
-        initialState: { allNotes: notesMock },
+        initialState: { notesToShow: notesMock, allNotes: notesMock },
         reducers: {},
       });
       const userMockSlice = createSlice({
