@@ -3,6 +3,7 @@ import { userObjectMock } from "../../../mocks/userMocks";
 import notesReducer, {
   addNoteActionCreator,
   deleteNoteActionCreator,
+  editNoteActionCreator,
   loadNotesActionCreator,
   setNotesToShowActionCreator,
   setUserToShowActionCreator,
@@ -115,5 +116,33 @@ describe("Given a notesReducer reducer", () => {
 
       expect(allNotes).toHaveLength(expectedLength);
     });
+  });
+});
+
+describe("When its invoked with a addNote action with a note and two notes as an initial state", () => {
+  test("Then it should have three notes in allNotes property", () => {
+    const editedNote = {
+      title: "this note was edited",
+      content: "note edited",
+      category: "sportsn't",
+      author: "vitor90braz",
+      id: "string1",
+      creationDate: new Date(),
+    };
+
+    const action = editNoteActionCreator(editedNote);
+
+    const initialState = {
+      activeFilter: "",
+      allNotes: notesMock,
+      notesToShow: [],
+      userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+    };
+
+    const { allNotes } = notesReducer(initialState, action);
+
+    expect(allNotes[0]).toHaveProperty("title", editedNote.title);
+    expect(allNotes[0]).toHaveProperty("content", editedNote.content);
+    expect(allNotes[0]).toHaveProperty("category", editedNote.category);
   });
 });

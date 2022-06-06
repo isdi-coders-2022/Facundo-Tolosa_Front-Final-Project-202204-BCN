@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   createNoteThunk,
   deleteNoteThunk,
+  editNoteThunk,
   getUserNotesThunk,
   loadNotesThunk,
 } from "./notesThunks";
@@ -9,6 +10,7 @@ import { formNoteMock, noteMock, notesMock } from "../../../mocks/notesMocks";
 import {
   addNoteActionCreator,
   deleteNoteActionCreator,
+  editNoteActionCreator,
   loadNotesActionCreator,
   setNotesToShowActionCreator,
 } from "../../features/notesSlice/notesSlice";
@@ -130,6 +132,36 @@ describe("Given the createNoteThunk function", () => {
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("");
 
       const thunk = createNoteThunk(formNoteMock);
+      await thunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given the editNoteThunk function", () => {
+  describe("When it's called with an id to edit and a note", () => {
+    test("Then it should call dispatch with the new note edited received from the axios request", async () => {
+      const dispatch = jest.fn();
+      const action = editNoteActionCreator(noteMock);
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.put = jest.fn().mockResolvedValue({ data: noteMock });
+
+      const thunk = editNoteThunk(noteMock.id, formNoteMock);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+
+  describe("When it's called and there is no token", () => {
+    test("Then it should not call dispatch", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("");
+
+      const thunk = editNoteThunk(noteMock.id, formNoteMock);
       await thunk(dispatch);
 
       expect(dispatch).not.toHaveBeenCalled();

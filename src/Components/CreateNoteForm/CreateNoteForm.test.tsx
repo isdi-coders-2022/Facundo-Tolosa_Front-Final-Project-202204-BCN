@@ -5,6 +5,14 @@ import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../../redux/store/store";
+import { noteMock } from "../../mocks/notesMocks";
+
+const mockDispatch = jest.fn();
+
+jest.mock("../../hooks/hooks", () => ({
+  ...jest.requireActual("../../hooks/hooks"),
+  useAppDispatch: () => mockDispatch,
+}));
 
 describe("Given a CreateNoteForm component", () => {
   describe("When the word 'hello' is written to the title input field", () => {
@@ -70,11 +78,43 @@ describe("Given a CreateNoteForm component", () => {
       const options = screen.getAllByRole("option");
       userEvent.selectOptions(screen.getByRole("combobox"), [options[2]]);
 
-      const submitButton = screen.getByRole("button");
-      userEvent.click(submitButton);
+      const editButton = screen.getByRole("button");
+      userEvent.click(editButton);
 
       expect(titleLabel).toHaveValue("");
       expect(contentLabel).toHaveValue("");
+    });
+  });
+
+  describe("When the modify button is clicked", () => {
+    test("Then the dispatch should be called", () => {
+      const inputText = "hello";
+      const contentLabelToFind = "Content";
+      const titleLabelToFind = "Title";
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <CreateNoteForm noteToEdit={noteMock} />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const titleLabel: HTMLLabelElement =
+        screen.getByLabelText(titleLabelToFind);
+      userEvent.type(titleLabel, inputText);
+
+      const contentLabel: HTMLLabelElement =
+        screen.getByLabelText(contentLabelToFind);
+      userEvent.type(contentLabel, inputText);
+
+      const options = screen.getAllByRole("option");
+      userEvent.selectOptions(screen.getByRole("combobox"), [options[2]]);
+
+      const editButton = screen.getByRole("button");
+      userEvent.click(editButton);
+
+      expect(mockDispatch).toHaveBeenCalled();
     });
   });
 });

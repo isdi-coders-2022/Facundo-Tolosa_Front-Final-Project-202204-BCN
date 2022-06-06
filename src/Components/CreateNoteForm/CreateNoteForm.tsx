@@ -1,6 +1,9 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useAppDispatch } from "../../hooks/hooks";
-import { createNoteThunk } from "../../redux/thunks/notesThunks/notesThunks";
+import {
+  createNoteThunk,
+  editNoteThunk,
+} from "../../redux/thunks/notesThunks/notesThunks";
 import { INote } from "../../types/noteInterfaces";
 import CreateNoteFormContainer from "./CreateNoteFormStyles";
 
@@ -46,6 +49,10 @@ const CreateNoteForm = ({ noteToEdit }: Props): JSX.Element => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+    if (noteToEdit) {
+      dispatch(editNoteThunk(noteToEdit.id, formValues));
+      return;
+    }
     dispatch(createNoteThunk(formValues));
     setFormValues(initialFormValue);
   };

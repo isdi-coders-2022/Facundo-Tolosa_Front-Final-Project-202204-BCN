@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   addNoteActionCreator,
   deleteNoteActionCreator,
+  editNoteActionCreator,
   loadNotesActionCreator,
   setNotesToShowActionCreator,
 } from "../../features/notesSlice/notesSlice";
@@ -92,5 +93,25 @@ export const createNoteThunk =
       dispatch(addNoteActionCreator(responseNote));
 
       setLoadingOffWithMessage("Note created", false);
+    }
+  };
+
+export const editNoteThunk =
+  (idToEdit: string, formNote: INoteForm) => async (dispatch: AppDispatch) => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      setLoadingOn();
+      const { data: responseNote } = await axios.put(
+        `${process.env.REACT_APP_API_URL}notes/${idToEdit}`,
+        formNote,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      dispatch(editNoteActionCreator(responseNote));
+      setLoadingOffWithMessage("Note edited", false);
     }
   };
