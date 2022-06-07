@@ -10,7 +10,6 @@ const FooterContainer = styled.div`
   flex-direction: row;
   color: white;
   font-family: "Koulen";
-  z-index: 20;
 
   p {
     margin: 20px;

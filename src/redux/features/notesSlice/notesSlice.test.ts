@@ -7,6 +7,7 @@ import notesReducer, {
   editNoteActionCreator,
   incrementPageActionCreator,
   loadNotesActionCreator,
+  setFilterActionCreator,
   setNotesToShowActionCreator,
   setUserToShowActionCreator,
 } from "./notesSlice";
@@ -19,7 +20,7 @@ describe("Given a notesReducer reducer", () => {
       };
 
       const initialState = {
-        activeFilter: "",
+        activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
@@ -37,7 +38,7 @@ describe("Given a notesReducer reducer", () => {
       const action = loadNotesActionCreator(notesMock);
 
       const initialState = {
-        activeFilter: "",
+        activeFilter: "none",
         allNotes: [],
         notesToShow: [],
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
@@ -57,7 +58,7 @@ describe("Given a notesReducer reducer", () => {
       const action = deleteNoteActionCreator(notesMock[0].id);
 
       const initialState = {
-        activeFilter: "",
+        activeFilter: "none",
         allNotes: notesMock,
         notesToShow: notesMock,
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
@@ -76,7 +77,7 @@ describe("Given a notesReducer reducer", () => {
       const action = setNotesToShowActionCreator(notesMock);
 
       const initialState = {
-        activeFilter: "",
+        activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
@@ -94,7 +95,7 @@ describe("Given a notesReducer reducer", () => {
       const action = setUserToShowActionCreator(userObjectMock);
 
       const initialState = {
-        activeFilter: "",
+        activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
@@ -113,7 +114,7 @@ describe("Given a notesReducer reducer", () => {
       const action = addNoteActionCreator(noteMock);
 
       const initialState = {
-        activeFilter: "",
+        activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
@@ -140,7 +141,7 @@ describe("Given a notesReducer reducer", () => {
       const action = editNoteActionCreator(editedNote);
 
       const initialState = {
-        activeFilter: "",
+        activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
@@ -161,7 +162,7 @@ describe("Given a notesReducer reducer", () => {
       const expectedNumber = 3;
 
       const initialState = {
-        activeFilter: "",
+        activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
@@ -180,7 +181,7 @@ describe("Given a notesReducer reducer", () => {
       const expectedNumber = 1;
 
       const initialState = {
-        activeFilter: "",
+        activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
@@ -199,7 +200,7 @@ describe("Given a notesReducer reducer", () => {
       const expectedNumber = 0;
 
       const initialState = {
-        activeFilter: "",
+        activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
         userToShow: { username: "", name: "", image: "", notes: [], id: "" },
@@ -209,6 +210,25 @@ describe("Given a notesReducer reducer", () => {
       const { actualPage } = notesReducer(initialState, action);
 
       expect(actualPage).toBe(expectedNumber);
+    });
+  });
+
+  describe("When its invoked with a setFilter action with the filter 'Category 1'", () => {
+    test("Then the state of actualFilter should be 'Category 1'", () => {
+      const filter = "Category 1";
+      const action = setFilterActionCreator(filter);
+
+      const initialState = {
+        activeFilter: "none",
+        allNotes: notesMock,
+        notesToShow: [],
+        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        actualPage: 0,
+      };
+
+      const { activeFilter } = notesReducer(initialState, action);
+
+      expect(activeFilter).toBe(filter);
     });
   });
 });

@@ -5,12 +5,13 @@ import NotePreviewList from "../../Components/NotePreviewList/NotePreviewList";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { setNotesToShowActionCreator } from "../../redux/features/notesSlice/notesSlice";
 import { loadNotesThunk } from "../../redux/thunks/notesThunks/notesThunks";
+import { filterNotes } from "../../utils/filterNotes";
 import { paginate } from "../../utils/paginate";
 import HomePageContainer from "./HomePageStyles";
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
-  const { allNotes, notesToShow, actualPage } = useAppSelector(
+  const { allNotes, notesToShow, actualPage, activeFilter } = useAppSelector(
     (state) => state.notes
   );
 
@@ -19,10 +20,12 @@ const HomePage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    const notesToShowByPagination = paginate(allNotes, actualPage);
+    const notesFiltered = filterNotes(allNotes, activeFilter);
+
+    const notesToShowByPagination = paginate(notesFiltered, actualPage);
 
     dispatch(setNotesToShowActionCreator(notesToShowByPagination));
-  }, [allNotes, dispatch, actualPage]);
+  }, [allNotes, dispatch, actualPage, activeFilter]);
 
   return (
     <>
