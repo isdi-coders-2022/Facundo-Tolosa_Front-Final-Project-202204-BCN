@@ -22,6 +22,7 @@ const NotePreviewContainer = styled.div`
     font-weight: bold;
     font-size: 30px;
     margin: 0 10px;
+    cursor: pointer;
   }
 
   .category {
@@ -56,6 +57,9 @@ const NotePreviewContainer = styled.div`
 
   a {
     text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   button {
