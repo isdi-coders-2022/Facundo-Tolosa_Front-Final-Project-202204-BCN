@@ -8,7 +8,7 @@ const NoteDetailContainer = styled.div`
   border-radius: 5px;
   background-color: #fff;
   font-family: "Work Sans", sans-serif;
-
+  user-select: text;
   p {
     margin: 0px;
     padding: 2px;

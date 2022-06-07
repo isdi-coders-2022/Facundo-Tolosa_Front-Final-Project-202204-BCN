@@ -57,11 +57,11 @@ const NotePreview = ({
           ) : null}
 
           <div className="user">
-            <img
-              src="/images/icons8-nombre-de-usuario-50.png"
-              alt="user caricature"
-            />
             <NavLink to={`/user/${author}`}>
+              <img
+                src="/images/icons8-nombre-de-usuario-50.png"
+                alt="user caricature"
+              />
               <p>{author}</p>
             </NavLink>
           </div>
