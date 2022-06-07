@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Header from "../../Components/Header/Header";
 import NotePreviewList from "../../Components/NotePreviewList/NotePreviewList";
 import UserCard from "../../Components/UserCard/UserCard";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
@@ -16,10 +17,13 @@ const UserPage = () => {
   }, [dispatch, username]);
 
   return (
-    <UserPageContainer>
-      <UserCard user={userToShow} />
-      <NotePreviewList notesToShow={notesToShow} />
-    </UserPageContainer>
+    <>
+      <Header />
+      <UserPageContainer>
+        <UserCard user={userToShow} />
+        <NotePreviewList notesToShow={notesToShow} />
+      </UserPageContainer>
+    </>
   );
 };
 

@@ -15,14 +15,18 @@ describe("Given a NotePage component", () => {
   describe("When it's rendered with a note id as a param", () => {
     test("Then it should show the note, content and author of that note", () => {
       const expectedAuthorText = `Note created by ${notesMock[0].author}`;
-
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { name: "Carlos" },
+        reducers: {},
+      });
       const notesMockSlice = createSlice({
         name: "notes",
         initialState: { allNotes: notesMock },
         reducers: {},
       });
       const mockStore = configureStore({
-        reducer: { notes: notesMockSlice.reducer },
+        reducer: { notes: notesMockSlice.reducer, user: userMockSlice.reducer },
       });
 
       render(

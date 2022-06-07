@@ -48,9 +48,18 @@ describe("Given an App component", () => {
     test("Then it should render the text 'Create an account'", () => {
       const expectedText = "Create an account";
 
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { name: "" },
+        reducers: {},
+      });
+      const mockStore = configureStore({
+        reducer: { user: userMockSlice.reducer },
+      });
+
       render(
         <BrowserRouter>
-          <Provider store={store}>
+          <Provider store={mockStore}>
             <App />
           </Provider>
         </BrowserRouter>

@@ -24,18 +24,18 @@ interface IuserInfo {
 }
 
 const App = () => {
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const token = localStorage.getItem("token");
+  const dispatch = useAppDispatch();
 
-  const userInfo: IuserInfo = jwtDecode(token as string);
+  try {
+    const userInfo: IuserInfo = jwtDecode(token as string);
 
-  dispatch(loginActionCreator(userInfo));
+    dispatch(loginActionCreator(userInfo));
+  } catch (error) {}
 
   return (
     <>
       <ToastContainer />
-
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route

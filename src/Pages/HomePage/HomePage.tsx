@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Footer from "../../Components/Footer/Footer";
+import Header from "../../Components/Header/Header";
 import NotePreviewList from "../../Components/NotePreviewList/NotePreviewList";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { setNotesToShowActionCreator } from "../../redux/features/notesSlice/notesSlice";
@@ -24,10 +25,13 @@ const HomePage = () => {
   }, [allNotes, dispatch, actualPage]);
 
   return (
-    <HomePageContainer>
-      <NotePreviewList notesToShow={notesToShow} />
-      <Footer />
-    </HomePageContainer>
+    <>
+      <Header />
+      <HomePageContainer>
+        <NotePreviewList notesToShow={notesToShow} />
+        <Footer />
+      </HomePageContainer>
+    </>
   );
 };
 
