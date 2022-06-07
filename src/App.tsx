@@ -28,11 +28,9 @@ const App = () => {
   const dispatch = useAppDispatch();
   const token = localStorage.getItem("token");
 
-  try {
-    const userInfo: IuserInfo = jwtDecode(token as string);
+  const userInfo: IuserInfo = jwtDecode(token as string);
 
-    dispatch(loginActionCreator(userInfo));
-  } catch {}
+  dispatch(loginActionCreator(userInfo));
 
   return (
     <>
