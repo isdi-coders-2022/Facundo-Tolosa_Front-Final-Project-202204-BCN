@@ -15,10 +15,7 @@ const CheckIfLogged = ({ children }: Props) => {
     if (!name) navigate("/login");
   }, [name, navigate]);
 
-  if (name) {
-    return children;
-  }
-  return null;
+  return children;
 };
 
 export default CheckIfLogged;

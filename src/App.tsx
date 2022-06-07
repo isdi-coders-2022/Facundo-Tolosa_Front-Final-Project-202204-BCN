@@ -24,24 +24,20 @@ interface IuserInfo {
 }
 
 const App = () => {
-  const { name } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
+  try {
+    const userInfo: IuserInfo = jwtDecode(token as string);
 
-    if (token || name) {
-      const userInfo: IuserInfo = jwtDecode(token as string);
-
-      dispatch(loginActionCreator(userInfo));
-    }
-  }, [dispatch, navigate, name]);
+    dispatch(loginActionCreator(userInfo));
+  } catch {}
 
   return (
     <>
       <ToastContainer />
-      {name ? <Header /> : null}
+
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route
