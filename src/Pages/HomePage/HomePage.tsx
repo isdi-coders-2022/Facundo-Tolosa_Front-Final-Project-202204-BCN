@@ -19,6 +19,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const notesToShowByPagination = paginate(allNotes, actualPage);
+
     dispatch(setNotesToShowActionCreator(notesToShowByPagination));
   }, [allNotes, dispatch, actualPage]);
 

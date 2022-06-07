@@ -6,18 +6,29 @@ import {
 import FooterContainer from "./FooterStyles";
 
 const Footer = (): JSX.Element => {
-  const { actualPage } = useAppSelector((state) => state.notes);
+  const { actualPage, notesToShow, allNotes } = useAppSelector(
+    (state) => state.notes
+  );
   const dispatch = useAppDispatch();
+
+  const incrementPage = () => {
+    if (notesToShow.length === 10) {
+      if (allNotes[allNotes.length - 1] === notesToShow[9]) {
+        return;
+      }
+      dispatch(incrementPageActionCreator());
+    }
+  };
+
+  const decrementPage = () => {
+    dispatch(decrementPageActionCreator());
+  };
 
   return (
     <FooterContainer>
-      <button onClick={() => dispatch(decrementPageActionCreator())}>
-        {"<<"}
-      </button>
+      <button onClick={decrementPage}>{"<<"}</button>
       <p>{actualPage}</p>
-      <button onClick={() => dispatch(incrementPageActionCreator())}>
-        {">>"}
-      </button>
+      <button onClick={incrementPage}>{">>"}</button>
     </FooterContainer>
   );
 };
