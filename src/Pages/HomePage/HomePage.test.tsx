@@ -5,13 +5,51 @@ import { BrowserRouter } from "react-router-dom";
 import HomePage from "./HomePage";
 import { Provider } from "react-redux";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-import { notesMock, twelveNotesMock } from "../../mocks/notesMocks";
+import {
+  notesMock,
+  tenNotesMock,
+  twelveNotesMock,
+} from "../../mocks/notesMocks";
 import userEvent from "@testing-library/user-event";
 import store from "../../redux/store/store";
 import axios from "axios";
 import { act } from "react-dom/test-utils";
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe("Given a HomePage component", () => {
+  describe("When it's rendered with a list of ten notes to show and the increment button of the footer is pressed", () => {
+    test("Then it should render the ten titles of the notes", async () => {
+      const titles = tenNotesMock[0].title;
+      const expectedLength = 10;
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.get = jest
+        .fn()
+        .mockResolvedValue({ data: { notes: tenNotesMock }, status: 200 });
+
+      await act(async () => {
+        render(
+          <BrowserRouter>
+            <Provider store={store}>
+              <HomePage />
+            </Provider>
+          </BrowserRouter>
+        );
+      });
+
+      const buttons = screen.getAllByRole("button");
+
+      await act(async () => {
+        userEvent.click(buttons[1]);
+      });
+
+      const receivedTitles = screen.getAllByText(titles);
+      expect(receivedTitles).toHaveLength(expectedLength);
+    });
+  });
   describe("When it's rendered with a list of two notes to show and the increment button of the footer is pressed", () => {
     test("Then it should render the two titles of the notes", () => {
       const firstExpectedTitle = notesMock[0].title;

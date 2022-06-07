@@ -34,7 +34,7 @@ export const notesMock = [
 
 export const twelveNotesMock = [
   {
-    title: "fuchibol",
+    title: "eslint disable",
     content: "note content",
     category: "sports",
     author: "vitor90braz",
