@@ -14,13 +14,18 @@ jest.mock("react-router-dom", () => ({
 describe("Given a EditPage component", () => {
   describe("When it's rendered and the noteId param matches with a note", () => {
     test("Then it should show the text 'Create'", () => {
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { name: "Carlos" },
+        reducers: {},
+      });
       const notesMockSlice = createSlice({
         name: "notes",
         initialState: { allNotes: [{ ...noteMock, id: "1974" }] },
         reducers: {},
       });
       const mockStore = configureStore({
-        reducer: { notes: notesMockSlice.reducer },
+        reducer: { notes: notesMockSlice.reducer, user: userMockSlice.reducer },
       });
 
       const expectedText = "Modify";

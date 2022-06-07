@@ -15,7 +15,7 @@ const Header = (): JSX.Element => {
       <span className="logo">AN</span>
 
       <img
-        src="images/icons8-user-white.png"
+        src="/images/icons8-user-white.png"
         alt="user caricature"
         onClick={() => {
           navigate(`/user/${username}`);

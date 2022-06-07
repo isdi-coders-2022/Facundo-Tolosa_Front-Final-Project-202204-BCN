@@ -28,4 +28,22 @@ describe("Given a NoteDetail component", () => {
       expect(renderedContent).toBeInTheDocument();
     });
   });
+
+  describe("When it's rendered with undefined", () => {
+    test("Then it shouldn't render the text 'Note created by '", () => {
+      const expectedText = "Note created by";
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <NoteDetail noteToShow={undefined} />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const receivedText = screen.queryByText(expectedText);
+
+      expect(receivedText).not.toBeInTheDocument();
+    });
+  });
 });
