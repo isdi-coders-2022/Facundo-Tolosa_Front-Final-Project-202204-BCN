@@ -20,7 +20,7 @@ interface IUserPopulated {
 const initialState: IinitialState = {
   allNotes: [],
   notesToShow: [],
-  activeFilter: "",
+  activeFilter: "none",
   userToShow: { username: "", name: "", image: "", notes: [], id: "" },
   actualPage: 0,
 };
@@ -77,6 +77,11 @@ const notesSlice = createSlice({
       actualPage:
         notes.actualPage === 0 ? notes.actualPage : notes.actualPage - 1,
     }),
+
+    setFilter: (notes, action: PayloadAction<string>): IinitialState => ({
+      ...notes,
+      activeFilter: action.payload,
+    }),
   },
 });
 
@@ -89,6 +94,7 @@ export const {
   editNote: editNoteActionCreator,
   incrementPage: incrementPageActionCreator,
   decrementPage: decrementPageActionCreator,
+  setFilter: setFilterActionCreator,
 } = notesSlice.actions;
 
 export default notesSlice.reducer;
