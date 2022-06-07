@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useAppDispatch } from "../../hooks/hooks";
+import { setFilterActionCreator } from "../../redux/features/notesSlice/notesSlice";
 import { logoutActionCreator } from "../../redux/features/userSlice/userSlice";
 
 const BurgerMenuContainer = styled.div`
@@ -51,7 +52,7 @@ const BurgerMenuContainer = styled.div`
   .menu__box {
     display: block;
     position: fixed;
-    top: 0;
+    top: -10px;
     left: -100%;
     width: 300px;
     height: 100%;
@@ -64,7 +65,7 @@ const BurgerMenuContainer = styled.div`
   }
   .menu__item {
     display: block;
-    padding: 30px 24px;
+    padding: 16px 24px;
     color: white;
     font-family: "Roboto", sans-serif;
     font-size: 20px;
@@ -72,7 +73,27 @@ const BurgerMenuContainer = styled.div`
     text-decoration: none;
     transition-duration: 0.25s;
   }
-  .menu__item:hover {
+
+  .categories {
+    font-family: "Roboto", sans-serif;
+    &__title {
+      font-weight: 600;
+      padding: 16px 24px 7px 24px;
+      font-size: 20px;
+    }
+    &__item {
+      padding: 10px 24px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+
+  .logout {
+    cursor: pointer;
+  }
+
+  .menu__item:hover,
+  .categories__item:hover {
     background-color: #cfd8dc;
   }
 
@@ -89,6 +110,10 @@ const BurgerMenu = (): JSX.Element => {
     localStorage.removeItem("token");
     dispatch(logoutActionCreator());
     navigate("/login");
+  };
+
+  const setFilter = (category: string) => {
+    dispatch(setFilterActionCreator(category));
   };
 
   return (
@@ -110,10 +135,37 @@ const BurgerMenu = (): JSX.Element => {
               <p className="menu__item">Create Note</p>
             </NavLink>
           </li>
-          <li>
-            <p className="menu__item">Categories</p>
+          <li className="categories">
+            <p className="categories__title">Filter by</p>
+            <p className="categories__item" onClick={() => setFilter("none")}>
+              None
+            </p>
+            <p
+              className="categories__item"
+              onClick={() => setFilter("Category 1")}
+            >
+              Category 1
+            </p>
+            <p
+              className="categories__item"
+              onClick={() => setFilter("Category 2")}
+            >
+              Category 2
+            </p>
+            <p
+              className="categories__item"
+              onClick={() => setFilter("Category 3")}
+            >
+              Category 3
+            </p>
+            <p
+              className="categories__item"
+              onClick={() => setFilter("Category 4")}
+            >
+              Category 4
+            </p>
           </li>
-          <li>
+          <li className="logout">
             <p className="menu__item" onClick={logOut}>
               Logout
             </p>
