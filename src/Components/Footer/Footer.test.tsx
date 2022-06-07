@@ -5,10 +5,7 @@ import { Provider } from "react-redux";
 import store from "../../redux/store/store";
 import Footer from "./Footer";
 import userEvent from "@testing-library/user-event";
-import {
-  decrementPageActionCreator,
-  incrementPageActionCreator,
-} from "../../redux/features/notesSlice/notesSlice";
+import { decrementPageActionCreator } from "../../redux/features/notesSlice/notesSlice";
 
 const mockDispatch = jest.fn();
 
@@ -50,25 +47,6 @@ describe("Given a Footer component", () => {
 
       const buttons = screen.getAllByRole("button");
       userEvent.click(buttons[0]);
-
-      expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
-    });
-  });
-
-  describe("When it's rendered and the increment button is pressed", () => {
-    test("Then it should call dispatch with a decrement page action creator", () => {
-      const expectedAction = incrementPageActionCreator();
-
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <Footer />
-          </Provider>
-        </BrowserRouter>
-      );
-
-      const buttons = screen.getAllByRole("button");
-      userEvent.click(buttons[1]);
 
       expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
     });
