@@ -7,6 +7,7 @@ import notesReducer, {
   editNoteActionCreator,
   incrementPageActionCreator,
   loadNotesActionCreator,
+  resetPaginationActionCreator,
   setFilterActionCreator,
   setNotesToShowActionCreator,
   setUserToShowActionCreator,
@@ -229,6 +230,25 @@ describe("Given a notesReducer reducer", () => {
       const { activeFilter } = notesReducer(initialState, action);
 
       expect(activeFilter).toBe(filter);
+    });
+  });
+
+  describe("When its invoked with a resetPagination action", () => {
+    test("Then the state of actualPage should be 0", () => {
+      const expectedNumber = 0;
+      const action = resetPaginationActionCreator();
+
+      const initialState = {
+        activeFilter: "none",
+        allNotes: notesMock,
+        notesToShow: [],
+        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        actualPage: 5,
+      };
+
+      const { actualPage } = notesReducer(initialState, action);
+
+      expect(actualPage).toBe(expectedNumber);
     });
   });
 });

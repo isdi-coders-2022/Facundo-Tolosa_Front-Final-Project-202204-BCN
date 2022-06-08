@@ -15,7 +15,7 @@ jest.mock("react-router-dom", () => ({
 
 describe("Given a Header component", () => {
   describe("When it's rendered and there is an user logged", () => {
-    test("Then it should call navigate with the route '/home'", () => {
+    test("Then it should call navigate with the route '/user/userName'", () => {
       const userName = "roberto84";
 
       const userMockSlice = createSlice({
@@ -39,6 +39,35 @@ describe("Given a Header component", () => {
       userEvent.click(userIcon);
 
       expect(mockUseNavigate).toHaveBeenCalledWith(`/user/${userName}`);
+    });
+  });
+
+  describe("When the logo is clicked", () => {
+    test("Then it should call navigate with the route '/home'", () => {
+      const logoText = "AN";
+      const username = "carlos";
+
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { username },
+        reducers: {},
+      });
+      const mockStore = configureStore({
+        reducer: { user: userMockSlice.reducer },
+      });
+
+      render(
+        <BrowserRouter>
+          <Provider store={mockStore}>
+            <Header />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const logo = screen.getByText(logoText);
+      userEvent.click(logo);
+
+      expect(mockUseNavigate).toHaveBeenCalledWith(`/home`);
     });
   });
 });

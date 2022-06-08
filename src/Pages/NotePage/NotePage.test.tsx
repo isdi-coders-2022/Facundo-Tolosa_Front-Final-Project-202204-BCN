@@ -5,10 +5,15 @@ import NotePage from "./NotePage";
 import { Provider } from "react-redux";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { notesMock } from "../../mocks/notesMocks";
+import store from "../../redux/store/store";
+import userEvent from "@testing-library/user-event";
+
+const mockUseNavigate = jest.fn();
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useParams: () => ({ noteId: "string1" }),
+  useNavigate: () => mockUseNavigate,
 }));
 
 describe("Given a NotePage component", () => {
@@ -44,6 +49,23 @@ describe("Given a NotePage component", () => {
       expect(receivedTitle).toBeInTheDocument();
       expect(receivedAuthor).toBeInTheDocument();
       expect(receivedContent).toBeInTheDocument();
+    });
+  });
+
+  describe("When it's the back to home button is clicked", () => {
+    test("Then it should call navigate with 'home'", () => {
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <NotePage />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const homeButton = screen.getByRole("button", { name: "Back to notes" });
+      userEvent.click(homeButton);
+
+      expect(mockUseNavigate).toHaveBeenCalledWith("/home");
     });
   });
 });

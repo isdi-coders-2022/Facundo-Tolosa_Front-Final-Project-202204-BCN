@@ -1,7 +1,10 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useAppDispatch } from "../../hooks/hooks";
-import { setFilterActionCreator } from "../../redux/features/notesSlice/notesSlice";
+import {
+  resetPaginationActionCreator,
+  setFilterActionCreator,
+} from "../../redux/features/notesSlice/notesSlice";
 import { logoutActionCreator } from "../../redux/features/userSlice/userSlice";
 
 const BurgerMenuContainer = styled.div`
@@ -116,6 +119,10 @@ const BurgerMenu = (): JSX.Element => {
     dispatch(setFilterActionCreator(category));
   };
 
+  const resetPagination = () => {
+    dispatch(resetPaginationActionCreator());
+  };
+
   return (
     <BurgerMenuContainer>
       <div className="hamburger-menu">
@@ -125,7 +132,7 @@ const BurgerMenu = (): JSX.Element => {
         </label>
 
         <ul className="menu__box">
-          <li>
+          <li onClick={resetPagination}>
             <NavLink to={"/home"}>
               <p className="menu__item">Home</p>
             </NavLink>

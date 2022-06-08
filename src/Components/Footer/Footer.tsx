@@ -27,7 +27,7 @@ const Footer = (): JSX.Element => {
   return (
     <FooterContainer>
       <button onClick={decrementPage}>{"<<"}</button>
-      <p>{actualPage}</p>
+      <p>{actualPage + 1}</p>
       <button onClick={incrementPage}>{">>"}</button>
     </FooterContainer>
   );

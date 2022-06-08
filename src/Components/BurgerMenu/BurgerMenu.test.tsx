@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store from "../../redux/store/store";
 import BurgerMenu from "./BurgerMenu";
 import { logoutActionCreator } from "../../redux/features/userSlice/userSlice";
+import { resetPaginationActionCreator } from "../../redux/features/notesSlice/notesSlice";
 
 const mockDispatch = jest.fn();
 
@@ -62,6 +63,27 @@ describe("Given a BurgerMenu component", () => {
       userEvent.click(fifthCategory);
 
       expect(mockDispatch).toHaveBeenCalledTimes(5);
+    });
+  });
+
+  describe("When the home button is clicked", () => {
+    test("Then it should call dispatch a resetPagination action", () => {
+      const homeButtonText = "Home";
+      const action = resetPaginationActionCreator();
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <BurgerMenu />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const homeButton = screen.getByText(homeButtonText);
+
+      userEvent.click(homeButton);
+
+      expect(mockDispatch).toHaveBeenCalledWith(action);
     });
   });
 });
