@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { deleteNoteThunk } from "../../redux/thunks/notesThunks/notesThunks";
 import { INote } from "../../types/noteInterfaces";
 import NotePreviewContainer from "./NotePreviewStyles";
+import { formatDate } from "../../utils/formatDate";
 
 interface Props {
   note: INote;
@@ -16,6 +17,8 @@ const NotePreview = ({
   const userLogged = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const date = formatDate(creationDate.toString());
 
   const [canDelete, setCanDelete] = useState(false);
 
@@ -66,7 +69,7 @@ const NotePreview = ({
             </NavLink>
           </div>
         </div>
-        <p className="date">{`${creationDate}`}</p>
+        <p className="date">{`${date}`}</p>
       </div>
     </NotePreviewContainer>
   );

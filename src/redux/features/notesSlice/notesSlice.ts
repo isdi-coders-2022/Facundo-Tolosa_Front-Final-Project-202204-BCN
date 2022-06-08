@@ -78,6 +78,11 @@ const notesSlice = createSlice({
         notes.actualPage === 0 ? notes.actualPage : notes.actualPage - 1,
     }),
 
+    resetPagination: (notes): IinitialState => ({
+      ...notes,
+      actualPage: 0,
+    }),
+
     setFilter: (notes, action: PayloadAction<string>): IinitialState => ({
       ...notes,
       activeFilter: action.payload,
@@ -95,6 +100,7 @@ export const {
   incrementPage: incrementPageActionCreator,
   decrementPage: decrementPageActionCreator,
   setFilter: setFilterActionCreator,
+  resetPagination: resetPaginationActionCreator,
 } = notesSlice.actions;
 
 export default notesSlice.reducer;
