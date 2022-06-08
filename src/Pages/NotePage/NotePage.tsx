@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import NoteDetail from "../../Components/NoteDetail/NoteDetail";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import NotePageContainer from "./NotePageStyles";
@@ -12,6 +12,7 @@ const NotePage = () => {
   const { allNotes } = useAppSelector((state) => state.notes);
   const noteToEdit = allNotes.find((note) => note.id === noteId);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(loadNotesThunk());
@@ -22,6 +23,13 @@ const NotePage = () => {
       <Header />
       <NotePageContainer>
         <NoteDetail noteToShow={noteToEdit as INote} />
+        <span
+          onClick={() => {
+            navigate("/home");
+          }}
+        >
+          Back to notes
+        </span>
       </NotePageContainer>
     </>
   );

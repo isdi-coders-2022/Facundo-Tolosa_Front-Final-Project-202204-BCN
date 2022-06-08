@@ -36,6 +36,9 @@ const HeaderContainer = styled.div`
   }
 
   @media (min-width: 600px) {
+    .logo {
+      cursor: pointer;
+    }
     p {
       cursor: pointer;
     }
