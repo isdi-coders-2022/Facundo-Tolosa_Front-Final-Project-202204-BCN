@@ -23,13 +23,14 @@ const NotePage = () => {
       <Header />
       <NotePageContainer>
         <NoteDetail noteToShow={noteToEdit as INote} />
-        <span
+        <button
+          className="back-button"
           onClick={() => {
             navigate("/home");
           }}
         >
           Back to notes
-        </span>
+        </button>
       </NotePageContainer>
     </>
   );

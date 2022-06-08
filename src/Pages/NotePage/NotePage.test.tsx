@@ -54,8 +54,6 @@ describe("Given a NotePage component", () => {
 
   describe("When it's the back to home button is clicked", () => {
     test("Then it should call navigate with 'home'", () => {
-      const homeButtonText = "Back to notes";
-
       render(
         <BrowserRouter>
           <Provider store={store}>
@@ -64,7 +62,7 @@ describe("Given a NotePage component", () => {
         </BrowserRouter>
       );
 
-      const homeButton = screen.getByText(homeButtonText);
+      const homeButton = screen.getByRole("button", { name: "Back to notes" });
       userEvent.click(homeButton);
 
       expect(mockUseNavigate).toHaveBeenCalledWith("/home");

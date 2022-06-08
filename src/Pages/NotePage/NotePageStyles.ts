@@ -7,6 +7,20 @@ const NotePageContainer = styled.div`
   position: absolute;
   top: 80px;
   width: 100%;
+
+  .back-button {
+    position: relative;
+    top: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: "Work Sans", sans-serif;
+    color: white;
+    background-color: #8594e4;
+    border-radius: 5px;
+    border: none;
+    width: 170px;
+    height: 30px;
+  }
 `;
 
 export default NotePageContainer;
