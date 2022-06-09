@@ -40,7 +40,8 @@ const Footer = (): JSX.Element => {
       <button
         onClick={incrementPage}
         className={
-          actualPage + 1 === Math.ceil(allNotes.length / 10)
+          actualPage + 1 === Math.ceil(allNotes.length / 10) ||
+          notesToShow.length < 10
             ? "button-hidden"
             : ""
         }

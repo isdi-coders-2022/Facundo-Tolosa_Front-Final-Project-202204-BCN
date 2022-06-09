@@ -8,18 +8,18 @@ const BurgerMenuContainer = styled.div`
   #menu__toggle {
     opacity: 0;
   }
-  #menu__toggle:checked + .menu__btn > span {
+  #menu__toggle:focus + .menu__btn > span {
     transform: rotate(45deg);
   }
-  #menu__toggle:checked + .menu__btn > span::before {
+  #menu__toggle:focus + .menu__btn > span::before {
     top: 0;
     transform: rotate(0deg);
   }
-  #menu__toggle:checked + .menu__btn > span::after {
+  #menu__toggle:focus + .menu__btn > span::after {
     top: 0;
     transform: rotate(90deg);
   }
-  #menu__toggle:checked ~ .menu__box {
+  #menu__toggle:focus ~ .menu__box {
     left: 0;
   }
   .menu__btn {
@@ -62,7 +62,9 @@ const BurgerMenuContainer = styled.div`
     background-color: #000000ee;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
     transition-duration: 0.25s;
+    z-index: 3;
   }
+
   .menu__item {
     display: block;
     padding: 16px 24px;
@@ -72,20 +74,7 @@ const BurgerMenuContainer = styled.div`
     font-weight: 600;
     text-decoration: none;
     transition-duration: 0.25s;
-  }
-
-  .categories {
-    font-family: "Roboto", sans-serif;
-    &__title {
-      font-weight: 600;
-      padding: 16px 24px 7px 24px;
-      font-size: 20px;
-    }
-    &__item {
-      padding: 10px 24px;
-      font-size: 20px;
-      cursor: pointer;
-    }
+    z-index: 5;
   }
 
   .logout {
