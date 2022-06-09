@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Filter from "../../Components/Filter/Filter";
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
 import NotePreviewList from "../../Components/NotePreviewList/NotePreviewList";
@@ -31,6 +32,7 @@ const HomePage = () => {
     <>
       <Header />
       <HomePageContainer>
+        <Filter />
         <NotePreviewList notesToShow={notesToShow} />
         <Footer />
       </HomePageContainer>

@@ -144,36 +144,6 @@ const BurgerMenu = (): JSX.Element => {
               <p className="menu__item">Create Note</p>
             </NavLink>
           </li>
-          <li className="categories">
-            <p className="categories__title">Filter by</p>
-            <p className="categories__item" onClick={() => setFilter("none")}>
-              None
-            </p>
-            <p
-              className="categories__item"
-              onClick={() => setFilter("Category 1")}
-            >
-              Category 1
-            </p>
-            <p
-              className="categories__item"
-              onClick={() => setFilter("Category 2")}
-            >
-              Category 2
-            </p>
-            <p
-              className="categories__item"
-              onClick={() => setFilter("Category 3")}
-            >
-              Category 3
-            </p>
-            <p
-              className="categories__item"
-              onClick={() => setFilter("Category 4")}
-            >
-              Category 4
-            </p>
-          </li>
           <li className="logout">
             <p className="menu__item" onClick={logOut}>
               Logout
