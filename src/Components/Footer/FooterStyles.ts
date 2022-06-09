@@ -24,7 +24,9 @@ const FooterContainer = styled.div`
     cursor: pointer;
   }
 
-  @media (min-width: 600px) {
+  .button-hidden {
+    color: #6643b5;
+    cursor: default;
   }
 `;
 

@@ -17,18 +17,36 @@ const Footer = (): JSX.Element => {
         return;
       }
       dispatch(incrementPageActionCreator());
+      window.scrollTo(0, 0);
     }
   };
 
   const decrementPage = () => {
     dispatch(decrementPageActionCreator());
+    window.scrollTo(0, 0);
   };
 
   return (
     <FooterContainer>
-      <button onClick={decrementPage}>{"<<"}</button>
+      <button
+        onClick={decrementPage}
+        className={actualPage === 0 ? "button-hidden" : ""}
+      >
+        {"<<"}
+      </button>
+
       <p>{actualPage + 1}</p>
-      <button onClick={incrementPage}>{">>"}</button>
+
+      <button
+        onClick={incrementPage}
+        className={
+          actualPage + 1 === Math.ceil(allNotes.length / 10)
+            ? "button-hidden"
+            : ""
+        }
+      >
+        {">>"}
+      </button>
     </FooterContainer>
   );
 };

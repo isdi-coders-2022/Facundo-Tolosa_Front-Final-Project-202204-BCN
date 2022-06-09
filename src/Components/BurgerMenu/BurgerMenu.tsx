@@ -117,10 +117,12 @@ const BurgerMenu = (): JSX.Element => {
 
   const setFilter = (category: string) => {
     dispatch(setFilterActionCreator(category));
+    window.scrollTo(0, 0);
   };
 
   const resetPagination = () => {
     dispatch(resetPaginationActionCreator());
+    window.scrollTo(0, 0);
   };
 
   return (
