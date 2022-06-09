@@ -57,7 +57,9 @@ const NotePreview = ({
               <button onClick={deleteNote}>Delete</button>
               <button onClick={editNote}>Edit</button>
             </>
-          ) : null}
+          ) : (
+            <div></div>
+          )}
 
           <div className="user">
             <NavLink to={`/user/${author}`}>

@@ -42,7 +42,10 @@ const Filter = styled.div`
     align-items: center;
 
     li {
-      margin: 7px;
+      padding: 7px;
+      cursor: pointer;
+      width: 50%;
+      text-align: center;
     }
   }
 `;
