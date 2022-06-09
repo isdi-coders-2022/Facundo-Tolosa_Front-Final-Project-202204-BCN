@@ -34,40 +34,10 @@ describe("Given a BurgerMenu component", () => {
     });
   });
 
-  describe("When the categories buttons are clicked", () => {
-    test("Then it should call dispatch five times", () => {
-      const firstCategoryToFind = "None";
-      const secondCategoryToFind = "Category 1";
-      const thirdCategoryToFind = "Category 2";
-      const fourthCategoryToFind = "Category 3";
-      const fifthCategoryToFind = "Category 4";
-
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <BurgerMenu />
-          </Provider>
-        </BrowserRouter>
-      );
-
-      const firstCategory = screen.getByText(firstCategoryToFind);
-      const secondCategory = screen.getByText(secondCategoryToFind);
-      const thirdCategory = screen.getByText(thirdCategoryToFind);
-      const fourthCategory = screen.getByText(fourthCategoryToFind);
-      const fifthCategory = screen.getByText(fifthCategoryToFind);
-
-      userEvent.click(firstCategory);
-      userEvent.click(secondCategory);
-      userEvent.click(thirdCategory);
-      userEvent.click(fourthCategory);
-      userEvent.click(fifthCategory);
-
-      expect(mockDispatch).toHaveBeenCalledTimes(5);
-    });
-  });
-
   describe("When the home button is clicked", () => {
     test("Then it should call dispatch a resetPagination action", () => {
+      window.scrollTo = jest.fn();
+
       const homeButtonText = "Home";
       const action = resetPaginationActionCreator();
 

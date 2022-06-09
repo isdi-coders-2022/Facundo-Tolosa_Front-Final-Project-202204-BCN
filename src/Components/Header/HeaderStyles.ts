@@ -20,6 +20,10 @@ const HeaderContainer = styled.div`
   .logo {
     text-align: center;
     font-size: 60px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .menu__btn {

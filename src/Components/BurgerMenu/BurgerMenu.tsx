@@ -1,10 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useAppDispatch } from "../../hooks/hooks";
-import {
-  resetPaginationActionCreator,
-  setFilterActionCreator,
-} from "../../redux/features/notesSlice/notesSlice";
+import { resetPaginationActionCreator } from "../../redux/features/notesSlice/notesSlice";
 import { logoutActionCreator } from "../../redux/features/userSlice/userSlice";
 
 const BurgerMenuContainer = styled.div`
@@ -115,11 +112,6 @@ const BurgerMenu = (): JSX.Element => {
     navigate("/login");
   };
 
-  const setFilter = (category: string) => {
-    dispatch(setFilterActionCreator(category));
-    window.scrollTo(0, 0);
-  };
-
   const resetPagination = () => {
     dispatch(resetPaginationActionCreator());
     window.scrollTo(0, 0);
@@ -143,36 +135,6 @@ const BurgerMenu = (): JSX.Element => {
             <NavLink to={"/create"}>
               <p className="menu__item">Create Note</p>
             </NavLink>
-          </li>
-          <li className="categories">
-            <p className="categories__title">Filter by</p>
-            <p className="categories__item" onClick={() => setFilter("none")}>
-              None
-            </p>
-            <p
-              className="categories__item"
-              onClick={() => setFilter("Category 1")}
-            >
-              Category 1
-            </p>
-            <p
-              className="categories__item"
-              onClick={() => setFilter("Category 2")}
-            >
-              Category 2
-            </p>
-            <p
-              className="categories__item"
-              onClick={() => setFilter("Category 3")}
-            >
-              Category 3
-            </p>
-            <p
-              className="categories__item"
-              onClick={() => setFilter("Category 4")}
-            >
-              Category 4
-            </p>
           </li>
           <li className="logout">
             <p className="menu__item" onClick={logOut}>
