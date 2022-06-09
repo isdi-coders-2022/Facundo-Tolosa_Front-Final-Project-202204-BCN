@@ -28,8 +28,13 @@ describe("Given a RegisterForm component", () => {
 
   describe("When the two inputs have text and the submit button is clicked", () => {
     test("Then the two inputs should be empty", () => {
+      const file = new File(["(⌐□_□)"], "chucknorris.png", {
+        type: "image/png",
+      });
+
       const usernameLabel = "Username";
       const passwordLabel = "Password";
+      const imageLabel = "Avatar";
       const inputText = "hello";
 
       render(
@@ -42,10 +47,13 @@ describe("Given a RegisterForm component", () => {
 
       const username: HTMLLabelElement = screen.getByLabelText(usernameLabel);
       const password: HTMLLabelElement = screen.getByLabelText(passwordLabel);
+      const image: HTMLLabelElement = screen.getByLabelText(imageLabel);
+
       const submitButton: HTMLButtonElement = screen.getByRole("button");
 
       userEvent.type(username, inputText);
       userEvent.type(password, inputText);
+      userEvent.upload(image, file);
       userEvent.click(submitButton);
 
       expect(username).toHaveValue("");

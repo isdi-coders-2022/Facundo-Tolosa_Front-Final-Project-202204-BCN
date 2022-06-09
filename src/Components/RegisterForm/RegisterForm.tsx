@@ -33,7 +33,7 @@ const RegisterForm = (): JSX.Element => {
   ): void => {
     setFormValues({
       ...formValues,
-      image: event.target.files?.[0] || "",
+      image: event.target.files?.[0] as File,
     });
   };
 
