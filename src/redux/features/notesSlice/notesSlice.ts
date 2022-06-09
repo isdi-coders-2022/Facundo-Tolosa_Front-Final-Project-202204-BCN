@@ -13,6 +13,7 @@ interface IUserPopulated {
   username: string;
   name: string;
   image: string;
+  imageBackup: string;
   notes: INote[];
   id: string;
 }
@@ -21,7 +22,14 @@ const initialState: IinitialState = {
   allNotes: [],
   notesToShow: [],
   activeFilter: "none",
-  userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+  userToShow: {
+    username: "",
+    name: "",
+    image: "",
+    imageBackup: "",
+    notes: [],
+    id: "",
+  },
   actualPage: 0,
 };
 

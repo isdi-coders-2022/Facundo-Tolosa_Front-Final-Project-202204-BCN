@@ -24,7 +24,14 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
-        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        userToShow: {
+          username: "",
+          name: "",
+          image: "",
+          imageBackup: "",
+          notes: [],
+          id: "",
+        },
         actualPage: 0,
       };
 
@@ -42,7 +49,14 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "none",
         allNotes: [],
         notesToShow: [],
-        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        userToShow: {
+          username: "",
+          name: "",
+          image: "",
+          imageBackup: "",
+          notes: [],
+          id: "",
+        },
         actualPage: 0,
       };
 
@@ -62,7 +76,14 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "none",
         allNotes: notesMock,
         notesToShow: notesMock,
-        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        userToShow: {
+          username: "",
+          name: "",
+          image: "",
+          imageBackup: "",
+          notes: [],
+          id: "",
+        },
         actualPage: 0,
       };
 
@@ -81,7 +102,14 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
-        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        userToShow: {
+          username: "",
+          name: "",
+          image: "",
+          imageBackup: "",
+          notes: [],
+          id: "",
+        },
         actualPage: 0,
       };
 
@@ -99,7 +127,14 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
-        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        userToShow: {
+          username: "",
+          name: "",
+          image: "",
+          imageBackup: "",
+          notes: [],
+          id: "",
+        },
         actualPage: 0,
       };
 
@@ -118,7 +153,14 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
-        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        userToShow: {
+          username: "",
+          name: "",
+          image: "",
+          imageBackup: "",
+          notes: [],
+          id: "",
+        },
         actualPage: 0,
       };
 
@@ -145,7 +187,14 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
-        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        userToShow: {
+          username: "",
+          name: "",
+          image: "",
+          imageBackup: "",
+          notes: [],
+          id: "",
+        },
         actualPage: 0,
       };
 
@@ -166,7 +215,14 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
-        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        userToShow: {
+          username: "",
+          name: "",
+          image: "",
+          imageBackup: "",
+          notes: [],
+          id: "",
+        },
         actualPage: 2,
       };
 
@@ -185,7 +241,14 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
-        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        userToShow: {
+          username: "",
+          name: "",
+          image: "",
+          imageBackup: "",
+          notes: [],
+          id: "",
+        },
         actualPage: 2,
       };
 
@@ -204,7 +267,14 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
-        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        userToShow: {
+          username: "",
+          name: "",
+          image: "",
+          imageBackup: "",
+          notes: [],
+          id: "",
+        },
         actualPage: 0,
       };
 
@@ -223,7 +293,14 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
-        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        userToShow: {
+          username: "",
+          name: "",
+          image: "",
+          imageBackup: "",
+          notes: [],
+          id: "",
+        },
         actualPage: 0,
       };
 
@@ -242,7 +319,14 @@ describe("Given a notesReducer reducer", () => {
         activeFilter: "none",
         allNotes: notesMock,
         notesToShow: [],
-        userToShow: { username: "", name: "", image: "", notes: [], id: "" },
+        userToShow: {
+          username: "",
+          name: "",
+          image: "",
+          imageBackup: "",
+          notes: [],
+          id: "",
+        },
         actualPage: 5,
       };
 
