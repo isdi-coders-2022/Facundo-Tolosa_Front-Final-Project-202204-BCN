@@ -3,11 +3,12 @@ import { NavLink } from "react-router-dom";
 import RegisterFormContainer from "./RegisterFormStyles";
 import { useAppDispatch } from "../../hooks/hooks";
 import { registerThunk } from "../../redux/thunks/userThunks/userThunks";
+
 interface IRegisterForm {
   username: string;
   password: string;
   name: string;
-  image: string;
+  image: string | File;
 }
 
 const RegisterForm = (): JSX.Element => {
@@ -27,9 +28,28 @@ const RegisterForm = (): JSX.Element => {
     });
   };
 
+  const handleImageInputChange = (
+    event: ChangeEvent<HTMLInputElement>
+  ): void => {
+    setFormValues({
+      ...formValues,
+      image: event.target.files?.[0] || "",
+    });
+  };
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    dispatch(registerThunk(formValues));
+
+    const userFormData = new FormData();
+    userFormData.append("username", formValues.username);
+    userFormData.append("password", formValues.password);
+    userFormData.append("name", formValues.name);
+    userFormData.append("image", formValues.image);
+
+    dispatch(
+      registerThunk(userFormData, formValues.username, formValues.password)
+    );
+
     setFormValues(initialFormValue);
   };
 
@@ -72,15 +92,16 @@ const RegisterForm = (): JSX.Element => {
           />
         </div>
         <div className="form-field-image-input">
-          <label htmlFor="username">Avatar</label>
-          <input
-            type="text"
-            id="image"
-            value={formValues.image}
-            onChange={handleInputChange}
-            autoComplete="off"
-            placeholder="Avatar"
-          />
+          <label htmlFor="image" className="image-label">
+            {formValues.image ? "Image uploaded" : "Avatar"}
+            <input
+              className="form-field-image-input__button"
+              type="file"
+              id="image"
+              onChange={handleImageInputChange}
+              autoComplete="off"
+            />
+          </label>
         </div>
         <input type="submit" value="Register" className="submit-input" />
       </form>

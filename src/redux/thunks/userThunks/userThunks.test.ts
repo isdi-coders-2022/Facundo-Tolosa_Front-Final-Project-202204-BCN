@@ -54,12 +54,23 @@ describe("Given the registerThunk function", () => {
         password: "testUser",
         image: "",
       };
+
+      const userFormData = new FormData();
+      userFormData.append("username", newUserData.username);
+      userFormData.append("password", newUserData.password);
+      userFormData.append("name", newUserData.name);
+      userFormData.append("image", newUserData.image);
+
       const dispatch = jest.fn();
       axios.post = jest
         .fn()
         .mockResolvedValue({ data: { username: "testUser" } });
 
-      const thunk = registerThunk(newUserData);
+      const thunk = registerThunk(
+        userFormData,
+        newUserData.username,
+        newUserData.password
+      );
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
@@ -74,10 +85,21 @@ describe("Given the registerThunk function", () => {
         password: "testUser",
         image: "",
       };
+
+      const userFormData = new FormData();
+      userFormData.append("username", newUserData.username);
+      userFormData.append("password", newUserData.password);
+      userFormData.append("name", newUserData.name);
+      userFormData.append("image", newUserData.image);
+
       const dispatch = jest.fn();
       axios.post = jest.fn().mockRejectedValue({});
 
-      const thunk = registerThunk(newUserData);
+      const thunk = registerThunk(
+        userFormData,
+        newUserData.username,
+        newUserData.password
+      );
       await thunk(dispatch);
 
       expect(dispatch).not.toHaveBeenCalled();

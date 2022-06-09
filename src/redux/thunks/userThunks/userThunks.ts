@@ -28,13 +28,6 @@ interface IuserInfo {
   image: string;
 }
 
-interface IRegisterData {
-  password: string;
-  name: string;
-  username: string;
-  image: string;
-}
-
 export const loginThunk =
   (userData: IuserCredentials) => async (dispatch: AppDispatch) => {
     try {
@@ -58,7 +51,8 @@ export const loginThunk =
   };
 
 export const registerThunk =
-  (userData: IRegisterData) => async (dispatch: AppDispatch) => {
+  (userData: FormData, username: string, password: string) =>
+  async (dispatch: AppDispatch) => {
     try {
       setLoadingOn();
       await axios.post(
@@ -66,10 +60,7 @@ export const registerThunk =
         userData
       );
       setLoadingOff();
-
-      dispatch(
-        loginThunk({ username: userData.username, password: userData.password })
-      );
+      dispatch(loginThunk({ username, password }));
     } catch {
       setLoadingOffWithMessage("Error on register. Try again later.", true);
     }

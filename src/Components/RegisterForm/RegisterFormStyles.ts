@@ -42,10 +42,8 @@ const RegisterFormContainer = styled.div`
     }
   }
 
-  .form-field-image-input {
-    input {
-      width: 120px;
-    }
+  .form-field-image-input__button {
+    display: none;
   }
 
   .submit-input {
@@ -73,6 +71,24 @@ const RegisterFormContainer = styled.div`
 
   label {
     display: none;
+  }
+
+  .image-label {
+    display: contents;
+    font-size: 24px;
+    color: #6643b5;
+    cursor: pointer;
+  }
+
+  .form-field-image-input {
+    border: 5px solid #6643b5;
+    border-radius: 10px;
+    width: 296px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
   }
 
   @media (min-width: 600px) {
