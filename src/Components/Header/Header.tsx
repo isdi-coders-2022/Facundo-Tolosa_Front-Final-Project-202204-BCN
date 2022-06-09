@@ -28,6 +28,7 @@ const Header = (): JSX.Element => {
         src="/images/icons8-user-white.png"
         alt="user caricature"
         onClick={() => {
+          window.scrollTo(0, 0);
           navigate(`/user/${username}`);
         }}
       />

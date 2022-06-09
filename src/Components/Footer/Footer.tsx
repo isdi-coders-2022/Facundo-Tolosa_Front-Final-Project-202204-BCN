@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import {
   decrementPageActionCreator,
   incrementPageActionCreator,
 } from "../../redux/features/notesSlice/notesSlice";
-import { INote } from "../../types/noteInterfaces";
 import FooterContainer from "./FooterStyles";
 
 const Footer = (): JSX.Element => {
@@ -19,11 +17,13 @@ const Footer = (): JSX.Element => {
         return;
       }
       dispatch(incrementPageActionCreator());
+      window.scrollTo(0, 0);
     }
   };
 
   const decrementPage = () => {
     dispatch(decrementPageActionCreator());
+    window.scrollTo(0, 0);
   };
 
   return (
