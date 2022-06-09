@@ -16,6 +16,8 @@ jest.mock("react-router-dom", () => ({
 describe("Given a Header component", () => {
   describe("When it's rendered and there is an user logged", () => {
     test("Then it should call navigate with the route '/user/userName'", () => {
+      window.scrollTo = jest.fn();
+
       const userName = "roberto84";
 
       const userMockSlice = createSlice({
@@ -44,6 +46,8 @@ describe("Given a Header component", () => {
 
   describe("When the logo is clicked", () => {
     test("Then it should call navigate with the route '/home'", () => {
+      window.scrollTo = jest.fn();
+
       const logoText = "AN";
       const username = "carlos";
 

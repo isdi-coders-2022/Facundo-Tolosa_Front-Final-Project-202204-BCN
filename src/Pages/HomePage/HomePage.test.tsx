@@ -25,6 +25,8 @@ describe("Given a HomePage component", () => {
       const titles = tenNotesMock[0].title;
       const expectedLength = 10;
 
+      window.scrollTo = jest.fn();
+
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
       axios.get = jest
         .fn()
@@ -43,7 +45,7 @@ describe("Given a HomePage component", () => {
       const buttons = screen.getAllByRole("button");
 
       await act(async () => {
-        userEvent.click(buttons[1]);
+        userEvent.click(buttons[2]);
       });
 
       const receivedTitles = screen.getAllByText(titles);
@@ -54,6 +56,8 @@ describe("Given a HomePage component", () => {
     test("Then it should render the two titles of the notes", () => {
       const firstExpectedTitle = notesMock[0].title;
       const secondExpectedTitle = notesMock[1].title;
+
+      window.scrollTo = jest.fn();
 
       const notesMockSlice = createSlice({
         name: "notes",
@@ -93,6 +97,8 @@ describe("Given a HomePage component", () => {
       const firstExpectedTitle = twelveNotesMock[10].title;
       const secondExpectedTitle = twelveNotesMock[11].title;
 
+      window.scrollTo = jest.fn();
+
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
       axios.get = jest
         .fn()
@@ -111,7 +117,7 @@ describe("Given a HomePage component", () => {
       const buttons = screen.getAllByRole("button");
 
       await act(async () => {
-        userEvent.click(buttons[1]);
+        userEvent.click(buttons[2]);
       });
 
       const firstReceivedTitle = screen.getByText(firstExpectedTitle);
@@ -127,6 +133,8 @@ describe("Given a HomePage component", () => {
       const firstExpectedTitle = twelveNotesMock[10].title;
       const secondExpectedTitle = twelveNotesMock[11].title;
 
+      window.scrollTo = jest.fn();
+
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
       axios.get = jest
         .fn()
@@ -145,8 +153,8 @@ describe("Given a HomePage component", () => {
       const buttons = screen.getAllByRole("button");
 
       await act(async () => {
-        userEvent.click(buttons[1]);
-        userEvent.click(buttons[1]);
+        userEvent.click(buttons[2]);
+        userEvent.click(buttons[2]);
       });
 
       const firstReceivedTitle = screen.getByText(firstExpectedTitle);

@@ -35,8 +35,8 @@ describe("Given a Footer component", () => {
 
   describe("When it's rendered and the decrement button is pressed", () => {
     test("Then it should call dispatch with a decrement page action creator", () => {
+      window.scrollTo = jest.fn();
       const expectedAction = decrementPageActionCreator();
-
       render(
         <BrowserRouter>
           <Provider store={store}>

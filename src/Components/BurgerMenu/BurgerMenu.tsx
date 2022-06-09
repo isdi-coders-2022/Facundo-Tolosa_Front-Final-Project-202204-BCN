@@ -1,10 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useAppDispatch } from "../../hooks/hooks";
-import {
-  resetPaginationActionCreator,
-  setFilterActionCreator,
-} from "../../redux/features/notesSlice/notesSlice";
+import { resetPaginationActionCreator } from "../../redux/features/notesSlice/notesSlice";
 import { logoutActionCreator } from "../../redux/features/userSlice/userSlice";
 
 const BurgerMenuContainer = styled.div`
@@ -113,11 +110,6 @@ const BurgerMenu = (): JSX.Element => {
     localStorage.removeItem("token");
     dispatch(logoutActionCreator());
     navigate("/login");
-  };
-
-  const setFilter = (category: string) => {
-    dispatch(setFilterActionCreator(category));
-    window.scrollTo(0, 0);
   };
 
   const resetPagination = () => {
