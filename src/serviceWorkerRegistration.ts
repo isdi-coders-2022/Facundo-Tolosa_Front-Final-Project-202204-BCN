@@ -88,7 +88,7 @@ function registerValidSW(swUrl: string, config?: Config) {
         };
       };
     })
-    .catch((_error) => {});
+    .catch();
 }
 
 function checkValidServiceWorker(swUrl: string, config?: Config) {
@@ -123,6 +123,6 @@ export function unregister() {
       .then((registration) => {
         registration.unregister();
       })
-      .catch((_error) => {});
+      .catch();
   }
 }
