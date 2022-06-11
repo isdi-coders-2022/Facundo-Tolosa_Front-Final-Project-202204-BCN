@@ -42,18 +42,25 @@ export const deleteNoteThunk =
   (idToDelete: string) => async (dispatch: AppDispatch) => {
     const token = localStorage.getItem("token");
 
-    if (token) {
-      setLoadingOn();
-      await axios.delete(
-        `${process.env.REACT_APP_API_URL}notes/${idToDelete}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+    try {
+      if (token) {
+        setLoadingOn();
+        await axios.delete(
+          `${process.env.REACT_APP_API_URL}notes/${idToDelete}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        dispatch(deleteNoteActionCreator(idToDelete));
+        setLoadingOff();
+      }
+    } catch (error) {
+      setLoadingOffWithMessage(
+        "Connection error. This will be deleted later.",
+        true
       );
-      dispatch(deleteNoteActionCreator(idToDelete));
-      setLoadingOff();
     }
   };
 
@@ -79,20 +86,27 @@ export const createNoteThunk =
   (formNote: INoteForm) => async (dispatch: AppDispatch) => {
     const token = localStorage.getItem("token");
 
-    if (token) {
-      setLoadingOn();
-      const { data: responseNote } = await axios.post(
-        `${process.env.REACT_APP_API_URL}notes`,
-        formNote,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      dispatch(addNoteActionCreator(responseNote));
+    try {
+      if (token) {
+        setLoadingOn();
+        const { data: responseNote } = await axios.post(
+          `${process.env.REACT_APP_API_URL}notes`,
+          formNote,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        dispatch(addNoteActionCreator(responseNote));
 
-      setLoadingOffWithMessage("Note created", false);
+        setLoadingOffWithMessage("Note created", false);
+      }
+    } catch (error) {
+      setLoadingOffWithMessage(
+        "Connection error. This will be uploaded later.",
+        true
+      );
     }
   };
 
@@ -100,18 +114,25 @@ export const editNoteThunk =
   (idToEdit: string, formNote: INoteForm) => async (dispatch: AppDispatch) => {
     const token = localStorage.getItem("token");
 
-    if (token) {
-      setLoadingOn();
-      const { data: responseNote } = await axios.put(
-        `${process.env.REACT_APP_API_URL}notes/${idToEdit}`,
-        formNote,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+    try {
+      if (token) {
+        setLoadingOn();
+        const { data: responseNote } = await axios.put(
+          `${process.env.REACT_APP_API_URL}notes/${idToEdit}`,
+          formNote,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        dispatch(editNoteActionCreator(responseNote));
+        setLoadingOffWithMessage("Note edited", false);
+      }
+    } catch (error) {
+      setLoadingOffWithMessage(
+        "Connection error. This will be edited later.",
+        true
       );
-      dispatch(editNoteActionCreator(responseNote));
-      setLoadingOffWithMessage("Note edited", false);
     }
   };
