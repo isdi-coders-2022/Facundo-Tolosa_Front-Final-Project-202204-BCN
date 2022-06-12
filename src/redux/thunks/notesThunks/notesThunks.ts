@@ -45,6 +45,7 @@ export const deleteNoteThunk =
     try {
       if (token) {
         setLoadingOn();
+
         await axios.delete(
           `${process.env.REACT_APP_API_URL}notes/${idToDelete}`,
           {

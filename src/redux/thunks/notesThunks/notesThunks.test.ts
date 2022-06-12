@@ -14,6 +14,9 @@ import {
   loadNotesActionCreator,
   setNotesToShowActionCreator,
 } from "../../features/notesSlice/notesSlice";
+import { setLoadingOffWithMessage } from "../../../utils/modal";
+
+const mockSetLoadingOff = jest.fn();
 
 describe("Given the loadNotesThunk function", () => {
   describe("When it's called", () => {
@@ -70,6 +73,21 @@ describe("Given the deleteNoteThunk function", () => {
       const dispatch = jest.fn();
 
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("");
+
+      const thunk = deleteNoteThunk(idToDelete);
+      await thunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("When it's invoqued and the axios request fails", () => {
+    test("Then it should not call dispatch", async () => {
+      const idToDelete = "1974";
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("1974");
+      axios.delete = jest.fn().mockRejectedValue({});
 
       const thunk = deleteNoteThunk(idToDelete);
       await thunk(dispatch);
@@ -137,6 +155,20 @@ describe("Given the createNoteThunk function", () => {
       expect(dispatch).not.toHaveBeenCalled();
     });
   });
+
+  describe("When it's invoqued and the axios request fails", () => {
+    test("Then it should not call dispatch", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("1974");
+      axios.delete = jest.fn().mockRejectedValue({});
+
+      const thunk = createNoteThunk(formNoteMock);
+      await thunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
 });
 
 describe("Given the editNoteThunk function", () => {
@@ -160,6 +192,20 @@ describe("Given the editNoteThunk function", () => {
       const dispatch = jest.fn();
 
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("");
+
+      const thunk = editNoteThunk(noteMock.id, formNoteMock);
+      await thunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("When it's invoqued and the axios request fails", () => {
+    test("Then it should not call dispatch", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("1974");
+      axios.delete = jest.fn().mockRejectedValue({});
 
       const thunk = editNoteThunk(noteMock.id, formNoteMock);
       await thunk(dispatch);
