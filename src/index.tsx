@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  askForPermissionToReceiveNotifications,
-  initializeFirebase,
-} from "./push-notification";
+import { initializeFirebase } from "./push-notification";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -16,7 +13,6 @@ const root = ReactDOM.createRoot(
 );
 
 initializeFirebase();
-askForPermissionToReceiveNotifications();
 
 root.render(
   <Provider store={store}>

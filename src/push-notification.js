@@ -1,3 +1,4 @@
+import axios from "axios";
 import { initializeApp } from "firebase/app";
 import { getMessaging, getToken } from "firebase/messaging";
 
@@ -16,14 +17,24 @@ export const askForPermissionToReceiveNotifications = async () => {
   try {
     await Notification.requestPermission();
     const messaging = getMessaging();
-    const token = await getToken(messaging, {
+
+    const fcmToken = await getToken(messaging, {
       vapidKey:
         "BGPenWZm9JPSIvnhcfToxGDClxHIQ75cEvUDRVRnxdXORMM0nlkKuI6AL4UyMjZJ_uPmHShZSQLDqBYVgPc0iFo",
     });
-    // console.log("Your token is:", token);
 
-    return token;
-  } catch (error) {
-    // console.error(error);
-  }
+    const userToken = localStorage.getItem("token");
+
+    await axios.post(
+      `${process.env.REACT_APP_API_URL}user/token`,
+      { fcmToken },
+      {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      }
+    );
+
+    return fcmToken;
+  } catch (error) {}
 };
