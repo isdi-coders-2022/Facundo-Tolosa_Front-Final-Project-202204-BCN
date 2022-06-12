@@ -4,6 +4,7 @@ import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
 import NotePreviewList from "../../Components/NotePreviewList/NotePreviewList";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { askForPermissionToReceiveNotifications } from "../../push-notification";
 import { setNotesToShowActionCreator } from "../../redux/features/notesSlice/notesSlice";
 import { loadNotesThunk } from "../../redux/thunks/notesThunks/notesThunks";
 import { filterNotes } from "../../utils/filterNotes";
@@ -17,6 +18,7 @@ const HomePage = () => {
   );
 
   useEffect(() => {
+    askForPermissionToReceiveNotifications();
     dispatch(loadNotesThunk());
   }, [dispatch]);
 

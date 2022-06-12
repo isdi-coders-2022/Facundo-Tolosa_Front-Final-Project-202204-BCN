@@ -33,18 +33,18 @@ const messaging = firebase.messaging();
 //   // ...
 // });
 
-messaging.onBackgroundMessage((payload) => {
-  // console.log(
-  //   "[firebase-messaging-sw.js] Received background message ",
-  //   payload
-  // );
-  // Customize notification here
-  const notificationTitle = "Background Message Title";
-  const notificationOptions = {
-    body: "Background Message body.",
-    icon: "/firebase-logo.png",
-  };
+// messaging.onBackgroundMessage((payload) => {
+//   console.log(
+//     "[firebase-messaging-sw.js] Received background message ",
+//     payload
+//   );
+//   // Customize notification here
+//   const notificationTitle = "Background Message Title";
+//   const notificationOptions = {
+//     body: "Background Message body.",
+//     icon: "/firebase-logo.png",
+//   };
 
-  // eslint-disable-next-line no-restricted-globals
-  self.registration.showNotification(notificationTitle, notificationOptions);
-});
+//   // eslint-disable-next-line no-restricted-globals
+//   self.registration.showNotification(notificationTitle, notificationOptions);
+// });
