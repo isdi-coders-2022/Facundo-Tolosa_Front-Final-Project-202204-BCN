@@ -14,9 +14,6 @@ import {
   loadNotesActionCreator,
   setNotesToShowActionCreator,
 } from "../../features/notesSlice/notesSlice";
-import { setLoadingOffWithMessage } from "../../../utils/modal";
-
-const mockSetLoadingOff = jest.fn();
 
 describe("Given the loadNotesThunk function", () => {
   describe("When it's called", () => {
