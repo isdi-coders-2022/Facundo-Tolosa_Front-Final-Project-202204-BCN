@@ -21,6 +21,10 @@ const NotePageContainer = styled.div`
     width: 170px;
     height: 30px;
   }
+
+  @media (min-width: 600px) {
+    top: 125px;
+  }
 `;
 
 export default NotePageContainer;

@@ -93,7 +93,7 @@ const RegisterForm = (): JSX.Element => {
         </div>
         <div className="form-field-image-input">
           <label htmlFor="image" className="image-label">
-            {formValues.image ? "Image uploaded" : "Avatar"}
+            {formValues.image ? "Image uploaded" : <p>Avatar</p>}
             <input
               className="form-field-image-input__button"
               type="file"
