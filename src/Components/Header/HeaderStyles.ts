@@ -36,6 +36,7 @@ const HeaderContainer = styled.div`
 
   img {
     width: 65px;
+    height: 65px;
     margin: 0 7px 0 0;
   }
 

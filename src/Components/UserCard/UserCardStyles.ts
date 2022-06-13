@@ -3,7 +3,7 @@ import styled from "styled-components";
 const UserCardContainer = styled.div`
   width: 300px;
   height: 270px;
-  background-color: #8594e4;
+  background-color: #2c2f94;
   border-radius: 15px;
   transition: all 0.5s;
   font-family: "Work Sans", sans-serif;

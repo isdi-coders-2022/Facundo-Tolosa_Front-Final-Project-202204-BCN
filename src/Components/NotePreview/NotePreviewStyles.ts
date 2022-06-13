@@ -3,7 +3,7 @@ import styled from "styled-components";
 const NotePreviewContainer = styled.div`
   width: 300px;
   height: 193px;
-  background-color: #8594e4;
+  background-color: #2c2f94;
   border-radius: 15px;
   transition: all 0.5s;
   font-family: "Work Sans", sans-serif;
@@ -52,6 +52,7 @@ const NotePreviewContainer = styled.div`
 
   img {
     width: 50px;
+    height: 50px;
     margin: 0 5px 0 0;
   }
 
@@ -63,11 +64,11 @@ const NotePreviewContainer = styled.div`
   }
 
   button {
-    background-color: #430f58;
+    background-color: #fff;
     width: 80px;
     height: 40px;
     cursor: pointer;
-    color: white;
+    color: #2c2f94;
     transition: all 0.5s;
     border-radius: 10px;
     border: none;
