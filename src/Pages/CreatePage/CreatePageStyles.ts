@@ -20,6 +20,10 @@ const CreatePageContainer = styled.div`
     height: 30px;
     margin: 10px 0;
   }
+
+  @media (min-width: 600px) {
+    top: 125px;
+  }
 `;
 
 export default CreatePageContainer;

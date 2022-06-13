@@ -74,4 +74,35 @@ describe("Given a Header component", () => {
       expect(mockUseNavigate).toHaveBeenCalledWith(`/home`);
     });
   });
+
+  describe("When the desktop is clicked", () => {
+    test("Then it should call navigate with the route '/home'", () => {
+      window.scrollTo = jest.fn();
+
+      const logoText = "AMAZING NOTES";
+      const username = "carlos";
+
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { username },
+        reducers: {},
+      });
+      const mockStore = configureStore({
+        reducer: { user: userMockSlice.reducer },
+      });
+
+      render(
+        <BrowserRouter>
+          <Provider store={mockStore}>
+            <Header />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const logo = screen.getByText(logoText);
+      userEvent.click(logo);
+
+      expect(mockUseNavigate).toHaveBeenCalledWith(`/home`);
+    });
+  });
 });

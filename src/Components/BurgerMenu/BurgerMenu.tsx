@@ -89,6 +89,10 @@ const BurgerMenuContainer = styled.div`
   a {
     text-decoration: none;
   }
+
+  @media (min-width: 600px) {
+    display: none;
+  }
 `;
 
 const BurgerMenu = (): JSX.Element => {

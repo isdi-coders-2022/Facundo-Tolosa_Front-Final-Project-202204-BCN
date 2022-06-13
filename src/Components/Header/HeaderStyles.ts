@@ -17,7 +17,7 @@ const HeaderContainer = styled.div`
     margin: 0px;
   }
 
-  .logo {
+  .logo-mobile {
     text-align: center;
     font-size: 60px;
     height: 65px;
@@ -39,13 +39,32 @@ const HeaderContainer = styled.div`
     margin: 0 7px 0 0;
   }
 
+  .logo-desktop {
+    display: none;
+    cursor: pointer;
+  }
+
   @media (min-width: 600px) {
-    .logo {
-      cursor: pointer;
+    .logo-mobile {
+      display: none;
     }
+
+    .logo-desktop {
+      display: contents;
+      cursor: pointer;
+      text-align: center;
+      font-size: 35px;
+      height: 65px;
+      width: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     p {
       cursor: pointer;
     }
+
     img {
       cursor: pointer;
     }

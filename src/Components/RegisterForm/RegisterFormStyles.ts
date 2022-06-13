@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const RegisterFormContainer = styled.div`
-  margin-top: 20px;
+  margin-top: 10px;
   width: 330px;
   height: 500px;
   border: 10px solid #6643b5;
@@ -78,6 +78,11 @@ const RegisterFormContainer = styled.div`
     font-size: 24px;
     color: #6643b5;
     cursor: pointer;
+    p {
+      margin: 0px;
+      width: 100%;
+      text-align: center;
+    }
   }
 
   .form-field-image-input {
