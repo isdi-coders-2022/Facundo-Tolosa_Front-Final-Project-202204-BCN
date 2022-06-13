@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import {
@@ -7,7 +7,39 @@ import {
 } from "../../redux/features/notesSlice/notesSlice";
 
 const SearchBarContainer = styled.div`
-  display: none;
+  width: 200px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  color: white;
+  font-family: "Koulen";
+  z-index: 20;
+  justify-content: space-around;
+  margin-top: 10px;
+
+  img {
+    height: 24px;
+    width: 24px;
+  }
+
+  label {
+    display: none;
+  }
+
+  input {
+    height: 20px;
+    width: 105px;
+    border: none;
+    margin-left: 2px;
+  }
+
+  input:focus {
+    outline: none;
+  }
 
   @media (min-width: 600px) {
     display: contents;
@@ -23,6 +55,7 @@ const SearchBarContainer = styled.div`
     font-family: "Koulen";
     z-index: 20;
     justify-content: space-around;
+    margin-top: 0px;
 
     img {
       height: 24px;
@@ -56,22 +89,24 @@ const SearchBar = (): JSX.Element => {
 
   const [formValues, setFormValues] = useState(initialFormValue);
 
+  useEffect(() => {
+    const notesToShow = allNotes.filter((note) =>
+      note.title.toLowerCase().includes(formValues.search.toLowerCase())
+    );
+
+    if (!formValues.search) {
+      dispatch(setFilterActionCreator("none"));
+      return;
+    }
+
+    dispatch(setNotesToShowActionCreator(notesToShow));
+  }, [allNotes, dispatch, formValues.search]);
+
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setFormValues({
       ...formValues,
       [event.target.id]: event.target.value,
     });
-
-    if (formValues.search === "") {
-      dispatch(setFilterActionCreator("none"));
-      return;
-    }
-
-    const notesToShow = allNotes.filter((note) =>
-      note.title.toLowerCase().includes(formValues.search.toLowerCase())
-    );
-
-    dispatch(setNotesToShowActionCreator(notesToShow));
   };
 
   return (

@@ -10,6 +10,10 @@ const HomePageContainer = styled.div`
 
   @media (min-width: 600px) {
     top: 125px;
+
+    .search-bar {
+      display: none;
+    }
   }
 `;
 

@@ -61,8 +61,10 @@ const NavigationMenuContainer = styled.div`
       text-decoration: none;
     }
 
-    .search-bar {
+    .search-bar-desktop {
       margin: 0 5px;
+      display: flex;
+      height: 30px;
     }
   }
 `;
@@ -101,7 +103,7 @@ const NavigationMenu = (): JSX.Element => {
           </p>
         </li>
       </ul>
-      <div className="search-bar">
+      <div className="search-bar-desktop">
         <SearchBar />
       </div>
     </NavigationMenuContainer>
