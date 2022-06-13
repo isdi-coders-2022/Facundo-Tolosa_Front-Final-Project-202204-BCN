@@ -25,8 +25,13 @@ describe("Given a Header component", () => {
         initialState: { username: userName },
         reducers: {},
       });
+      const notesMockSlice = createSlice({
+        name: "notes",
+        initialState: { allNotes: [] },
+        reducers: {},
+      });
       const mockStore = configureStore({
-        reducer: { user: userMockSlice.reducer },
+        reducer: { user: userMockSlice.reducer, notes: notesMockSlice.reducer },
       });
 
       render(
@@ -56,8 +61,13 @@ describe("Given a Header component", () => {
         initialState: { username },
         reducers: {},
       });
+      const notesMockSlice = createSlice({
+        name: "notes",
+        initialState: { allNotes: [] },
+        reducers: {},
+      });
       const mockStore = configureStore({
-        reducer: { user: userMockSlice.reducer },
+        reducer: { user: userMockSlice.reducer, notes: notesMockSlice.reducer },
       });
 
       render(
@@ -87,8 +97,13 @@ describe("Given a Header component", () => {
         initialState: { username },
         reducers: {},
       });
+      const notesMockSlice = createSlice({
+        name: "notes",
+        initialState: { allNotes: [] },
+        reducers: {},
+      });
       const mockStore = configureStore({
-        reducer: { user: userMockSlice.reducer },
+        reducer: { user: userMockSlice.reducer, notes: notesMockSlice.reducer },
       });
 
       render(

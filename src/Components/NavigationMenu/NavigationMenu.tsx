@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useAppDispatch } from "../../hooks/hooks";
 import { resetPaginationActionCreator } from "../../redux/features/notesSlice/notesSlice";
 import { logoutActionCreator } from "../../redux/features/userSlice/userSlice";
+import SearchBar from "../SearchBar/SearchBar";
 
 const NavigationMenuContainer = styled.div`
   display: none;
@@ -23,14 +24,15 @@ const NavigationMenuContainer = styled.div`
     z-index: 20;
 
     .menu__box {
-      width: 300px;
+      width: 100%;
       list-style: none;
     }
 
     ul {
       padding: 0px;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
+      align-items: center;
     }
 
     li {
@@ -38,10 +40,12 @@ const NavigationMenuContainer = styled.div`
     }
 
     .menu__item {
+      margin: 0px 20px;
       padding: 0 10px;
       color: #fff;
       font-size: 21px;
       transition-duration: 0.25s;
+      height: 40px;
     }
 
     .logout {
@@ -55,6 +59,10 @@ const NavigationMenuContainer = styled.div`
 
     a {
       text-decoration: none;
+    }
+
+    .search-bar {
+      margin: 0 5px;
     }
   }
 `;
@@ -93,6 +101,9 @@ const NavigationMenu = (): JSX.Element => {
           </p>
         </li>
       </ul>
+      <div className="search-bar">
+        <SearchBar />
+      </div>
     </NavigationMenuContainer>
   );
 };
