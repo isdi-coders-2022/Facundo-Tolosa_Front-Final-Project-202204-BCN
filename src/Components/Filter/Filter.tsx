@@ -17,10 +17,10 @@ const Filter = (): JSX.Element => {
         <button className="filter-button">Filter by: {activeFilter}</button>
         <ul className="filter-items">
           <li onClick={() => setFilter("none")}>None</li>
-          <li onClick={() => setFilter("Category 1")}>Category 1</li>
-          <li onClick={() => setFilter("Category 2")}>Category 2</li>
-          <li onClick={() => setFilter("Category 3")}>Category 3</li>
-          <li onClick={() => setFilter("Category 4")}>Category 4</li>
+          <li onClick={() => setFilter("Programming")}>Programming</li>
+          <li onClick={() => setFilter("Sports")}>Sports</li>
+          <li onClick={() => setFilter("Travel")}>Travel</li>
+          <li onClick={() => setFilter("Food")}>Food</li>
         </ul>
       </div>
     </FilterContainer>
