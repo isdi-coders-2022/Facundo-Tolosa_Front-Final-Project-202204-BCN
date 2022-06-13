@@ -1,4 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks/hooks";
 import {
   createNoteThunk,
@@ -19,6 +20,7 @@ interface Props {
 
 const CreateNoteForm = ({ noteToEdit }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const initialFormValue: ICreateNoteForm = {
     title: noteToEdit ? noteToEdit.title : "",
@@ -55,6 +57,7 @@ const CreateNoteForm = ({ noteToEdit }: Props): JSX.Element => {
     }
     dispatch(createNoteThunk(formValues));
     setFormValues(initialFormValue);
+    navigate("/home");
   };
 
   return (
@@ -83,10 +86,10 @@ const CreateNoteForm = ({ noteToEdit }: Props): JSX.Element => {
             <option value="" disabled>
               Choose a category
             </option>
-            <option value="Category 1">Category 1</option>
-            <option value="Category 2">Category 2</option>
-            <option value="Category 3">Category 3</option>
-            <option value="Category 4">Category 4</option>
+            <option value="Programming">Programming</option>
+            <option value="Sports">Sports</option>
+            <option value="Travel">Travel</option>
+            <option value="Food">Food</option>
           </select>
         </div>
 

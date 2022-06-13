@@ -19,10 +19,10 @@ describe("Given a Filter component", () => {
       window.scrollTo = jest.fn();
 
       const firstCategoryToFind = "None";
-      const secondCategoryToFind = "Category 1";
-      const thirdCategoryToFind = "Category 2";
-      const fourthCategoryToFind = "Category 3";
-      const fifthCategoryToFind = "Category 4";
+      const secondCategoryToFind = "Programming";
+      const thirdCategoryToFind = "Sports";
+      const fourthCategoryToFind = "Travel";
+      const fifthCategoryToFind = "Food";
 
       render(
         <BrowserRouter>
