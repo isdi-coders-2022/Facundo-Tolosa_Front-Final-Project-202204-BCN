@@ -46,6 +46,14 @@ const Filter = styled.div`
       cursor: pointer;
       width: 50%;
       text-align: center;
+      transition-duration: 0.25s;
+    }
+  }
+
+  @media (min-width: 600px) {
+    li:hover {
+      background-color: #fff;
+      color: black;
     }
   }
 `;

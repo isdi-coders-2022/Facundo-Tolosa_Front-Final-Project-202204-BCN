@@ -11,6 +11,7 @@ import { resetPaginationActionCreator } from "../../redux/features/notesSlice/no
 const mockDispatch = jest.fn();
 
 jest.mock("../../hooks/hooks", () => ({
+  ...jest.requireActual("../../hooks/hooks"),
   useAppDispatch: () => mockDispatch,
 }));
 
