@@ -9,8 +9,6 @@ const NotePageContainer = styled.div`
   width: 100%;
 
   .back-button {
-    position: relative;
-    top: 20px;
     cursor: pointer;
     font-size: 20px;
     font-family: "Work Sans", sans-serif;
@@ -20,6 +18,7 @@ const NotePageContainer = styled.div`
     border: none;
     width: 170px;
     height: 30px;
+    margin: 10px 0;
   }
 
   @media (min-width: 600px) {
