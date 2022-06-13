@@ -22,7 +22,11 @@ describe("Given a UserPage component", () => {
 
       const notesMockSlice = createSlice({
         name: "notes",
-        initialState: { notesToShow: notesMock, userToShow: userObjectMock },
+        initialState: {
+          notesToShow: notesMock,
+          userToShow: userObjectMock,
+          allNotes: [],
+        },
         reducers: {},
       });
       const userMockSlice = createSlice({

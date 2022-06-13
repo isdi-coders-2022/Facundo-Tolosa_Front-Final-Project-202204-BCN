@@ -3,6 +3,7 @@ import Filter from "../../Components/Filter/Filter";
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
 import NotePreviewList from "../../Components/NotePreviewList/NotePreviewList";
+import SearchBar from "../../Components/SearchBar/SearchBar";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { askForPermissionToReceiveNotifications } from "../../push-notification";
 import { setNotesToShowActionCreator } from "../../redux/features/notesSlice/notesSlice";
@@ -35,6 +36,9 @@ const HomePage = () => {
       <Header />
       <HomePageContainer>
         <Filter />
+        <div className="search-bar">
+          <SearchBar />
+        </div>
         <NotePreviewList notesToShow={notesToShow} />
         <Footer />
       </HomePageContainer>
