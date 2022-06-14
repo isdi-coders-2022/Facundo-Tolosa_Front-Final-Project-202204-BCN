@@ -7,6 +7,7 @@ import { logoutActionCreator } from "../../redux/features/userSlice/userSlice";
 const BurgerMenuContainer = styled.div`
   #menu__toggle {
     opacity: 0;
+    z-index: 10;
   }
   #menu__toggle:focus + .menu__btn > span {
     transform: rotate(45deg);
@@ -30,6 +31,7 @@ const BurgerMenuContainer = styled.div`
     height: 50px;
     cursor: pointer;
     z-index: 1;
+    font-size: 0px;
   }
   .menu__btn > span,
   .menu__btn > span::before,
@@ -113,10 +115,10 @@ const BurgerMenu = (): JSX.Element => {
   return (
     <BurgerMenuContainer>
       <div className="hamburger-menu">
-        <input id="menu__toggle" type="checkbox" />
         <label className="menu__btn" htmlFor="menu__toggle">
-          <span></span>
+          <span>.</span>
         </label>
+        <input id="menu__toggle" type="checkbox" />
 
         <ul className="menu__box">
           <li onClick={resetPagination}>
