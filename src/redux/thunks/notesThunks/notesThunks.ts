@@ -24,7 +24,7 @@ export const loadNotesThunk = () => async (dispatch: AppDispatch) => {
   setLoadingOff();
   setLoadingOn();
   if (token) {
-    const {
+    let {
       data: { notes },
     } = await axios.get<getAllNotesResponse>(
       `${process.env.REACT_APP_API_URL}notes`,
@@ -34,6 +34,8 @@ export const loadNotesThunk = () => async (dispatch: AppDispatch) => {
         },
       }
     );
+
+    notes = notes.reverse();
 
     dispatch(loadNotesActionCreator(notes));
     setLoadingOff();

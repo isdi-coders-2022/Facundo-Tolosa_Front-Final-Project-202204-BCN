@@ -34,6 +34,22 @@ export const notesMock = [
 
 export const twelveNotesMock = [
   {
+    title: "number 11",
+    content: "dont do it",
+    category: "programming",
+    author: "mariogl84",
+    id: "string10",
+    creationDate: "2021-02-02T23:25:13.508Z",
+  },
+  {
+    title: "number 12",
+    content: "dont do it",
+    category: "programming",
+    author: "mariogl84",
+    id: "string11",
+    creationDate: "2020-02-02T23:25:13.508Z",
+  },
+  {
     title: "eslint disable",
     content: "note content",
     category: "sports",
@@ -112,22 +128,6 @@ export const twelveNotesMock = [
     author: "mariogl84",
     id: "string9",
     creationDate: "2022-02-02T23:25:13.508Z",
-  },
-  {
-    title: "number 11",
-    content: "dont do it",
-    category: "programming",
-    author: "mariogl84",
-    id: "string10",
-    creationDate: "2021-02-02T23:25:13.508Z",
-  },
-  {
-    title: "number 12",
-    content: "dont do it",
-    category: "programming",
-    author: "mariogl84",
-    id: "string11",
-    creationDate: "2020-02-02T23:25:13.508Z",
   },
 ];
 

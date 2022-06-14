@@ -94,8 +94,8 @@ describe("Given a HomePage component", () => {
 
   describe("When it's rendered with a list of twelve notes to show and the increment button of the footer is pressed", () => {
     test("Then it should render the two titles of the notes number 11 and 12", async () => {
-      const firstExpectedTitle = twelveNotesMock[10].title;
-      const secondExpectedTitle = twelveNotesMock[11].title;
+      const firstExpectedTitle = twelveNotesMock[0].title;
+      const secondExpectedTitle = twelveNotesMock[1].title;
 
       window.scrollTo = jest.fn();
 
@@ -117,43 +117,6 @@ describe("Given a HomePage component", () => {
       const buttons = screen.getAllByRole("button");
 
       await act(async () => {
-        userEvent.click(buttons[2]);
-      });
-
-      const firstReceivedTitle = screen.getByText(firstExpectedTitle);
-      expect(firstReceivedTitle).toBeInTheDocument();
-
-      const secondReceivedTitle = screen.getByText(secondExpectedTitle);
-      expect(secondReceivedTitle).toBeInTheDocument();
-    });
-  });
-
-  describe("When it's rendered with a list of twelve notes to show and the increment button of the footer is pressed two times", () => {
-    test("Then it should render the two titles of the notes number 11 and 12", async () => {
-      const firstExpectedTitle = twelveNotesMock[10].title;
-      const secondExpectedTitle = twelveNotesMock[11].title;
-
-      window.scrollTo = jest.fn();
-
-      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
-      axios.get = jest
-        .fn()
-        .mockResolvedValue({ data: { notes: twelveNotesMock }, status: 200 });
-
-      await act(async () => {
-        render(
-          <BrowserRouter>
-            <Provider store={store}>
-              <HomePage />
-            </Provider>
-          </BrowserRouter>
-        );
-      });
-
-      const buttons = screen.getAllByRole("button");
-
-      await act(async () => {
-        userEvent.click(buttons[2]);
         userEvent.click(buttons[2]);
       });
 
