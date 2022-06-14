@@ -94,7 +94,7 @@ const NavigationMenu = (): JSX.Element => {
         </li>
         <li>
           <NavLink to={"/create"}>
-            <p className="menu__item">Create Note</p>
+            <p className="menu__item">Create a note</p>
           </NavLink>
         </li>
         <li className="logout">

@@ -54,7 +54,9 @@ const NotePreview = ({
         <div className="user-buttons">
           {canDelete ? (
             <>
-              <button onClick={deleteNote}>Delete</button>
+              <button onClick={deleteNote} className="delete-button">
+                Delete
+              </button>
               <button onClick={editNote}>Edit</button>
             </>
           ) : (
