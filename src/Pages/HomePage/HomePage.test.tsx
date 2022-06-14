@@ -45,7 +45,7 @@ describe("Given a HomePage component", () => {
       const buttons = screen.getAllByRole("button");
 
       await act(async () => {
-        userEvent.click(buttons[2]);
+        userEvent.click(buttons[3]);
       });
 
       const receivedTitles = screen.getAllByText(titles);
@@ -117,7 +117,7 @@ describe("Given a HomePage component", () => {
       const buttons = screen.getAllByRole("button");
 
       await act(async () => {
-        userEvent.click(buttons[2]);
+        userEvent.click(buttons[3]);
       });
 
       const firstReceivedTitle = screen.getByText(firstExpectedTitle);

@@ -19,7 +19,6 @@ const HomePage = () => {
   );
 
   useEffect(() => {
-    askForPermissionToReceiveNotifications();
     dispatch(loadNotesThunk());
   }, [dispatch]);
 
@@ -40,6 +39,12 @@ const HomePage = () => {
           <SearchBar />
         </div>
         <NotePreviewList notesToShow={notesToShow} />
+        <button
+          className="notifications-button"
+          onClick={askForPermissionToReceiveNotifications}
+        >
+          Receive notifications
+        </button>
         <Footer />
       </HomePageContainer>
     </>
