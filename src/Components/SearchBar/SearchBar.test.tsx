@@ -9,7 +9,7 @@ import { notesMock } from "../../mocks/notesMocks";
 
 describe("Given a SearchBar component", () => {
   describe("When the word 'hello' is written to the search input field", () => {
-    test("Then the value of the search input field should be 'hello'", () => {
+    test("Then the value of the search input field should be 'hello'", async () => {
       const notesMockSlice = createSlice({
         name: "notes",
         initialState: { allNotes: notesMock },
@@ -30,7 +30,7 @@ describe("Given a SearchBar component", () => {
         </BrowserRouter>
       );
       const label: HTMLLabelElement = screen.getByLabelText(labelToFind);
-      userEvent.type(label, inputText);
+      await userEvent.type(label, inputText);
 
       expect(label).toHaveValue(inputText);
     });

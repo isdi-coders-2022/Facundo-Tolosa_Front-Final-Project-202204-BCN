@@ -1,10 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import {
-  setFilterActionCreator,
-  setNotesToShowActionCreator,
-} from "../../redux/features/notesSlice/notesSlice";
+import { setNotesToShowActionCreator } from "../../redux/features/notesSlice/notesSlice";
 
 const SearchBarContainer = styled.div`
   width: 200px;
@@ -96,7 +93,6 @@ const SearchBar = (): JSX.Element => {
 
     if (!formValues.search) {
       notesToShow = allNotes;
-      return;
     }
 
     dispatch(setNotesToShowActionCreator(notesToShow));
