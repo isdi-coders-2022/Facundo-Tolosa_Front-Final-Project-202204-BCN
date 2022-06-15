@@ -53,11 +53,14 @@ const CreateNoteForm = ({ noteToEdit }: Props): JSX.Element => {
     event.preventDefault();
     if (noteToEdit) {
       dispatch(editNoteThunk(noteToEdit.id, formValues));
+      navigate("/home");
+      window.scrollTo(0, 0);
       return;
     }
     dispatch(createNoteThunk(formValues));
     setFormValues(initialFormValue);
     navigate("/home");
+    window.scrollTo(0, 0);
   };
 
   return (
