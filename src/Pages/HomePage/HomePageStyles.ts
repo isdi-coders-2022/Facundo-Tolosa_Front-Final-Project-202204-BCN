@@ -14,6 +14,16 @@ const HomePageContainer = styled.div`
     width: 200px;
     border-radius: 5px;
     font-size: 20px;
+    background-color: #6643b5;
+    color: white;
+    border: none;
+    transition-duration: 0.25s;
+  }
+
+  .notifications-button:hover {
+    background-color: white;
+    cursor: pointer;
+    color: #6643b5;
   }
 
   @media (min-width: 600px) {

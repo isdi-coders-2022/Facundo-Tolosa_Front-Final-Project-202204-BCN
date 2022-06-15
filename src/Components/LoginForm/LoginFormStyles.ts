@@ -43,10 +43,10 @@ const LoginFormContainer = styled.div`
   }
 
   .submit-input {
-    background-color: #6643b5;
     width: 150px;
     height: 58px;
     cursor: pointer;
+    background-color: #6643b5;
     color: white;
     transition: all 0.5s;
   }
