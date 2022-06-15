@@ -1,5 +1,8 @@
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { setFilterActionCreator } from "../../redux/features/notesSlice/notesSlice";
+import {
+  resetPaginationActionCreator,
+  setFilterActionCreator,
+} from "../../redux/features/notesSlice/notesSlice";
 import FilterContainer from "./FilterStyles";
 
 const Filter = (): JSX.Element => {
@@ -8,6 +11,9 @@ const Filter = (): JSX.Element => {
 
   const setFilter = (category: string) => {
     dispatch(setFilterActionCreator(category));
+
+    dispatch(resetPaginationActionCreator());
+
     window.scrollTo(0, 0);
   };
 
