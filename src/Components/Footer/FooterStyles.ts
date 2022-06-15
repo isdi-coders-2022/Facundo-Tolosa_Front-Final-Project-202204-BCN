@@ -9,7 +9,7 @@ const FooterContainer = styled.div`
   justify-content: center;
   flex-direction: row;
   color: white;
-  font-family: "Koulen";
+  /* font-family: "Koulen"; */
 
   p {
     margin: 20px;

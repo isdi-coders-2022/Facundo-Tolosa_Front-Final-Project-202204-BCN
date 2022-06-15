@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Koulen&display=swap");
+
 body {
   margin: 0;
   background-color: #d5def5;
   user-select: none;
+  font-family: "Koulen";
 }
