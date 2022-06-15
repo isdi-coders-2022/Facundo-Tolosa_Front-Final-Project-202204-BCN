@@ -5,6 +5,8 @@ import { deleteNoteThunk } from "../../redux/thunks/notesThunks/notesThunks";
 import { INote } from "../../types/noteInterfaces";
 import NotePreviewContainer from "./NotePreviewStyles";
 import { formatDate } from "../../utils/formatDate";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   note: INote;
@@ -65,10 +67,8 @@ const NotePreview = ({
 
           <div className="user">
             <NavLink to={`/user/${author}`}>
-              <img
-                src="/images/icons8-nombre-de-usuario-50.png"
-                alt="user caricature"
-              />
+              <FontAwesomeIcon icon={faCircleUser} color="white" />
+
               <p>{author}</p>
             </NavLink>
           </div>

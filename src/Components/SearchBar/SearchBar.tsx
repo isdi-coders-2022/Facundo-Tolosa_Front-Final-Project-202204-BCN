@@ -1,3 +1,5 @@
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ChangeEvent, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
@@ -118,7 +120,7 @@ const SearchBar = (): JSX.Element => {
           placeholder="Search..."
         />
       </div>
-      <img src="/images/icons8-búsqueda-24.png" alt="lupa" />
+      <FontAwesomeIcon icon={faMagnifyingGlass} color="black" />
     </SearchBarContainer>
   );
 };
