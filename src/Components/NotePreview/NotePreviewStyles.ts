@@ -53,7 +53,7 @@ const NotePreviewContainer = styled.div`
   img {
     width: 50px;
     height: 50px;
-    margin: 0;
+    margin: 0 5px 0 0;
   }
 
   a {
