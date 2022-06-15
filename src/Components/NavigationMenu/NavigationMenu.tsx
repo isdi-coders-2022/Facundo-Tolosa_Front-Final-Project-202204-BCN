@@ -20,7 +20,7 @@ const NavigationMenuContainer = styled.div`
     justify-content: center;
     flex-direction: row;
     color: white;
-    font-family: "Koulen";
+    /* font-family: "Koulen"; */
     z-index: 20;
 
     .menu__box {
