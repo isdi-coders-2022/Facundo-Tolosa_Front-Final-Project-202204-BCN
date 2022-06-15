@@ -12,7 +12,9 @@ const CheckIfLogged = ({ children }: Props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!name) navigate("/login");
+    if (!name) {
+      navigate("/login");
+    }
   }, [name, navigate]);
 
   return children;

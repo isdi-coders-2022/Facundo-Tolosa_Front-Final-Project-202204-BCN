@@ -90,12 +90,12 @@ const SearchBarMobile = (): JSX.Element => {
   const [formValues, setFormValues] = useState(initialFormValue);
 
   useEffect(() => {
-    const notesToShow = allNotes.filter((note) =>
+    let notesToShow = allNotes.filter((note) =>
       note.title.toLowerCase().includes(formValues.search.toLowerCase())
     );
 
     if (!formValues.search) {
-      dispatch(setFilterActionCreator("none"));
+      notesToShow = allNotes;
       return;
     }
 
