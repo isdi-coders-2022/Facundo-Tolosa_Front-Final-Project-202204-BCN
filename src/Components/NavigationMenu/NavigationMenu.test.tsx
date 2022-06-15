@@ -15,6 +15,13 @@ jest.mock("../../hooks/hooks", () => ({
   useAppDispatch: () => mockDispatch,
 }));
 
+let mockUsername = "carlos";
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useParams: () => ({ username: mockUsername }),
+}));
+
 describe("Given a NavigationMenu component", () => {
   describe("When the text LogOut button is clicked", () => {
     test("Then it should call dispatch with a logout action", () => {
@@ -39,6 +46,30 @@ describe("Given a NavigationMenu component", () => {
     test("Then it should call dispatch a resetPagination action", () => {
       window.scrollTo = jest.fn();
 
+      const homeButtonText = "Home";
+      const action = resetPaginationActionCreator();
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <NavigationMenu />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const homeButton = screen.getByText(homeButtonText);
+
+      userEvent.click(homeButton);
+
+      expect(mockDispatch).toHaveBeenCalledWith(action);
+    });
+  });
+
+  describe("When it's rendered at the user page", () => {
+    test("Then it shouldn't render the searchbar component", () => {
+      window.scrollTo = jest.fn();
+
+      mockUsername = "";
       const homeButtonText = "Home";
       const action = resetPaginationActionCreator();
 
