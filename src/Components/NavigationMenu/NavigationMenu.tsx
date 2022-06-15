@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useAppDispatch } from "../../hooks/hooks";
 import { resetPaginationActionCreator } from "../../redux/features/notesSlice/notesSlice";
@@ -72,6 +72,7 @@ const NavigationMenuContainer = styled.div`
 const NavigationMenu = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { username } = useParams();
 
   const logOut = () => {
     localStorage.removeItem("token");
@@ -104,7 +105,7 @@ const NavigationMenu = (): JSX.Element => {
         </li>
       </ul>
       <div className="search-bar-desktop">
-        <SearchBar />
+        {username ? null : <SearchBar />}
       </div>
     </NavigationMenuContainer>
   );

@@ -5,6 +5,7 @@ import { deleteNoteThunk } from "../../redux/thunks/notesThunks/notesThunks";
 import { INote } from "../../types/noteInterfaces";
 import NotePreviewContainer from "./NotePreviewStyles";
 import { formatDate } from "../../utils/formatDate";
+import { getUserThunk } from "../../redux/thunks/userThunks/userThunks";
 
 interface Props {
   note: INote;
