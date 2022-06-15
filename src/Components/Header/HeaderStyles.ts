@@ -10,7 +10,7 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   flex-direction: row;
   color: white;
-  font-family: "Koulen";
+  /* font-family: "Koulen"; */
   z-index: 20;
 
   p {
