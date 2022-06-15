@@ -1,5 +1,4 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks/hooks";
 import {
   createNoteThunk,
@@ -20,7 +19,6 @@ interface Props {
 
 const CreateNoteForm = ({ noteToEdit }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const initialFormValue: ICreateNoteForm = {
     title: noteToEdit ? noteToEdit.title : "",
@@ -53,13 +51,13 @@ const CreateNoteForm = ({ noteToEdit }: Props): JSX.Element => {
     event.preventDefault();
     if (noteToEdit) {
       dispatch(editNoteThunk(noteToEdit.id, formValues));
-      navigate("/home");
+
       window.scrollTo(0, 0);
       return;
     }
     dispatch(createNoteThunk(formValues));
     setFormValues(initialFormValue);
-    navigate("/home");
+
     window.scrollTo(0, 0);
   };
 
