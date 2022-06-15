@@ -17,9 +17,10 @@ registerRoute(
   new CacheFirst()
 );
 
+const apiLink = "https://facundo-tolosa-final-project-back.onrender.com";
+
 registerRoute(
-  ({ url }) =>
-    url.origin === "https://facundo-tolosa-final-project-back.onrender.com",
+  ({ url }) => url.origin === apiLink,
   new NetworkFirst({
     cacheName: "api-responses",
   }),
@@ -31,8 +32,7 @@ const bgSyncPlugin = new BackgroundSyncPlugin("myQueueName", {
 });
 
 registerRoute(
-  ({ url }) =>
-    url.origin === "https://facundo-tolosa-final-project-back.onrender.com",
+  ({ url }) => url.origin === apiLink,
   new NetworkOnly({
     plugins: [bgSyncPlugin],
   }),
@@ -40,8 +40,7 @@ registerRoute(
 );
 
 registerRoute(
-  ({ url }) =>
-    url.origin === "https://facundo-tolosa-final-project-back.onrender.com",
+  ({ url }) => url.origin === apiLink,
   new NetworkOnly({
     plugins: [bgSyncPlugin],
   }),
@@ -49,8 +48,7 @@ registerRoute(
 );
 
 registerRoute(
-  ({ url }) =>
-    url.origin === "https://facundo-tolosa-final-project-back.onrender.com",
+  ({ url }) => url.origin === apiLink,
   new NetworkOnly({
     plugins: [bgSyncPlugin],
   }),
