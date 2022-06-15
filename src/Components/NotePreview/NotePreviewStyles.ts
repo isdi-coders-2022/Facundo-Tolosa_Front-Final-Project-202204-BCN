@@ -50,9 +50,7 @@ const NotePreviewContainer = styled.div`
     margin: 0px 10px;
   }
 
-  img {
-    width: 50px;
-    height: 50px;
+  svg {
     margin: 0 5px 0 0;
   }
 
