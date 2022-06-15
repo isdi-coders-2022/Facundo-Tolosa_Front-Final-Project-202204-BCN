@@ -52,7 +52,7 @@ const notesSlice = createSlice({
 
     addNote: (notes, action: PayloadAction<INote>): IinitialState => ({
       ...notes,
-      allNotes: [...notes.allNotes, action.payload],
+      allNotes: [action.payload, ...notes.allNotes],
     }),
 
     editNote: (notes, action: PayloadAction<INote>): IinitialState => ({
