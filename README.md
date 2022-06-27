@@ -1,46 +1,62 @@
-# Getting Started with Create React App
+# Amazing Notes - Back
+[Amazing Notes](https://facundo-tolosa-front-final-project-202204-bcn.netlify.app) is a PWA where you can save text notes with different categories. You can delete or edit your notes and read notes of other users. As it is a PWA, you can use it offline.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The technologies used for this proyect were:
 
-## Available Scripts
+### 🔸 Front
+React | Redux | PWA | Styled Components | Typescript | Jest | Cypress
 
-In the project directory, you can run:
+### 🔸 Back
+NodeJS | ExpressJS | MongoDB | Mongoose | JWT | Firebase | Jest | Supertest
 
-### `npm start`
+### 🔸 Tools
+Trello | Postman | Figma
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Metrics
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+🚀 Lighthouse
 
-### `npm test`
+<img src="https://i.ibb.co/DMF0VVy/lighthouse.png" width="600">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+📈 [Back SonarCloud metrics](https://sonarcloud.io/project/overview?id=isdi-coders-2022_Facundo-Tolosa_Back-Final-Project-202204-BCN)
 
-### `npm run build`
+📈 [Front SonarCloud metrics](https://sonarcloud.io/project/overview?id=isdi-coders-2022_Facundo-Tolosa_Front-Final-Project-202204-BCN)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+🌐✨ [Amazing Notes](https://facundo-tolosa-front-final-project-202204-bcn.netlify.app)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+💻🗄 [Back deploy on Render](https://facundo-tolosa-final-project-back.onrender.com)
 
-### `npm run eject`
+🔗 [Original front repository](https://github.com/isdi-coders-2022/Facundo-Tolosa_Front-Final-Project-202204-BCN)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+🔗 [Original back repository](https://github.com/isdi-coders-2022/Facundo-Tolosa_Back-Final-Project-202204-BCN)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Back endpoints
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`🔹 POST ➡️   .../user/register`        
+Register a user. The payload should have a name, username, password and an image.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`🔹 POST ➡️   .../user/login`  
+Login with an existing user to get a valid token. The payload should have an existing username and password.           
 
-## Learn More
+`🔹 GET  ➡️    .../user/:username`  
+Get all the data of an existing user, including the notes created by him.      
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`🔹 GET  ➡️    .../notes`   
+Get all the notes.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`🔹 GET  ➡️    .../notes/:username`    
+Get the notes created by one user.     
+
+`🔹 GET  ➡️    .../notes/:noteId`    
+Get a specific note.       
+
+`🔹 POST ➡️   .../notes`    
+Create a note. The payload should have a title, a content and a category.
+
+`🔹 DEL  ➡️    .../notes/:idToDelete`   
+Delete a note with it's ID. A note can be deleted only by it's creator.
+ 
+`🔹 PUT  ➡️    .../notes/:noteId`   
+Edit a note with it's ID. A note can be edited only by it's creator.
